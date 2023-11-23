@@ -1,0 +1,36 @@
+.nav {
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    padding: 0 32px;
+    line-height: 1.1;
+    
+}
+
+.flex-1 {
+    display: flex;
+    flex: 0.3 1 0%;
+    justify-content: center;
+}
+.flex-2 {
+    display: flex;
+    flex: 0.3 1 0%;
+    justify-content: center;
+}
+.flex-2 div {
+    margin: 0 1rem;
+}
+
+.flex-3 {
+    display: flex;
+    flex: 1 1 0%;
+    justify-content: center;
+}
+.flex-4 {
+    display: flex;
+    flex: 0.3 1 0%;
+    justify-content: center;
+}
+.flex-4 div {
+    margin: 0 1rem;
+}
