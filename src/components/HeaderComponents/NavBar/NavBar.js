@@ -1,11 +1,11 @@
 import React from 'react'
 import './NavBar.css'
-import Logo from './Logo'
-import AboutUs from './AboutUs'
-import Help from './Help'
-import Finder from './Finder/Finder'
-import Login from './Login'
-import Basket from './Basket'
+import Logo from '../Logo/Logo'
+import AboutUs from '../AboutUs'
+import Help from '../Help'
+import Finder from '../Finder/Finder'
+import Login from '../Login'
+import Basket from '../Basket'
 
 
 function NavBar() {
