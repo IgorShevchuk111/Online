@@ -1,0 +1,29 @@
+.menu-container {
+    display: flex;
+    padding: 10px 32px;
+    position: relative;
+    border-bottom: 1px solid var(--line-color);
+}
+.menu-container div {
+    flex: 0.07 1 0;
+    cursor: pointer;
+}
+  
+  .menu-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    width: 15%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .menu-items div {
+    border-bottom: 1px  solid  var(--line-color);
+    padding: 6px  40px;
+  }
+
+  .main.menu-open {
+    transition: background-color 0.5s, opacity 0.5s;
+    background-color: var(--menu-background-opacity-color);
+  }
