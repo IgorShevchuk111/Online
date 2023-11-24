@@ -2,6 +2,7 @@ import NavBar from "./components/HeaderComponents/NavBar/NavBar";
 import Menu from "./components/HeaderComponents/MenuComponents/Menu";
 import Footer from "./components/Footer/Footer"
 import "./App.css";
+import Main from "./components/MainComponents/Main";
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
         <NavBar />
         <Menu />
       </header>
-      <main className="main">
+      <main >
+      <Main />
       </main>
       <footer >
         <Footer />
