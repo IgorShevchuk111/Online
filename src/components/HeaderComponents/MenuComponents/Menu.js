@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import Phones from './Phones/Phones'
-import Laptops from './Laptops/Laptops'
 import './Menu.css'
-import TV from './TV/TV'
+import {menu} from '../../../header-data/menuData.js'
 
 
 function Menu() {
@@ -17,12 +15,21 @@ function Menu() {
     
   return (
     <div className='menu-container body-2'>
-      <div class=" material-icons" onClick={toggleMenu}>{menuVisible ? 'close' : 'menu'}</div>
-      {menuVisible && (<div className='menu-items'><Phones /><Laptops /><TV /></div>)}
-      <Phones />
-      <Laptops />
-      <TV />
+      <div className=" material-icons" onClick={toggleMenu}>{menuVisible ? 'close' : 'menu'}</div>
+      {menuVisible && (<div className='menu-items'>{menu.map((item, index) => (
+        <div key={index}>
+          {item.name}
+        </div>
+      ))}</div>
+      
+      )}
+      {menu.map((item, index) => (
+        <div key={index}>
+          {item.name}
+        </div>
+      ))}
     </div> 
+    
   )
 }
 
