@@ -3,8 +3,8 @@ import './Footer.css'
 
 function Footer() {
   return (
-    <div className="footer-container">
-        &copy; 2023 My Shop
+    <div className="footer-container body-2">
+        &copy; {new Date().getFullYear()} My Shop
     </div>
   )
 }
