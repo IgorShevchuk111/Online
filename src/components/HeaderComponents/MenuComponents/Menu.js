@@ -20,12 +20,12 @@ function Menu() {
       {menuVisible && (
         <div className="menu-items">
           {menu.map((item, index) => (
-            <div key={index}>{item.name}</div>
+            <div key={index}>{item.type}</div>
           ))}
         </div>
       )}
       {menu.map((item, index) => (
-        <div key={index}>{item.name}</div>
+        <div key={index}>{item.type}</div>
       ))}
     </div>
   );

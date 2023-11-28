@@ -1,16 +1,19 @@
-const menu =  [
-    { 
-        id: 1,
-        name: 'Phones'
-    },
-    {
-        id: 2,
-        name: 'Laptops'
-    },
-    {
-        id: 3,
-        name: 'Tv'
-    },
-]
+const menu = [
+  {
+    id: 1,
+    type: "Phones",
+    items: [],
+  },
+  {
+    id: 2,
+    type: "Laptops",
+    items: [],
+  },
+  {
+    id: 3,
+    type: "Tv",
+    items: [],
+  },
+];
 
-export {menu};
+export { menu };
