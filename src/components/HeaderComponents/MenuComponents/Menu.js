@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Menu.css";
-import { menu } from "../../../header-data/menuData.js";
+import Phones from "./phonesComponents/Phones.js";
+import Laptops from "./laptopsComponents/Laptops.js";
+import TVs from "./tvComponents/TVs.js";
 
 function Menu() {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -19,14 +21,11 @@ function Menu() {
       </div>
       {menuVisible && (
         <div className="menu-items">
-          {menu.map((item, index) => (
-            <div key={index}>{item.type}</div>
-          ))}
+          <Phones />
+          <Laptops />
+          <TVs />
         </div>
       )}
-      {menu.map((item, index) => (
-        <div key={index}>{item.type}</div>
-      ))}
     </div>
   );
 }
