@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Phones.css";
 import { phones } from "../../../../header-data/menuData";
+import { AppContext } from "../../../../App";
 
 function Phones() {
+  const toggleShowItem = useContext(AppContext).toggleShowItem;
+
   const [showBrands, setShowBrands] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState(null);
 
@@ -12,6 +15,11 @@ function Phones() {
 
   const toggleModel = (brand) => {
     setSelectedBrand(brand === selectedBrand ? null : brand);
+  };
+
+  const showModel = () => {
+    console.log("show");
+    toggleShowItem();
   };
 
   return (
@@ -32,7 +40,9 @@ function Phones() {
               {selectedBrand === brand.brand && (
                 <div className="phones-brands-model">
                   {brand.model.map((model, modelIndex) => (
-                    <div key={modelIndex}>{model}</div>
+                    <div onClick={showModel} key={modelIndex}>
+                      {model}
+                    </div>
                   ))}
                 </div>
               )}
