@@ -16,4 +16,22 @@ const phones = [
   },
 ];
 
-export { phones };
+const laptops = [
+  {
+    id: 1,
+    brand: "Apple",
+    model: ["111", "222", "333"],
+  },
+  {
+    id: 2,
+    brand: "Lenovo",
+    model: ["000", "111", "222"],
+  },
+  {
+    id: 3,
+    brand: "HP",
+    model: ["444", "555", "777"],
+  },
+];
+
+export { phones, laptops };
