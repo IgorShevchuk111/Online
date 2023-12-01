@@ -8,10 +8,10 @@ function Menu() {
   const [menuVisible, setMenuVisible] = useState(false);
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
-    const mainContainer = document.querySelector(".main");
-    if (mainContainer) {
-      mainContainer.classList.toggle("menu-open", !menuVisible);
-    }
+    // const mainContainer = document.querySelector(".main");
+    // if (mainContainer) {
+    //   mainContainer.classList.toggle("menu-open", !menuVisible);
+    // }
   };
 
   return (
