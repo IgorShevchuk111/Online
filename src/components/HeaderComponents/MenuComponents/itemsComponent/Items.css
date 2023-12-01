@@ -1,0 +1,15 @@
+
+
+.phones-brands{
+    padding: 6px 30px;
+}
+.phones-brands-model{
+    padding: 6px 30px;
+}
+.see-all-items {
+    display: flex;
+    align-items: center;
+}
+.material-symbols-outlined{
+    font-size: 19px;
+}
