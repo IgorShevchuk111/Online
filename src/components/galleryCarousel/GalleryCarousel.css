@@ -7,7 +7,7 @@
   color: var(--primary-color);
 }
 .custom-prev {
-  left: 10px; 
+  left: -10px; 
 }
 .custom-next {
   right: 10px; 
@@ -17,5 +17,5 @@
   margin: 20px auto;
 }
 .slick-list {
-  padding-left: 53px;
+  padding-left: 42px;
 }
