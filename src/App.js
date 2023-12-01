@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
 import Main from "./components/MainComponents/Main";
@@ -11,13 +12,15 @@ function App() {
     setShowItem(!showItem);
   };
   return (
-    <div className="App">
-      <AppContext.Provider value={{ showItem, toggleShowItem }}>
-        <Header />
-        <Main />
-        <Footer />
-      </AppContext.Provider>
-    </div>
+    <Router>
+      <div className="App">
+        <AppContext.Provider value={{ showItem, toggleShowItem }}>
+          <Header />
+          <Main />
+          <Footer />
+        </AppContext.Provider>
+      </div>
+    </Router>
   );
 }
 

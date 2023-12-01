@@ -1,9 +1,8 @@
 import React, { useState, useContext } from "react";
-import "./Phones.css";
-import { phones } from "../../../../header-data/menuData";
+import "./Items.css";
 import { AppContext } from "../../../../App";
 
-function Phones() {
+function Items(props) {
   const toggleShowItem = useContext(AppContext).toggleShowItem;
 
   const [showBrands, setShowBrands] = useState(false);
@@ -25,11 +24,15 @@ function Phones() {
   return (
     <div className="container">
       <div className="title" onClick={handleToggle} id="phones">
-        Phones
+        {props.name}
       </div>
       {showBrands && (
         <div className="phones-brands">
-          {phones.map((brand, index) => (
+          <div className="see-all-items">
+            <small>See all</small>
+            <small className="material-symbols-outlined">chevron_right</small>
+          </div>
+          {props.items.map((brand, index) => (
             <div key={index}>
               <div
                 onClick={() => toggleModel(brand.brand)}
@@ -39,6 +42,12 @@ function Phones() {
               </div>
               {selectedBrand === brand.brand && (
                 <div className="phones-brands-model">
+                  <div className="see-all-items">
+                    <small>See all</small>
+                    <small className="material-symbols-outlined">
+                      chevron_right
+                    </small>
+                  </div>
                   {brand.model.map((model, modelIndex) => (
                     <div onClick={showModel} key={modelIndex}>
                       {model}
@@ -54,4 +63,4 @@ function Phones() {
   );
 }
 
-export default Phones;
+export default Items;

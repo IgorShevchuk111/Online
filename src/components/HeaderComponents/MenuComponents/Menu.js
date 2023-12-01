@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Menu.css";
-import Phones from "./phonesComponents/Phones.js";
-import Laptops from "./laptopsComponents/Laptops.js";
-import TVs from "./tvComponents/TVs.js";
+import Items from "./itemsComponent/Items.js";
+import { phones } from "../../../header-data/menuData.js";
+import { laptops } from "../../../header-data/menuData.js";
 
 function Menu() {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -21,9 +21,8 @@ function Menu() {
       </div>
       {menuVisible && (
         <div className="menu-items">
-          <Phones />
-          <Laptops />
-          <TVs />
+          <Items name="Phones" items={phones} />
+          <Items name="Laptops" items={laptops} />
         </div>
       )}
     </div>
