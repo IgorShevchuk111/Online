@@ -18,6 +18,8 @@ function Main() {
     <div className="main">
       <h5>Most wanted</h5>
       <GalleryCarousel images={images} />
+      <h5>Most popular</h5>
+      <GalleryCarousel images={images} />
       {showItem && <ShowItem />}
     </div>
   );
