@@ -29,10 +29,6 @@ function Items(props) {
       </div>
       {showBrands && (
         <div className="phones-brands">
-          <div className="see-all-items">
-            <small>See all</small>
-            <small className="material-symbols-outlined">chevron_right</small>
-          </div>
           {props.items.map((brand, index) => (
             <div key={index}>
               <div
