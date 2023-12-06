@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import "./Items.css";
 import { AppContext } from "../../../../App";
+import { Link } from "react-router-dom";
 
 function Items(props) {
   const toggleShowItem = useContext(AppContext).toggleShowItem;
@@ -42,12 +43,14 @@ function Items(props) {
               </div>
               {selectedBrand === brand.brand && (
                 <div className="phones-brands-model">
-                  <div className="see-all-items">
-                    <small>See all</small>
-                    <small className="material-symbols-outlined">
-                      chevron_right
-                    </small>
-                  </div>
+                  <Link to="/allApplePhones">
+                    <div className="see-all-items">
+                      <small>See all</small>
+                      <small className="material-symbols-outlined">
+                        chevron_right
+                      </small>
+                    </div>
+                  </Link>
                   {brand.model.map((model, modelIndex) => (
                     <div onClick={showModel} key={modelIndex}>
                       {model}
