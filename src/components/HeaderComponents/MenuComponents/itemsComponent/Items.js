@@ -39,7 +39,7 @@ function Items(props) {
               </div>
               {selectedBrand === brand.brand && (
                 <div className="phones-brands-model">
-                  <Link to="/allApplePhones">
+                  <Link to="/apple-phones">
                     <div className="see-all-items">
                       <small>See all</small>
                       <small className="material-symbols-outlined">

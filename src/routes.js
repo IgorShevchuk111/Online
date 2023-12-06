@@ -12,7 +12,7 @@ const routes = [
   {
     path: "/",
     element: <LazyApp />,
-    children: [{ path: "allApplePhones", element: <LazyAllPhones /> }],
+    children: [{ path: "apple-phones", element: <LazyAllPhones /> }],
   },
   { path: "*", element: <ErrorPage /> },
 ];
