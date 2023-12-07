@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./Items.css";
+import "./Menu.css";
 import { Link } from "react-router-dom";
 
-function Items(props) {
+function MenuItems(props) {
   const [showBrands, setShowBrands] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState(null);
 
@@ -13,7 +13,6 @@ function Items(props) {
   const toggleModel = (brand) => {
     setSelectedBrand(brand === selectedBrand ? null : brand);
   };
-
   return (
     <div className="container">
       <div className="title" onClick={handleToggle} id="phones">
@@ -31,16 +30,19 @@ function Items(props) {
               </div>
               {selectedBrand === brand.brand && (
                 <div className="phones-brands-model">
-                  <Link to="/apple-phones">
-                    <div className="see-all-items">
+                  <div className="see-all-items">
+                    <Link to="/apple-phones">
                       <small>See all</small>
-                      <small className="material-symbols-outlined">
-                        chevron_right
-                      </small>
-                    </div>
-                  </Link>
+                    </Link>
+                    <small className="material-symbols-outlined">
+                      chevron_right
+                    </small>
+                  </div>
+
                   {brand.model.map((model, modelIndex) => (
-                    <div key={modelIndex}>{model}</div>
+                    <div key={modelIndex}>
+                      <Link to={`apple-phones/phone/${model}`}>{model}</Link>
+                    </div>
                   ))}
                 </div>
               )}
@@ -52,4 +54,4 @@ function Items(props) {
   );
 }
 
-export default Items;
+export default MenuItems;

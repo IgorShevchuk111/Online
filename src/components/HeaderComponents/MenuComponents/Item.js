@@ -1,7 +1,7 @@
 import React from "react";
 
-function Phone() {
+function Item() {
   return <div>Phone</div>;
 }
 
-export default Phone;
+export default Item;

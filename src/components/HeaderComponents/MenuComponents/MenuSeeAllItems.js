@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ListPhones() {
+function MenuSeeAllItems() {
   return (
     <div>
       ListPhones
@@ -12,4 +12,4 @@ function ListPhones() {
   );
 }
 
-export default ListPhones;
+export default MenuSeeAllItems;

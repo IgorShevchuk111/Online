@@ -2,8 +2,8 @@ import React from "react";
 import "./main.css";
 import GalleryCarousel from "../galleryCarousel/GalleryCarousel";
 import { Routes, Route } from "react-router-dom";
-import ListPhones from "../HeaderComponents/MenuComponents/itemsComponent/phones/ListPhones";
-import Phone from "../HeaderComponents/MenuComponents/itemsComponent/phones/Phone";
+import ListPhones from "../HeaderComponents/MenuComponents/MenuSeeAllItems";
+import Phone from "../HeaderComponents/MenuComponents/Item";
 
 function Main() {
   const images = [
@@ -30,7 +30,9 @@ function Main() {
         />
         <Route path="apple-phones">
           <Route index element={<ListPhones />} />
-          <Route path="phone" element={<Phone />} />
+          <Route path="phone">
+            <Route path=":id" element={<Phone />} />
+          </Route>
         </Route>
       </Routes>
     </div>
