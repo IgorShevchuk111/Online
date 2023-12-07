@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function AllApplePhones() {
+function ListPhones() {
   return (
     <div>
-      AllApplePhones
+      ListPhones
       <Link to={"/"}>
         <p>Back</p>
       </Link>
@@ -12,4 +12,4 @@ function AllApplePhones() {
   );
 }
 
-export default AllApplePhones;
+export default ListPhones;

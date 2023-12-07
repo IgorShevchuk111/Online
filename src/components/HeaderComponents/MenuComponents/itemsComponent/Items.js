@@ -1,11 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "./Items.css";
-import { AppContext } from "../../../../App";
 import { Link } from "react-router-dom";
 
 function Items(props) {
-  const toggleShowItem = useContext(AppContext).toggleShowItem;
-
   const [showBrands, setShowBrands] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState(null);
 
@@ -15,11 +12,6 @@ function Items(props) {
 
   const toggleModel = (brand) => {
     setSelectedBrand(brand === selectedBrand ? null : brand);
-  };
-
-  const showModel = () => {
-    console.log("show");
-    toggleShowItem();
   };
 
   return (
@@ -48,9 +40,7 @@ function Items(props) {
                     </div>
                   </Link>
                   {brand.model.map((model, modelIndex) => (
-                    <div onClick={showModel} key={modelIndex}>
-                      {model}
-                    </div>
+                    <div key={modelIndex}>{model}</div>
                   ))}
                 </div>
               )}
