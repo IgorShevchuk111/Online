@@ -31,7 +31,7 @@ function MenuItems(props) {
               {selectedBrand === brand.brand && (
                 <div className="phones-brands-model">
                   <div className="see-all-items">
-                    <Link to="/apple-phones">
+                    <Link to="/see-all-Items">
                       <small>See all</small>
                     </Link>
                     <small className="material-symbols-outlined">
@@ -41,7 +41,7 @@ function MenuItems(props) {
 
                   {brand.model.map((model, modelIndex) => (
                     <div key={modelIndex}>
-                      <Link to={`apple-phones/phone/${model}`}>{model}</Link>
+                      <Link to={`item/${model}`}>{model}</Link>
                     </div>
                   ))}
                 </div>

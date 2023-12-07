@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function MenuSeeAllItems() {
   return (
     <div>
-      ListPhones
+      List Items
       <Link to={"/"}>
         <p>Back</p>
       </Link>
