@@ -1,11 +1,8 @@
-import React, { useState, useContext } from "react";
-import "./Items.css";
-import { AppContext } from "../../../../App";
+import React, { useState } from "react";
+import "./Menu.css";
 import { Link } from "react-router-dom";
 
-function Items(props) {
-  const toggleShowItem = useContext(AppContext).toggleShowItem;
-
+function MenuItems(props) {
   const [showBrands, setShowBrands] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState(null);
 
@@ -16,12 +13,6 @@ function Items(props) {
   const toggleModel = (brand) => {
     setSelectedBrand(brand === selectedBrand ? null : brand);
   };
-
-  const showModel = () => {
-    console.log("show");
-    toggleShowItem();
-  };
-
   return (
     <div className="container">
       <div className="title" onClick={handleToggle} id="phones">
@@ -39,17 +30,18 @@ function Items(props) {
               </div>
               {selectedBrand === brand.brand && (
                 <div className="phones-brands-model">
-                  <Link to="/apple-phones">
-                    <div className="see-all-items">
+                  <div className="see-all-items">
+                    <Link to="/see-all-Items">
                       <small>See all</small>
-                      <small className="material-symbols-outlined">
-                        chevron_right
-                      </small>
-                    </div>
-                  </Link>
+                    </Link>
+                    <small className="material-symbols-outlined">
+                      chevron_right
+                    </small>
+                  </div>
+
                   {brand.model.map((model, modelIndex) => (
-                    <div onClick={showModel} key={modelIndex}>
-                      {model}
+                    <div key={modelIndex}>
+                      <Link to={`item/${model}`}>{model}</Link>
                     </div>
                   ))}
                 </div>
@@ -62,4 +54,4 @@ function Items(props) {
   );
 }
 
-export default Items;
+export default MenuItems;

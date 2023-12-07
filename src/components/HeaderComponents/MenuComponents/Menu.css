@@ -27,3 +27,38 @@
     transition: background-color 0.5s, opacity 0.5s;
     background-color: var(--menu-background-opacity-color);
   }
+/*  */
+  .phones-brands{
+    padding: 6px 30px;
+}
+.phones-brands-model{
+    padding: 6px 30px;
+}
+.see-all-items {
+    display: flex;
+    align-items: center;
+}
+.material-symbols-outlined{
+    font-size: 19px;
+}
+
+/* Item */
+.item-container{
+  padding: 20px;
+  background: #cccccc;
+  border-radius: 5px;
+  max-width: 240px;
+}
+
+/* MenuSeeAllItems */
+
+/* .items-container{
+
+} */
+.items-nav{
+  text-align: center;
+}
+.items-wraper {
+  display: flex;
+  justify-content: space-around;
+}

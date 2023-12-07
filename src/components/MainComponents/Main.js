@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./main.css";
-import ShowItem from "./showItem/ShowItem";
-import { AppContext } from "../../App";
 import GalleryCarousel from "../galleryCarousel/GalleryCarousel";
-import { useLocation } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import MenuSeeAllItems from "../HeaderComponents/MenuComponents/MenuSeeAllItems";
+import Item from "../HeaderComponents/MenuComponents/Item";
 
 function Main() {
-  const showItem = useContext(AppContext).showItem;
-  const location = useLocation();
   const images = [
     "https://picsum.photos/200/300",
     "https://picsum.photos/200/300",
@@ -19,16 +16,23 @@ function Main() {
   ];
   return (
     <div className="main">
-      {location.pathname === "/" && (
-        <div>
-          <h5>Most wanted</h5>
-          <GalleryCarousel images={images} />
-          <h5>Most popular</h5>
-          <GalleryCarousel images={images} />
-          {showItem && <ShowItem />}
-        </div>
-      )}
-      <Outlet />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div>
+              <h5>Most wanted</h5>
+              <GalleryCarousel images={images} />
+              <h5>Most popular</h5>
+              <GalleryCarousel images={images} />
+            </div>
+          }
+        />
+        <Route path="see-all-Items" element={<MenuSeeAllItems />} />
+        <Route path="item">
+          <Route path=":id" element={<Item />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
