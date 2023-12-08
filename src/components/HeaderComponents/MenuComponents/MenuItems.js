@@ -3,11 +3,11 @@ import "./Menu.css";
 import { Link } from "react-router-dom";
 
 function MenuItems(props) {
-  const [showBrands, setShowBrands] = useState(false);
+  const [selectedBrands, setSelectedBrands] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState(null);
 
   const handleToggle = () => {
-    setShowBrands(!showBrands);
+    setSelectedBrands(!selectedBrands);
   };
 
   const toggleModel = (brand) => {
@@ -18,7 +18,17 @@ function MenuItems(props) {
       <div className="title" onClick={handleToggle} id="phones">
         {props.name}
       </div>
-      {showBrands && (
+      {selectedBrands && (
+        <div className="container-see-all-items">
+          <div className="see-all-items">
+            <Link to="/see-all-Items-brands">
+              <small>See all</small>
+            </Link>
+            <small className="material-symbols-outlined">chevron_right</small>
+          </div>
+        </div>
+      )}
+      {selectedBrands && (
         <div className="phones-brands">
           {props.items.map((brand, index) => (
             <div key={index}>
@@ -29,7 +39,7 @@ function MenuItems(props) {
                 {brand.brand}
               </div>
               {selectedBrand === brand.brand && (
-                <div className="phones-brands-model">
+                <div className="container-see-all-items">
                   <div className="see-all-items">
                     <Link to="/see-all-Items">
                       <small>See all</small>

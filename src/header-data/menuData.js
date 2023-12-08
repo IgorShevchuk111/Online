@@ -2,20 +2,23 @@ const phones = [
   {
     id: 1,
     brand: "Apple",
-    model: ["iphone 13", "iphone 14", "iphone 15"],
+    model: ["iphone-13", "iphone-14", "iphone-15"],
     img: "https://picsum.photos/200/300",
+    price: "345£",
   },
   {
     id: 2,
     brand: "Samsung",
     model: ["Samsung000", "Samsung111", "Samsung222"],
     img: "https://picsum.photos/200/300",
+    price: "545£",
   },
   {
     id: 3,
     brand: "Google",
     model: ["Google444", "Google555", "Google777"],
     img: "https://picsum.photos/200/300",
+    price: "645£",
   },
 ];
 

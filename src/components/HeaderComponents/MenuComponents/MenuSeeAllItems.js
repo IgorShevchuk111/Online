@@ -13,11 +13,13 @@ function MenuSeeAllItems() {
         </Link>
       </div>
       <div className="items-wraper">
-        {phones.map((item, index) => (
-          <div key={index}>
-            <Item items={item} />
-          </div>
-        ))}
+        {phones.map((item, index) =>
+          item.model.map((model, index) => (
+            <div key={index} className="flex-item">
+              <Item items={{ ...item, model }} />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
