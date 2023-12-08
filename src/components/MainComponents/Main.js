@@ -28,7 +28,7 @@ function Main() {
             </div>
           }
         />
-        <Route path="see-all-Items" element={<MenuSeeAllItems />} />
+        <Route path="see-all-Items-brands" element={<MenuSeeAllItems />} />
         <Route path="item">
           <Route path=":id" element={<Item />} />
         </Route>
