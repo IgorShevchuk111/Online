@@ -11,14 +11,15 @@ function Item(props) {
       {!id ? (
         <div>
           <img src={props.items.img} alt="foto" />
-          <p>125 gb</p>
-          <p>Price 345 £</p>
+          <p>{props.items.brand}</p>
+          <p>{props.items.model}</p>
+          <p>{props.items.price}</p>
         </div>
       ) : (
         <div>
           <img src={phone.img} alt="foto" />
-          <p>125 gb</p>
-          <p>Price 345 £</p>
+          <p>{phone.brand}</p>
+          <p>{phone.price}</p>
         </div>
       )}
     </div>
