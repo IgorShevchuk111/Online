@@ -4,16 +4,14 @@ import GalleryCarousel from "../galleryCarousel/GalleryCarousel";
 import { Routes, Route } from "react-router-dom";
 import MenuSeeAllItems from "../HeaderComponents/MenuComponents/MenuSeeAllItems";
 import Item from "../HeaderComponents/MenuComponents/Item";
+import { data } from "../../data";
 
 function Main() {
-  const images = [
-    "https://picsum.photos/200/300",
-    "https://picsum.photos/200/300",
-    "https://picsum.photos/200/300",
-    "https://picsum.photos/200/300",
-    "https://picsum.photos/200/300",
-    "https://picsum.photos/200/300",
-  ];
+  const images = data
+    .flatMap((category) =>
+      category.brands.flatMap((brand) => brand.models.map((model) => model.img))
+    )
+    .filter((image) => image !== undefined && image !== null);
   return (
     <div className="main">
       <Routes>
