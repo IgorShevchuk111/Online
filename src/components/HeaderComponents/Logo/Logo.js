@@ -1,12 +1,15 @@
-import React from 'react'
-import './Logo.css'
+import React from "react";
+import "./Logo.css";
+import { Link } from "react-router-dom";
 
 function Logo() {
   return (
     <div>
-        <h4 className='logo'>My Shop</h4>
+      <Link className="logo" to="/">
+        <h4 className="logo">My Shop</h4>
+      </Link>
     </div>
-  )
+  );
 }
 
-export default Logo
+export default Logo;
