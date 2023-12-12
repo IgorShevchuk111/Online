@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
 import Main from "./components/MainComponents/Main";
 import Header from "./components/HeaderComponents/Header";
 
-export const AppContext = React.createContext();
+export const SelectedMenuItemContexte = React.createContext();
 function App() {
+  const [selectedMenuItem, setSelectedMenuItem] = useState(null);
+
+  const updateSelectedMenuItem = (item) => {
+    setSelectedMenuItem(item);
+  };
   return (
-    <div className="App">
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    <SelectedMenuItemContexte.Provider value={selectedMenuItem}>
+      <div className="App">
+        <Header updateSelectedMenuItem={updateSelectedMenuItem} />
+        <Main value={selectedMenuItem} />
+        <Footer />
+      </div>
+    </SelectedMenuItemContexte.Provider>
   );
 }
 
