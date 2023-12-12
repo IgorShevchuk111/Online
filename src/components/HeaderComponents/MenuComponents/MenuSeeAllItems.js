@@ -1,25 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import Item from "./Item";
-import { phones } from "../../../header-data/menuData";
+import { data } from "../../../data";
+import { SelectedMenuItemContexte } from "../../../App";
 
 function MenuSeeAllItems() {
+  const selectedMenuItem = useContext(SelectedMenuItemContexte);
   return (
     <div className="items-container">
-      <div className="items-nav">
-        List Items
-        <Link to={"/"}>
-          <p>Back</p>
-        </Link>
-      </div>
       <div className="items-wraper">
-        {phones.map((item, index) =>
-          item.model.map((model, index) => (
-            <div key={index} className="flex-item">
-              <Item items={{ ...item, model }} />
-            </div>
-          ))
-        )}
+        {data.map((item) => {
+          return (
+            item.type === selectedMenuItem &&
+            item.brands.map((item) =>
+              item.models.map((item, index) => (
+                <div key={index} className="flex-item">
+                  <Item items={item} />
+                </div>
+              ))
+            )
+          );
+        })}
       </div>
     </div>
   );

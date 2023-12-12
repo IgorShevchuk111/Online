@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import "./Menu.css";
-import MenuItems from "./MenuItems.js";
-import { phones } from "../../../header-data/menuData.js";
-import { laptops } from "../../../header-data/menuData.js";
+import { data } from "../../../data";
+import { Link } from "react-router-dom";
 
-function Menu() {
+function Menu({ updateSelectedMenuItem }) {
   const [menuVisible, setMenuVisible] = useState(false);
+
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
+  };
+
+  const toggleSelectedMenuItem = (item) => {
+    updateSelectedMenuItem(item);
+    toggleMenu();
   };
 
   return (
@@ -17,8 +22,11 @@ function Menu() {
       </div>
       {menuVisible && (
         <div className="menu-items">
-          <MenuItems name="Phones" items={phones} />
-          <MenuItems name="Laptops" items={laptops} />
+          {data.map((item, index) => (
+            <p key={index} onClick={() => toggleSelectedMenuItem(item.type)}>
+              <Link to={`allItems/${item.type}`}>{item.type}</Link>
+            </p>
+          ))}
         </div>
       )}
     </div>
