@@ -8,7 +8,6 @@ import { SelectedMenuItemContexte } from "../../App";
 
 function Main(props) {
   const selectedMenuItem = useContext(SelectedMenuItemContexte);
-
   const images = data
     .flatMap((category) =>
       category.brands.flatMap((brand) => brand.models.map((model) => model.img))

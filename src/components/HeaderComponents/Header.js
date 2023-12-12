@@ -5,7 +5,7 @@ import Menu from "./MenuComponents/Menu";
 function Header({ updateSelectedMenuItem }) {
   return (
     <div>
-      <NavBar />
+      <NavBar updateSelectedMenuItem={updateSelectedMenuItem} />
       <Menu updateSelectedMenuItem={updateSelectedMenuItem} />
     </div>
   );
