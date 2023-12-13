@@ -3,6 +3,7 @@ import Footer from "./components/Footer/Footer";
 import "./App.css";
 import Main from "./components/MainComponents/Main";
 import Header from "./components/HeaderComponents/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export const SelectedMenuItemContexte = React.createContext();
 function App() {
@@ -13,11 +14,20 @@ function App() {
   };
   return (
     <SelectedMenuItemContexte.Provider value={selectedMenuItem}>
-      <div className="App">
-        <Header updateSelectedMenuItem={updateSelectedMenuItem} />
-        <Main value={selectedMenuItem} />
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/*"
+            element={
+              <div className="App">
+                <Header updateSelectedMenuItem={updateSelectedMenuItem} />
+                <Main value={selectedMenuItem} />
+                <Footer />
+              </div>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </SelectedMenuItemContexte.Provider>
   );
 }
