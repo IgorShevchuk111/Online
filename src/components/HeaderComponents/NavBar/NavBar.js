@@ -7,11 +7,11 @@ import Finder from "../Finder/Finder";
 import Login from "../Login";
 import Basket from "../Basket";
 
-function NavBar({ updateSelectedMenuItem }) {
+function NavBar() {
   return (
     <div className="nav">
       <div className="flex-1">
-        <Logo updateSelectedMenuItem={updateSelectedMenuItem} />
+        <Logo />
       </div>
       <div className="flex-2 body-2">
         <AboutUs />
