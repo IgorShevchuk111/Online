@@ -34,3 +34,20 @@
 .flex-4 div {
     margin: 0 1rem;
 }
+
+input {
+    width: 100%;
+    border-radius: 5px;
+    height: 2.2rem;
+    border: 1px solid var(--primary-color);
+    padding: 0 2rem;
+}
+
+.login {
+    color: var(--primary-color);
+}
+
+.login:hover {
+    text-decoration: none;
+    color: var(--accent-color);
+}
