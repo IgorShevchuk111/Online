@@ -4,7 +4,7 @@ import GalleryCarousel from "../galleryCarousel/GalleryCarousel";
 import { Routes, Route } from "react-router-dom";
 import MenuSeeAllItems from "../HeaderComponents/MenuComponents/MenuSeeAllItems";
 import { data } from "../../data";
-import Login from "../HeaderComponents/Login";
+import Login from "../HeaderComponents/login-component/Login";
 
 function Main() {
   const images = data
