@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import Item from "./Item";
 import { data } from "../../../data";
-import { SelectedMenuItemContexte } from "../../../App";
+import { useSelector } from "react-redux";
 
 function MenuSeeAllItems() {
-  const selectedMenuItem = useContext(SelectedMenuItemContexte);
+  const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
   return (
     <div className="items-container">
       <div className="items-wraper">

@@ -1,0 +1,12 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+form {
+    max-width: 400px;
+}
+
+.submit-button{
+    margin: 16px 0;
+}

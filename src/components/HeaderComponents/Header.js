@@ -2,11 +2,11 @@ import React from "react";
 import NavBar from "./NavBar/NavBar";
 import Menu from "./MenuComponents/Menu";
 
-function Header({ updateSelectedMenuItem }) {
+function Header() {
   return (
     <div>
-      <NavBar updateSelectedMenuItem={updateSelectedMenuItem} />
-      <Menu updateSelectedMenuItem={updateSelectedMenuItem} />
+      <NavBar />
+      <Menu />
     </div>
   );
 }
