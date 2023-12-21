@@ -19,9 +19,13 @@ function NavBar() {
 
       <div className="flex-4 body-2">
         <Link className="login" to="login">
-          <div>Login</div>
+          <span className="material-symbols-outlined  person">person</span>
         </Link>
-        <div>Basket</div>
+        <Link className="basket" to="basket">
+          <span className="material-symbols-outlined basket">
+            shopping_basket
+          </span>
+        </Link>
       </div>
     </div>
   );

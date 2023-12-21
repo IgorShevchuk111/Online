@@ -16,20 +16,11 @@
     margin: 0;
     font-family: 'McLaren', sans-serif;
     background: var(--background-color);
-    color: var(--accent-color);
+    color: var(--primary-color);
     margin: 0;
     padding: 0;
     height: 100%;
   }
-  
-  .body-2 {
-    font-family: 'McLaren', sans-serif;
-    font-weight: 300;
-    color: var(--primary-color);
-  }
-  
-  
-
 .error {
     color : var(--warn-color);
   }

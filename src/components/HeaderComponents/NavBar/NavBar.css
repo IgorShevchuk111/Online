@@ -31,8 +31,24 @@
     flex: 0.3 1 0%;
     justify-content: center;
 }
-.flex-4 div {
+.flex-4 span {
     margin: 0 1rem;
+}
+.person{
+    font-size: 34px;
+    color: var(--primary-color);
+}
+.person:hover {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+.basket{
+    font-size: 32px;
+    color: var(--primary-color);
+}
+.basket:hover {
+    text-decoration: none;
+    color: var(--accent-color);
 }
 
 input {
@@ -41,13 +57,4 @@ input {
     height: 2.2rem;
     border: 1px solid var(--primary-color);
     padding: 0 2rem;
-}
-
-.login {
-    color: var(--primary-color);
-}
-
-.login:hover {
-    text-decoration: none;
-    color: var(--accent-color);
 }

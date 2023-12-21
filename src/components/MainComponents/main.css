@@ -1,5 +1,7 @@
 .main {
-    min-height: 100vh;
+    min-height: 100vh; 
+  }
+  .main-page {
     max-width: 1120px;
-    margin: 22px auto;  
+    margin: 22px auto; 
   }

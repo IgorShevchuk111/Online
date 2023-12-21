@@ -1,4 +1,6 @@
-const initState = {};
+const initState = {
+  selectedBasketItems: [],
+};
 
 const rootReducer = (state = initState, action) => {
   switch (action.type) {
@@ -11,6 +13,11 @@ const rootReducer = (state = initState, action) => {
       return {
         ...state,
         selectedMenuItem: action.value,
+      };
+    case "ADD_STATE_BASKET_ITEMS":
+      return {
+        ...state,
+        selectedBasketItems: [...state.selectedBasketItems, action.value],
       };
 
     default:
