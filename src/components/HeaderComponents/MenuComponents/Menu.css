@@ -42,15 +42,6 @@
     font-size: 19px;
 }
 
-/* Item */
-.item-container{
-  padding: 20px;
-  background: #cccccc;
-  border-radius: 5px;
-  max-width: 240px;
-  margin: 0 auto;
-}
-
 /* MenuSeeAllItems */
 .items-nav{
   text-align: center;

@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import MenuSeeAllItems from "../HeaderComponents/MenuComponents/MenuSeeAllItems";
 import { data } from "../../data";
 import Login from "../HeaderComponents/login-component/Login";
+import Bascket from "../HeaderComponents/basket/Basket";
 
 function Main() {
   const images = data
@@ -18,7 +19,7 @@ function Main() {
         <Route
           path="/"
           element={
-            <div>
+            <div className="main-page">
               <h5>Most wanted</h5>
               <GalleryCarousel images={images} />
               <h5>Most popular</h5>
@@ -28,6 +29,7 @@ function Main() {
         />
         <Route path="allItems/:id" element={<MenuSeeAllItems />} />
         <Route path="login" element={<Login />} />
+        <Route path="basket" element={<Bascket />} />
       </Routes>
     </div>
   );
