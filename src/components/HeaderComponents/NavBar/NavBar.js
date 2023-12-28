@@ -2,8 +2,10 @@ import React from "react";
 import "./NavBar.css";
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function NavBar() {
+  const selectedBasketItems = useSelector((state) => state.selectedBasketItems);
   return (
     <div className="nav">
       <div className="flex-1">
@@ -21,9 +23,13 @@ function NavBar() {
         <Link className="login" to="login">
           <span className="material-symbols-outlined  person">person</span>
         </Link>
-        <Link className="basket" to="basket">
-          <span className="material-symbols-outlined basket">
-            shopping_basket
+        <Link to="basket">
+          <span
+            className={`material-symbols-outlined basket ${
+              selectedBasketItems.length > 0 ? "notEmpty" : ""
+            }`}
+          >
+            shopping_bag
           </span>
         </Link>
       </div>

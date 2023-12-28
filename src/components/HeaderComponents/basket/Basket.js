@@ -6,10 +6,16 @@ import { useSelector } from "react-redux";
 function Basket() {
   const selectedBasketItems = useSelector((state) => state.selectedBasketItems);
   return (
-    <div className="basket-container">
-      <Item selectedBasketItems={selectedBasketItems} />
-      <div>Checkout</div>
-    </div>
+    <>
+      {selectedBasketItems.length > 0 ? (
+        <div className="basket-container">
+          <Item selectedBasketItems={selectedBasketItems} />
+          <div>Checkout</div>
+        </div>
+      ) : (
+        <h5>There's nothing in your Basket</h5>
+      )}
+    </>
   );
 }
 
