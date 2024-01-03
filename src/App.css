@@ -24,3 +24,8 @@
 .error {
     color : var(--warn-color);
   }
+
+ .dark {
+  background: var(--accent-color) !important;
+  color: var(--light-color) !important;
+  }

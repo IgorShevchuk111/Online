@@ -53,6 +53,27 @@ function Item(props) {
           <button onClick={addToBasket}>Add to card</button>
         </div>
       )}
+
+      {props.summaryBasketItems && (
+        <>
+          <h5> Summary</h5>
+          {props.summaryBasketItems.map((item, index) => (
+            <div key={index}>
+              <div className="basket-card-item-1">
+                <img src={item.img} alt="foto" />
+                <div>
+                  <div>Model: {item.model}</div>
+                  <div>Price: {item.price} £</div>
+                </div>
+              </div>
+              <div>
+                <div>Shipping</div>
+                <div>Free</div>
+              </div>
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 }

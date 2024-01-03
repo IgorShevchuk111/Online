@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./Menu.css";
 import { data } from "../../../data";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function Menu() {
+  const isDarkMode = useSelector((state) => state.isDarkMode);
   const [menuVisible, setMenuVisible] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState(null);
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ function Menu() {
         {menuVisible ? "close" : "menu"}
       </div>
       {menuVisible && (
-        <div className="menu-items">
+        <div className={`menu-items ${isDarkMode ? "dark" : ""}`}>
           {data.map((item) => (
             <p
               key={item.type}
