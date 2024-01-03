@@ -4,6 +4,7 @@
     --warn-color: #ff6347;
     --light-color: #ffffff;
     --background-color: #F9F9F9;
+    --summary-background-color: #F4F4F4;
     --line-color: #d7d7d7;
     --menu-background-opacity-color: rgba(86, 86, 86, 0.7);
   }
@@ -29,3 +30,94 @@
   background: var(--accent-color) !important;
   color: var(--light-color) !important;
   }
+
+
+  /* Text Alignment */
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Font Weight */
+.bold {
+  font-weight: bold;
+}
+
+/* Font Size */
+.small-text {
+  font-size: 0.8rem;
+}
+
+.large-text {
+  font-size: 1.2rem;
+}
+
+/* Margins and Padding */
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.padding-15 {
+  padding: 15px;
+}
+
+/* Display */
+.hide {
+  display: none;
+}
+
+/* Borders */
+.border {
+  border: 1px solid #000;
+}
+
+.rounded-corners {
+  border-radius: 5px;
+}
+
+/* Flexbox */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-between{
+  justify-content: space-between;
+}
+
+/* Colors */
+.text-red {
+  color: red;
+}
+
+.bg-blue {
+  background-color: blue;
+}
+
+/* Hover Effects */
+.hover-scale {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.1);
+}
+ .width-100 {
+  width: 100%
+ }
