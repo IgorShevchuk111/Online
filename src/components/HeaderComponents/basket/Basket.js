@@ -10,7 +10,7 @@ function Basket() {
       {selectedBasketItems.length > 0 ? (
         <div className="basket-container">
           <Item selectedBasketItems={selectedBasketItems} />
-          <div>Checkout</div>
+          <Item summaryBasketItems={selectedBasketItems} />
         </div>
       ) : (
         <h5>There's nothing in your Basket</h5>

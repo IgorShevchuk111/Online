@@ -19,6 +19,11 @@ const rootReducer = (state = initState, action) => {
         ...state,
         selectedBasketItems: [...state.selectedBasketItems, action.value],
       };
+    case "ADD_STATE_DARK_MODE":
+      return {
+        ...state,
+        isDarkMode: action.value,
+      };
 
     default:
       return state;

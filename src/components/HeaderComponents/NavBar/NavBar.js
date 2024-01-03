@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./NavBar.css";
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function NavBar() {
+  const dispatch = useDispatch();
+  const [isDarkMode, setDarkMode] = useState(false);
+  const darkMode = () => {
+    setDarkMode((prev) => !prev);
+  };
+  useEffect(() => {
+    dispatch({ type: "ADD_STATE_DARK_MODE", value: isDarkMode });
+  }, [dispatch, isDarkMode]);
+
   const selectedBasketItems = useSelector((state) => state.selectedBasketItems);
   return (
-    <div className="nav">
+    <div className={`nav ${isDarkMode ? "dark" : ""}`}>
+      <div
+        className={`toggler-slider ${isDarkMode ? "toggled" : ""}`}
+        onClick={darkMode}
+      >
+        <div className="circle" />
+      </div>
+
       <div className="flex-1">
         <Logo />
       </div>
