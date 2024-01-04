@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Menu.css";
 import "./Item.css";
 import { useDispatch } from "react-redux";
 
 function Item(props) {
-  const dispatch = useDispatch();
+  const [totalPrice, setTotalPrice] = useState(0);
 
+  useEffect(() => {
+    if (props.summaryBasketItems && props.summaryBasketItems.length > 0) {
+      const newTotalPrice = props.summaryBasketItems.reduce(
+        (total, item) => total + item.price,
+        0
+      );
+      setTotalPrice(newTotalPrice);
+    } else {
+      setTotalPrice(0);
+    }
+  }, [props.summaryBasketItems]);
+
+  const dispatch = useDispatch();
   const addToBasket = () => {
     const item = props.items;
     dispatch({ type: "ADD_STATE_BASKET_ITEMS", value: item });
@@ -81,7 +94,7 @@ function Item(props) {
           <hr />
           <div className="flex justify-between">
             <small>Total</small>
-            <small> £</small>
+            <small>{totalPrice} £</small>
           </div>
           <button className="checkout-button">Checkout</button>
           <div className="small-text flex flex-center">
