@@ -70,10 +70,9 @@ function Item(props) {
           <button onClick={addToBasket}>Add to card</button>
         </div>
       )}
-
+      <h5> Summary</h5>
       {props.summaryBasketItems && (
         <div className="summary-container">
-          <h5> Summary</h5>
           {props.summaryBasketItems.map((item, index) => (
             <div key={index} className="item-container-summary margin-top-20">
               <div className="flex">
