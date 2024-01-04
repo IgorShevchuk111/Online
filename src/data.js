@@ -68,7 +68,7 @@ const data = [
           {
             id: 1,
             model: "Lenovo-1",
-            price: "500£",
+            price: 500,
             color: ["White", "Black"],
             storage: "200gb",
             size: "15",
@@ -77,7 +77,7 @@ const data = [
           {
             id: 2,
             model: "Lenovo-2",
-            price: "550£",
+            price: 550,
             color: ["White", "Black"],
             storage: "300gb",
             size: "17",
@@ -92,7 +92,7 @@ const data = [
           {
             id: 1,
             model: "MacBook",
-            price: "1000£",
+            price: 1000,
             color: ["White", "Black"],
             storage: "500gb",
             size: "15",
@@ -101,7 +101,7 @@ const data = [
           {
             id: 2,
             model: "MacBook Pro",
-            price: "1550£",
+            price: 1550,
             color: ["White", "Black"],
             storage: "1000gb",
             size: "17",

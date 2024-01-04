@@ -2,6 +2,8 @@ import React from "react";
 import "./Basket.css";
 import Item from "../MenuComponents/item-component/Item";
 import { useSelector } from "react-redux";
+import ShoppingItemsSummary from "./shopping-summary/ShoppingItemsSummary";
+import BasketItems from "./basketItems/BasketItems";
 
 function Basket() {
   const selectedBasketItems = useSelector((state) => state.selectedBasketItems);
@@ -9,8 +11,10 @@ function Basket() {
     <>
       {selectedBasketItems.length > 0 ? (
         <div className="basket-container">
-          <Item selectedBasketItems={selectedBasketItems} />
-          <Item summaryBasketItems={selectedBasketItems} />
+          <BasketItems />
+          {/* <Item selectedBasketItems={selectedBasketItems} /> */}
+          {/* <Item summaryBasketItems={selectedBasketItems} /> */}
+          <ShoppingItemsSummary />
         </div>
       ) : (
         <h5>There's nothing in your Basket</h5>

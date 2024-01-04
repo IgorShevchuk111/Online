@@ -1,0 +1,32 @@
+.item-container-summary{
+    padding: 24px;
+    background-color: var(--summary-background-color);
+}
+
+h5{
+    margin: 36px 0 16px;
+}
+
+.summary-container{
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: 15px;
+}
+.checkout-button{
+    width: 100%;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 7px;
+    padding: 10px;
+    margin: 35px 0 5px;
+}
+  .padlock{
+    width: 14px;
+    height: 14px;
+  }
+  img{
+    width: 32px;
+    height: 32px;
+    margin: 0 20px 0 0;
+}
