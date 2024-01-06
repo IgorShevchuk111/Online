@@ -1,6 +1,5 @@
 import React from "react";
 import "./Basket.css";
-import Item from "../MenuComponents/item-component/Item";
 import { useSelector } from "react-redux";
 import ShoppingItemsSummary from "./shopping-summary/ShoppingItemsSummary";
 import BasketItems from "./basketItems/BasketItems";
@@ -12,8 +11,6 @@ function Basket() {
       {selectedBasketItems.length > 0 ? (
         <div className="basket-container">
           <BasketItems />
-          {/* <Item selectedBasketItems={selectedBasketItems} /> */}
-          {/* <Item summaryBasketItems={selectedBasketItems} /> */}
           <ShoppingItemsSummary />
         </div>
       ) : (

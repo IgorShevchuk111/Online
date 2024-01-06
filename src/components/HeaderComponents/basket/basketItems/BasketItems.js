@@ -1,24 +1,29 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import "./BasketItems.css";
 
 function BasketItems() {
   const selectedBasketItems = useSelector((state) => state.selectedBasketItems);
   return (
     <div>
       {selectedBasketItems && (
-        <div className="basket-wrap">
+        <div className="container-basket">
           <h5> Your Basket</h5>
           {selectedBasketItems.map((item, index) => (
-            <div key={index} className="basket-card">
-              <div className="basket-card-item-1">
+            <div key={index} className="basket-card flex  justify-between">
+              <div className="flex">
                 <img src={item.img} alt="foto" />
                 <div>
-                  <div>Model: {item.model}</div>
-                  <div>Price: {item.price} £</div>
+                  <div>{item.model}</div>
+                  <div>{item.price} £</div>
                 </div>
               </div>
-              <div className="basket-card-item-2">
-                <select id="quantity" name="quantity">
+              <div className="relative">
+                <select
+                  className="quantity-items appearance-none outline-none"
+                  id="quantity"
+                  name="quantity"
+                >
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -30,7 +35,18 @@ function BasketItems() {
                   <option value="9">9</option>
                   <option value="10">10</option>
                 </select>
-                <button>Remove</button>
+                <svg
+                  aria-hidden="true"
+                  fill="currentColor"
+                  height="24"
+                  viewBox="0 0 48 48"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="svg-quantity absolute pointer-events-none"
+                >
+                  <path d="M24 29.51a1 1 0 01-.71-.29l-9-9a1 1 0 010-1.42 1 1 0 011.41 0l8.3 8.3 8.32-8.32a1 1 0 011.41 0 1 1 0 010 1.42l-9 9a1 1 0 01-.73.31Z"></path>
+                </svg>
+                <button className="remove-button">Remove</button>
               </div>
             </div>
           ))}

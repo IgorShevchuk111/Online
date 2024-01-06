@@ -3,8 +3,8 @@
     background-color: var(--summary-background-color);
 }
 
-h5{
-    margin: 36px 0 16px;
+.item-container-summary h5{
+    margin: 8px 0 16px;
 }
 
 .summary-container{
