@@ -4,11 +4,11 @@ const data = [
     type: "SmartPhones",
     brands: [
       {
-        id: 1,
+        id: "s",
         brand: "Samsung",
         models: [
           {
-            id: 1,
+            id: "s1",
             model: "Galaxy A20",
             price: 100,
             color: ["White", "Black", "Red", "Green", "Blue"],
@@ -18,7 +18,7 @@ const data = [
             img: "https://picsum.photos/200/300",
           },
           {
-            id: 2,
+            id: "s2",
             model: "A30",
             price: 150,
             color: ["White", "Black", "Red", "Green", "Blue"],
@@ -30,11 +30,11 @@ const data = [
         ],
       },
       {
-        id: 2,
+        id: "a",
         brand: "Apple",
         models: [
           {
-            id: 1,
+            id: "a1",
             model: "iPhone-13",
             price: 400,
             color: ["White", "Black", "Red", "Green", "Blue"],
@@ -44,7 +44,7 @@ const data = [
             img: "https://picsum.photos/200/300",
           },
           {
-            id: 2,
+            id: "a2",
             model: "iPhone-14",
             price: 450,
             color: ["White", "Black", "Red", "Green", "Blue"],
@@ -58,15 +58,15 @@ const data = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     type: "Laptops",
     brands: [
       {
-        id: 1,
+        id: "l",
         brand: "Lenovo",
         models: [
           {
-            id: 1,
+            id: "l1",
             model: "Lenovo-1",
             price: 500,
             color: ["White", "Black"],
@@ -75,7 +75,7 @@ const data = [
             img: "https://picsum.photos/200/300",
           },
           {
-            id: 2,
+            id: "l2",
             model: "Lenovo-2",
             price: 550,
             color: ["White", "Black"],
@@ -86,11 +86,11 @@ const data = [
         ],
       },
       {
-        id: 1,
+        id: "ap",
         brand: "Apple",
         models: [
           {
-            id: 1,
+            id: "ap1",
             model: "MacBook",
             price: 1000,
             color: ["White", "Black"],
@@ -99,7 +99,7 @@ const data = [
             img: "https://picsum.photos/200/300",
           },
           {
-            id: 2,
+            id: "ap2",
             model: "MacBook Pro",
             price: 1550,
             color: ["White", "Black"],

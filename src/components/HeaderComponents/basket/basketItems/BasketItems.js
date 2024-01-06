@@ -1,9 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./BasketItems.css";
 
 function BasketItems() {
   const selectedBasketItems = useSelector((state) => state.selectedBasketItems);
+  const dispatch = useDispatch();
+
+  const deleteItem = (itemId) => {
+    dispatch({ type: "DELETE_STATE_BASKET_ITEM", id: itemId });
+  };
   return (
     <div>
       {selectedBasketItems && (
@@ -46,7 +51,12 @@ function BasketItems() {
                 >
                   <path d="M24 29.51a1 1 0 01-.71-.29l-9-9a1 1 0 010-1.42 1 1 0 011.41 0l8.3 8.3 8.32-8.32a1 1 0 011.41 0 1 1 0 010 1.42l-9 9a1 1 0 01-.73.31Z"></path>
                 </svg>
-                <button className="remove-button">Remove</button>
+                <button
+                  className="remove-button"
+                  onClick={() => deleteItem(item.id)}
+                >
+                  Remove
+                </button>
               </div>
             </div>
           ))}

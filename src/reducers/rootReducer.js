@@ -24,6 +24,14 @@ const rootReducer = (state = initState, action) => {
         ...state,
         isDarkMode: action.value,
       };
+    case "DELETE_STATE_BASKET_ITEM":
+      const updatedBasketItems = state.selectedBasketItems.filter(
+        (item) => item.id !== action.id
+      );
+      return {
+        ...state,
+        selectedBasketItems: updatedBasketItems,
+      };
 
     default:
       return state;
