@@ -37,7 +37,7 @@
     color: var(--primary-color);
 }
 .person{
-    font-size: 34px;
+    font-size: 34px !important;
     color: var(--primary-color);
 }
 .person:hover {
@@ -45,7 +45,7 @@
     color: var(--accent-color);
 }
 .basket{
-    font-size: 32px;
+    font-size: 32px !important;
     color: var(--primary-color);
     position: relative;
 }

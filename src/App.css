@@ -31,31 +31,31 @@
   color: var(--light-color) !important;
   }
 
+/* Classes Modular Approach */
 
+/* Text Alignment */
 .text-left {
   text-align: left;
 }
-
 .text-center {
   text-align: center;
 }
-
 .text-right {
   text-align: right;
 }
 
+/* Typography */
 .bold {
   font-weight: bold;
 }
-
 .small-text {
   font-size: 0.8rem;
 }
-
 .large-text {
   font-size: 1.2rem;
 }
 
+/* Margins and Padding */
 .margin-top-20 {
   margin-top: 20px;
 }
@@ -65,11 +65,9 @@
 .margin-left-12 {
   margin-left: 12px;
 }
-
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
-
 .padding-15 {
   padding: 15px;
 }
@@ -79,6 +77,7 @@
   display: none;
 }
 
+/* Borders and Radius */
 .border-radius {
   border-radius: 5px;
 }
@@ -87,37 +86,40 @@
 .flex {
   display: flex;
 }
-
 .flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.justify-between{
+.justify-between {
   justify-content: space-between;
 }
 
+/* Hover Effects */
 .hover-scale {
   transition: transform 0.3s ease-in-out;
 }
-
 .hover-scale:hover {
   transform: scale(1.1);
 }
- .width-100 {
-  width: 100%
- }
 
- .appearance-none {
+/* Width and Appearance */
+.width-100 {
+  width: 100%;
+}
+.appearance-none {
   appearance: none;
 }
+
+/* Positioning */
 .absolute {
   position: absolute;
 }
 .relative {
   position: relative;
 }
+
+/* Pointer Events */
 .pointer-events-none {
   pointer-events: none;
 }

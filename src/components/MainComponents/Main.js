@@ -1,13 +1,11 @@
 import React from "react";
 import "./main.css";
 import GalleryCarousel from "../galleryCarousel/GalleryCarousel";
-import { Routes, Route } from "react-router-dom";
-import MenuSeeAllItems from "../HeaderComponents/MenuComponents/MenuSeeAllItems";
+import { Outlet, useLocation } from "react-router-dom";
 import { data } from "../../data";
-import Login from "../HeaderComponents/login-component/Login";
-import Bascket from "../HeaderComponents/basket/Basket";
 
 function Main() {
+  const location = useLocation();
   const images = data
     .flatMap((item) =>
       item.brands.flatMap((brand) => brand.models.map((model) => model.img))
@@ -15,22 +13,15 @@ function Main() {
     .filter((image) => image !== undefined && image !== null);
   return (
     <div className="main">
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="main-page">
-              <h5>Most wanted</h5>
-              <GalleryCarousel images={images} />
-              <h5>Most popular</h5>
-              <GalleryCarousel images={images} />
-            </div>
-          }
-        />
-        <Route path="allItems/:id" element={<MenuSeeAllItems />} />
-        <Route path="login" element={<Login />} />
-        <Route path="basket" element={<Bascket />} />
-      </Routes>
+      {location.pathname === "/" && (
+        <div className="main-page">
+          <h5>Most wanted</h5>
+          <GalleryCarousel images={images} />
+          <h5>Most popular</h5>
+          <GalleryCarousel images={images} />
+        </div>
+      )}
+      <Outlet />
     </div>
   );
 }

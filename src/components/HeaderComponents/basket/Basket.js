@@ -14,7 +14,9 @@ function Basket() {
           <ShoppingItemsSummary />
         </div>
       ) : (
-        <h5>There's nothing in your Basket</h5>
+        <h5 className="text-center margin-top-20">
+          There's nothing in your Basket
+        </h5>
       )}
     </>
   );
