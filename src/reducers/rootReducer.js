@@ -19,10 +19,32 @@ const rootReducer = (state = initState, action) => {
         ...state,
         selectedBasketItems: [...state.selectedBasketItems, action.value],
       };
+    case "UPDATE_STATE_BASKET_ITEM":
+      const updatedItemId = action.item.id;
+      const updatedQuantity = action.item.quantity;
+
+      const updatedBasket = state.selectedBasketItems.map((item) =>
+        item.id === updatedItemId
+          ? { ...item, quantity: updatedQuantity }
+          : item
+      );
+      return {
+        ...state,
+        selectedBasketItems: updatedBasket,
+      };
+
     case "ADD_STATE_DARK_MODE":
       return {
         ...state,
         isDarkMode: action.value,
+      };
+    case "DELETE_STATE_BASKET_ITEM":
+      const updatedBasketItems = state.selectedBasketItems.filter(
+        (item) => item.id !== action.id
+      );
+      return {
+        ...state,
+        selectedBasketItems: updatedBasketItems,
       };
 
     default:
