@@ -5,17 +5,33 @@ import Main from "./components/MainComponents/Main";
 import Header from "./components/HeaderComponents/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Bascket from "./components/HeaderComponents/basket/Basket";
+import MenuSeeAllItems from "./components/HeaderComponents/MenuComponents/MenuSeeAllItems";
+import Login from "./components/HeaderComponents/login-component/Login";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const isDarkMode = useSelector((state) => state.isDarkMode);
   return (
     <BrowserRouter>
       <div className={`App ${isDarkMode ? "dark" : ""}`}>
-        <Header />
         <Routes>
-          <Route path="/*" element={<Main />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <Main />
+                <Footer />
+              </>
+            }
+          >
+            <Route path="basket" element={<Bascket />}></Route>
+            <Route path="allItems/:id" element={<MenuSeeAllItems />} />
+            <Route path="login" element={<Login />} />
+          </Route>
+          <Route path="/*" element={<ErrorPage />} />
         </Routes>
-        <Footer />
       </div>
     </BrowserRouter>
   );
