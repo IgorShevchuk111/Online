@@ -9,7 +9,7 @@ function ShoppingItemsSummary() {
   useEffect(() => {
     if (selectedBasketItems && selectedBasketItems.length > 0) {
       const newTotalPrice = selectedBasketItems.reduce(
-        (total, item) => total + item.price,
+        (total, item) => total + item.price * item.quantity,
         0
       );
       setTotalPrice(newTotalPrice);
