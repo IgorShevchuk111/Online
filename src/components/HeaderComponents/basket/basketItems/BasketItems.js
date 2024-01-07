@@ -9,6 +9,15 @@ function BasketItems() {
   const deleteItem = (itemId) => {
     dispatch({ type: "DELETE_STATE_BASKET_ITEM", id: itemId });
   };
+
+  const updateQuantity = (itemId, newQuantity) => {
+    const item = {
+      id: itemId,
+      quantity: newQuantity,
+    };
+    dispatch({ type: "UPDATE_STATE_BASKET_ITEM", item });
+  };
+
   return (
     <div>
       {selectedBasketItems && (
@@ -28,17 +37,16 @@ function BasketItems() {
                   className="quantity-items appearance-none outline-none"
                   id="quantity"
                   name="quantity"
+                  value={item.quantity}
+                  onChange={(e) =>
+                    updateQuantity(item.id, parseInt(e.target.value))
+                  }
                 >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((quantity) => (
+                    <option key={quantity} value={quantity}>
+                      {quantity}
+                    </option>
+                  ))}
                 </select>
                 <svg
                   aria-hidden="true"
