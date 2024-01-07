@@ -25,7 +25,14 @@ function ShoppingItemsSummary() {
           {selectedBasketItems.map((item, index) => (
             <div key={index} className=" margin-top-20">
               <div className="flex">
-                <img src={item.img} alt="foto" />
+                <div className="relative">
+                  <img src={item.img} alt="foto" />
+                  {item.quantity > 1 && (
+                    <div className="absolute quantity-summary-num">
+                      {item.quantity}
+                    </div>
+                  )}
+                </div>
                 <div className="width-100">
                   <div className="justify-between flex">
                     <div>{item.model}</div>
