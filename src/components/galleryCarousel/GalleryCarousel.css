@@ -19,3 +19,7 @@
 .slick-list {
   padding-left: 27px;
 }
+.slider__img {
+  width: 200px ;
+  height: 300px;
+}

@@ -13,15 +13,17 @@ function Main() {
     .filter((image) => image !== undefined && image !== null);
   return (
     <div className="main">
-      {location.pathname === "/" && (
-        <div className="main-page">
-          <h5>Most wanted</h5>
-          <GalleryCarousel images={images} />
-          <h5>Most popular</h5>
-          <GalleryCarousel images={images} />
-        </div>
-      )}
-      <Outlet />
+      <div className="main-page">
+        {location.pathname === "/" && (
+          <div>
+            <h5>Most wanted</h5>
+            <GalleryCarousel images={images} />
+            <h5>Most popular</h5>
+            <GalleryCarousel images={images} />
+          </div>
+        )}
+        <Outlet />
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./BasketItems.css";
 
 function BasketItems() {
+  const isDarkMode = useSelector((state) => state.isDarkMode);
   const selectedBasketItems = useSelector((state) => state.selectedBasketItems);
   const dispatch = useDispatch();
 
@@ -19,12 +20,20 @@ function BasketItems() {
   };
 
   return (
-    <div>
+    <div className={isDarkMode ? "dark" : ""}>
       {selectedBasketItems && (
         <div className="container-basket">
           <h5> Your Basket</h5>
           {selectedBasketItems.map((item, index) => (
-            <div key={index} className="basket-card flex  justify-between">
+            <div
+              key={index}
+              className="basket-card flex  justify-between"
+              style={
+                isDarkMode
+                  ? { border: "1px solid white", background: "black" }
+                  : {}
+              }
+            >
               <div className="flex">
                 <img src={item.img} alt="foto" />
                 <div>

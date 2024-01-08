@@ -17,17 +17,10 @@ function NavBar() {
   const selectedBasketItems = useSelector((state) => state.selectedBasketItems);
   return (
     <div className={`nav ${isDarkMode ? "dark" : ""}`}>
-      <div
-        className={`toggler-slider ${isDarkMode ? "toggled" : ""}`}
-        onClick={darkMode}
-      >
-        <div className="circle" />
-      </div>
-
       <div className="flex-1">
         <Logo />
       </div>
-      <div className="flex-2 body-2">
+      <div className="flex-2 small-text">
         <div>AboutUs</div>
         <div>Help</div>
       </div>
@@ -48,6 +41,12 @@ function NavBar() {
             shopping_bag
           </span>
         </Link>
+        <div
+          className={`toggler-slider ${isDarkMode ? "toggled" : ""}`}
+          onClick={darkMode}
+        >
+          <div className="circle" />
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import "./ShoppingItemsSummary.css";
 
 function ShoppingItemsSummary() {
+  const isDarkMode = useSelector((state) => state.isDarkMode);
   const selectedBasketItems = useSelector((state) => state.selectedBasketItems);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -18,10 +19,15 @@ function ShoppingItemsSummary() {
     }
   }, [selectedBasketItems]);
   return (
-    <div className="item-container-summary">
+    <div className={`item-container-summary ${isDarkMode ? "dark" : ""}`}>
       <h5> Summary</h5>
       {selectedBasketItems && (
-        <div className="summary-container">
+        <div
+          className="summary-container"
+          style={
+            isDarkMode ? { border: "1px solid white", background: "black" } : {}
+          }
+        >
           {selectedBasketItems.map((item, index) => (
             <div key={index} className=" margin-top-20">
               <div className="flex">

@@ -26,10 +26,10 @@ function App() {
               </>
             }
           >
-            <Route path="basket" element={<Bascket />}></Route>
             <Route path="allItems/:id" element={<MenuSeeAllItems />} />
             <Route path="login" element={<Login />} />
           </Route>
+          <Route path="basket" element={<Bascket />}></Route>
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </div>
