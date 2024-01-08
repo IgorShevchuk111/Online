@@ -29,6 +29,7 @@
  .dark {
   background: var(--accent-color) !important;
   color: var(--light-color) !important;
+  border: none !important;;
   }
 
 /* Classes Modular Approach */
