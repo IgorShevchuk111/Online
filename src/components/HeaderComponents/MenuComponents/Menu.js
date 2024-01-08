@@ -39,6 +39,7 @@ function Menu() {
         <div className={`menu-items ${isDarkMode ? "dark" : ""}`}>
           {data.map((item) => (
             <p
+              style={isDarkMode ? { border: "none" } : {}}
               className={isDarkMode ? "dark" : ""}
               key={item.type}
               onClick={() => toggleSelectedMenuItem(item.type)}

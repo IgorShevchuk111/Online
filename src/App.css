@@ -2,11 +2,13 @@
     --primary-color: #545454;
     --accent-color: #333333;
     --warn-color: #ff6347;
+    --bg-dark:#000000;
     --light-color: #ffffff;
     --background-color: #F9F9F9;
     --summary-background-color: #F4F4F4;
     --line-color: #d7d7d7;
     --menu-background-opacity-color: rgba(86, 86, 86, 0.7);
+
   }
   
   * {
@@ -27,9 +29,8 @@
   }
 
  .dark {
-  background: var(--accent-color) !important;
+  background: var(--bg-dark) !important;
   color: var(--light-color) !important;
-  border: none !important;;
   }
 
 /* Classes Modular Approach */
@@ -107,6 +108,9 @@
 /* Width and Appearance */
 .width-100 {
   width: 100%;
+}
+.min-height-100vh {
+  min-height: 100vh;
 }
 .appearance-none {
   appearance: none;

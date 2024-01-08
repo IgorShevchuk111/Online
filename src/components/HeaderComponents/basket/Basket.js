@@ -6,10 +6,11 @@ import BasketItems from "./basketItems/BasketItems";
 import Logo from "../Logo/Logo";
 
 function Basket() {
+  const isDarkMode = useSelector((state) => state.isDarkMode);
   const selectedBasketItems = useSelector((state) => state.selectedBasketItems);
   return (
     <>
-      <div className="basket-logo">
+      <div className={`basket-logo ${isDarkMode ? "dark" : ""}`}>
         <Logo />
       </div>
       {selectedBasketItems.length > 0 ? (
@@ -18,9 +19,11 @@ function Basket() {
           <ShoppingItemsSummary />
         </div>
       ) : (
-        <h5 className="text-center margin-top-20">
-          There's nothing in your Basket
-        </h5>
+        <div className="min-height-100vh">
+          <h5 className="text-center margin-top-20">
+            There's nothing in your Basket
+          </h5>
+        </div>
       )}
     </>
   );
