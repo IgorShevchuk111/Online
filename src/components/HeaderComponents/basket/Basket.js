@@ -3,11 +3,15 @@ import "./Basket.css";
 import { useSelector } from "react-redux";
 import ShoppingItemsSummary from "./shopping-summary/ShoppingItemsSummary";
 import BasketItems from "./basketItems/BasketItems";
+import Logo from "../Logo/Logo";
 
 function Basket() {
   const selectedBasketItems = useSelector((state) => state.selectedBasketItems);
   return (
     <>
+      <div className="basket-logo">
+        <Logo />
+      </div>
       {selectedBasketItems.length > 0 ? (
         <div className="basket-container">
           <BasketItems />
