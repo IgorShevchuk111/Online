@@ -18,6 +18,21 @@
     height: 100vh;
     overflow: hidden;
   }
+  .menu-items p {
+    border-bottom: 1px solid var(--background-color);
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin: 0;
+}
+.menu-items p a{
+  color: var(--primary-color);
+}
+.menu-items p a:hover{
+  text-decoration: none;
+  color:  var(--accent-color);
+}
   .menu-items .container {
     border-bottom: 1px  solid  var(--line-color);
     padding: 6px 30px;
