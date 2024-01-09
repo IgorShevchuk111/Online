@@ -8,7 +8,7 @@ function Logo() {
   return (
     <div>
       <Link className="logo" to="/">
-        <h4 className={`logo ${isDarkMode ? "dark" : ""}`}>Online</h4>
+        <h4 className={`logo ${isDarkMode ? "dark" : ""}`}>Onlinee</h4>
       </Link>
     </div>
   );
