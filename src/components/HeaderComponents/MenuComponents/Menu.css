@@ -18,7 +18,7 @@
     height: 100vh;
     overflow: hidden;
   }
-  .menu-items p {
+  .menu-items .link {
     border-bottom: 1px solid var(--background-color);
     height: 3rem;
     display: flex;
@@ -26,10 +26,10 @@
     padding-left: 20px;
     margin: 0;
 }
-.menu-items p a{
+.menu-items .link{
   color: var(--primary-color);
 }
-.menu-items p a:hover{
+.menu-items .link:hover{
   text-decoration: none;
   color:  var(--accent-color);
 }

@@ -3,6 +3,7 @@
   }
   .main-page {
     max-width: 1120px;
-    margin: 42px auto;
+    margin: 0 auto;
+    padding: 42px 0;
   }
   
