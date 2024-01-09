@@ -57,7 +57,12 @@ function ShoppingItemsSummary() {
             <small>Total</small>
             <small>{totalPrice} £</small>
           </div>
-          <button className="checkout-button">Checkout</button>
+          <button
+            className="checkout-button"
+            style={isDarkMode ? { border: "1px solid white" } : {}}
+          >
+            Checkout
+          </button>
           <div className="small-text flex flex-center">
             <img
               className="padlock"

@@ -104,6 +104,10 @@
 .hover-scale:hover {
   transform: scale(1.1);
 }
+/* transition */
+.transition {
+  transition: 0.3s ease-in-out;
+}
 
 /* Width and Appearance */
 .width-100 {

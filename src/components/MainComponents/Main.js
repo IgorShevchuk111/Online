@@ -3,8 +3,10 @@ import "./main.css";
 import GalleryCarousel from "../galleryCarousel/GalleryCarousel";
 import { Outlet, useLocation } from "react-router-dom";
 import { data } from "../../data";
+import { useSelector } from "react-redux";
 
 function Main() {
+  const isMenuVisible = useSelector((state) => state.menuVisible);
   const location = useLocation();
   const images = data
     .flatMap((item) =>
@@ -12,7 +14,10 @@ function Main() {
     )
     .filter((image) => image !== undefined && image !== null);
   return (
-    <div className="main">
+    <div
+      className="main transition"
+      style={isMenuVisible ? { background: "rgba(17, 17, 17, 0.5)" } : {}}
+    >
       <div className="main-page">
         {location.pathname === "/" && (
           <div>

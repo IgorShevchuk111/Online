@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import "./Menu.css";
 import { data } from "../../../data";
 import { Link } from "react-router-dom";
@@ -10,11 +10,11 @@ function Menu() {
   const [selectedMenuItem, setSelectedMenuItem] = useState(null);
   const dispatch = useDispatch();
 
-  const toggleMenu = () => {
+  const toggleMenu = useCallback(() => {
     const updatedMenuVisible = !menuVisible;
     setMenuVisible(!menuVisible);
     dispatch({ type: "ADD_STATE_MENU_VISIBLE", value: updatedMenuVisible });
-  };
+  }, [dispatch, menuVisible]);
 
   const toggleSelectedMenuItem = (item) => {
     setSelectedMenuItem(item);
@@ -29,28 +29,50 @@ function Menu() {
       });
     }
   }, [selectedMenuItem, dispatch]);
+  // Click outside x to close menu
+  const containerRef = useRef();
+  const handleBlur = useCallback(() => {
+    toggleMenu();
+  }, [toggleMenu]);
+  const handleDocumentClick = useCallback(
+    (event) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        handleBlur();
+      }
+    },
+    [handleBlur]
+  );
+  useEffect(() => {
+    if (menuVisible) {
+      document.addEventListener("click", handleDocumentClick);
+    } else {
+      document.removeEventListener("click", handleDocumentClick);
+    }
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, [menuVisible, handleDocumentClick]);
 
   return (
-    <div className="menu-container body-2">
+    <div className="menu-container body-2" ref={containerRef}>
       <div className=" material-icons" onClick={toggleMenu}>
         {menuVisible ? "close" : "menu"}
       </div>
       {menuVisible && (
         <div className={`menu-items ${isDarkMode ? "dark" : ""}`}>
           {data.map((item) => (
-            <p
+            <Link
+              to={`allItems/${item.type}`}
+              className={`link ${isDarkMode ? "dark" : ""}`}
               style={isDarkMode ? { border: "none" } : {}}
-              className={isDarkMode ? "dark" : ""}
               key={item.type}
               onClick={() => toggleSelectedMenuItem(item.type)}
             >
-              <Link
-                to={`allItems/${item.type}`}
-                className={isDarkMode ? "dark" : ""}
-              >
-                {item.type}
-              </Link>
-            </p>
+              {item.type}
+            </Link>
           ))}
         </div>
       )}
