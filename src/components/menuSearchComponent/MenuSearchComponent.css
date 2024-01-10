@@ -1,0 +1,38 @@
+
+.container-search{
+    max-width: 262px;
+    margin: 0 12px;
+  }
+.filterBrandContainer{
+  list-style-type: none;
+    padding: 12px;
+    position: relative;
+}
+.brandList{
+  overflow-y: auto;
+  max-height: 130px;
+  padding: 0;
+}
+.filterBrandContainer::after{
+  background-image: linear-gradient(180deg,hsla(0,0%,98%,0),#f9f9f9);
+  bottom: 26px;
+  content: "";
+  height: 34px;
+  left: 0;
+  position: absolute;
+  right: 20px;
+}
+.filterBrandContainer input{
+  max-width: 20px;
+    max-height: 20px;
+    padding: 0 12px 0 0;
+}
+label{
+  padding: 0 0 0 12px;
+}
+.band-search{
+  top: 39px;
+  right: 16px;
+  font-size: 22px;
+}
+
