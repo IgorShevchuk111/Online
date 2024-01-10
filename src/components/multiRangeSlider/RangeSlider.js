@@ -11,27 +11,24 @@ function RangeSlider() {
   };
 
   return (
-    <div>
-      <div>
-        <p>Price</p>
-        <MultiRangeSlider
-          min={0}
-          max={100}
-          step={5}
-          minValue={minValue}
-          maxValue={maxValue}
-          barInnerColor="rgb(19, 209, 187)"
-          onInput={(e) => {
-            handleInput(e);
-          }}
-          ruler={false}
-        />
-        <div className="flex justify-between">
-          <p>min: {minValue}</p>
-          <p>max: {maxValue}</p>
-        </div>
+    <>
+      <MultiRangeSlider
+        min={0}
+        max={100}
+        step={5}
+        minValue={minValue}
+        maxValue={maxValue}
+        barInnerColor="rgb(19, 209, 187)"
+        onInput={(e) => {
+          handleInput(e);
+        }}
+        ruler={false}
+      />
+      <div className="flex justify-between">
+        <p>min: {minValue}</p>
+        <p>max: {maxValue}</p>
       </div>
-    </div>
+    </>
   );
 }
 export default RangeSlider;
