@@ -6,7 +6,7 @@ import Header from "./components/HeaderComponents/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Bascket from "./components/HeaderComponents/basket/Basket";
-import MenuSeeAllItems from "./components/HeaderComponents/MenuComponents/MenuSeeAllItems";
+import MenuSeeAllItems from "./components/HeaderComponents/MenuComponents/menuSeeAllItems/MenuSeeAllItems";
 import Login from "./components/HeaderComponents/login-component/Login";
 import ErrorPage from "./components/ErrorPage";
 

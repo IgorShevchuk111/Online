@@ -55,25 +55,3 @@
 .material-symbols-outlined{
     font-size: 19px;
 }
-
-/* MenuSeeAllItems */
-.items-nav{
-  text-align: center;
-}
-.items-wraper {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.flex-item{
-  display: flex;
-  justify-content: center;
-  flex: 0 0 calc(33.33% - 10px); 
-  margin: 20px 5px;
-  box-sizing: border-box; 
-}
-.flex-item img {
-  width: 100%;
-  height: auto;
-}
