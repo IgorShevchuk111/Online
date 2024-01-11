@@ -15,7 +15,42 @@ function MenuSeeAllItems() {
           <p>Price</p>
           <RangeSlider />
         </div>
-        <MenuSearchComponent />
+        {data.map(
+          (item, i) =>
+            item.type === selectedMenuItem && (
+              <MenuSearchComponent
+                key={i}
+                items={item.brands}
+                title={"Brand"}
+              />
+            )
+        )}
+
+        {data.map(
+          (item, i) =>
+            item.type === selectedMenuItem && (
+              <MenuSearchComponent
+                key={i}
+                models={item.brands.flatMap((brand) => brand.models)}
+                title={"Model"}
+              />
+            )
+        )}
+
+        <MenuSearchComponent
+          color={[
+            ...new Set(
+              data
+                .filter((item) => item.type === selectedMenuItem)
+                .flatMap((item) =>
+                  item.brands.flatMap((brand) =>
+                    brand.models.flatMap((model) => model.color)
+                  )
+                )
+            ),
+          ]}
+          title={"Color"}
+        />
       </div>
       <div className="items-wraper">
         {data.map((item) => {
