@@ -8,11 +8,7 @@ import { useSelector } from "react-redux";
 function Main() {
   const isMenuVisible = useSelector((state) => state.menuVisible);
   const location = useLocation();
-  const images = data
-    .flatMap((item) =>
-      item.brands.flatMap((brand) => brand.models.map((model) => model.img))
-    )
-    .filter((image) => image !== undefined && image !== null);
+  const images = data.smartPhones.models.flatMap((item) => item.img);
   return (
     <div
       className="main transition"
