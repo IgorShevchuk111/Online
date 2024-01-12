@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Item from "../item-component/Item";
 import { data } from "../../../../data";
 import { useSelector } from "react-redux";
@@ -8,6 +8,16 @@ import MenuSearchComponent from "../../../menuSearchComponent/MenuSearchComponen
 
 function MenuSeeAllItems() {
   const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
+  const [selectedMenu, setSelectedMenu] = useState([]);
+
+  useEffect(() => {
+    const newSelectedMenu = Object.keys(data)
+      .filter((key) => key === selectedMenuItem)
+      .map((key) => data[key].models)
+      .flat();
+    setSelectedMenu(newSelectedMenu);
+  }, [selectedMenuItem]);
+
   return (
     <div className="items-container">
       <div className="container-search">
@@ -15,56 +25,25 @@ function MenuSeeAllItems() {
           <p>Price</p>
           <RangeSlider />
         </div>
-        {data.map(
-          (item, i) =>
-            item.type === selectedMenuItem && (
-              <MenuSearchComponent
-                key={i}
-                items={item.brands}
-                title={"Brand"}
-              />
-            )
-        )}
-
-        {data.map(
-          (item, i) =>
-            item.type === selectedMenuItem && (
-              <MenuSearchComponent
-                key={i}
-                models={item.brands.flatMap((brand) => brand.models)}
-                title={"Model"}
-              />
-            )
-        )}
-
         <MenuSearchComponent
-          color={[
-            ...new Set(
-              data
-                .filter((item) => item.type === selectedMenuItem)
-                .flatMap((item) =>
-                  item.brands.flatMap((brand) =>
-                    brand.models.flatMap((model) => model.color)
-                  )
-                )
-            ),
-          ]}
+          brands={[...new Set(selectedMenu.map((brand) => brand.brand))]}
+          title={"Brand"}
+        />
+        <MenuSearchComponent
+          models={[...new Set(selectedMenu.map((model) => model.model))]}
+          title={"Model"}
+        />
+        <MenuSearchComponent
+          colors={[...new Set(selectedMenu.flatMap((item) => item.color))]}
           title={"Color"}
         />
       </div>
       <div className="items-wraper">
-        {data.map((item) => {
-          return (
-            item.type === selectedMenuItem &&
-            item.brands.map((item) =>
-              item.models.map((item, index) => (
-                <div key={index} className="flex-item">
-                  <Item items={item} />
-                </div>
-              ))
-            )
-          );
-        })}
+        {selectedMenu.map((model, i) => (
+          <div key={i} className="flex-item">
+            <Item items={model} />
+          </div>
+        ))}
       </div>
     </div>
   );

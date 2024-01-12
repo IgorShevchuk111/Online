@@ -63,15 +63,15 @@ function Menu() {
       </div>
       {menuVisible && (
         <div className={`menu-items ${isDarkMode ? "dark" : ""}`}>
-          {data.map((item) => (
+          {Object.keys(data).map((key, i) => (
             <Link
-              to={`allItems/${item.type}`}
+              to={`allItems/${key}`}
               className={`link ${isDarkMode ? "dark" : ""}`}
               style={isDarkMode ? { border: "none" } : {}}
-              key={item.type}
-              onClick={() => toggleSelectedMenuItem(item.type)}
+              key={i}
+              onClick={() => toggleSelectedMenuItem(key)}
             >
-              {item.type}
+              {key.charAt(0).toUpperCase() + key.slice(1)}
             </Link>
           ))}
         </div>

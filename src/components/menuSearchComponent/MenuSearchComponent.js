@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MenuSearchComponent.css";
 
 function MenuSearchComponent(props) {
+  const [selectedItems, setSelectedItems] = useState([]);
+  const handleCheckboxChange = (item) => {
+    if (selectedItems.includes(item)) {
+      setSelectedItems(
+        selectedItems.filter((selectedItem) => selectedItem !== item)
+      );
+    } else {
+      setSelectedItems([...selectedItems, item]);
+    }
+  };
   return (
     <div>
       <div className="relative">
@@ -17,23 +27,28 @@ function MenuSearchComponent(props) {
             <input type="checkbox" id="All"></input>
             <label htmlFor="All">All</label>
           </li>
-          {props.items &&
-            props.items.map((item, i) => (
+          {props.brands &&
+            props.brands.map((brand, i) => (
               <li className="flex" key={i}>
-                <input type="checkbox" id={props.title}></input>
-                <label htmlFor={props.title}>{item.brand}</label>
+                <input
+                  type="checkbox"
+                  id={props.title}
+                  checked={selectedItems.includes(brand)}
+                  onChange={() => handleCheckboxChange(brand)}
+                ></input>
+                <label htmlFor={props.title}>{brand}</label>
               </li>
             ))}
           {props.models &&
             props.models.map((item, i) => (
               <li className="flex" key={i}>
                 <input type="checkbox" id={props.title}></input>
-                <label htmlFor={props.title}>{item.model}</label>
+                <label htmlFor={props.title}>{item}</label>
               </li>
             ))}
 
-          {props.color &&
-            props.color.map((item, i) => (
+          {props.colors &&
+            props.colors.map((item, i) => (
               <li className="flex" key={i}>
                 <input type="checkbox" id={props.title}></input>
                 <label htmlFor={props.title}>{item}</label>
