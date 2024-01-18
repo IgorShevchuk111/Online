@@ -15,10 +15,28 @@ const rootReducer = (state = initState, action) => {
         selectedMenuItem: action.value,
       };
     case "ADD_STATE_BASKET_ITEMS":
-      return {
-        ...state,
-        selectedBasketItems: [...state.selectedBasketItems, action.value],
-      };
+      const newItem = action.value;
+      const isItemExisting = state.selectedBasketItems.some(
+        (item) => item.id === newItem.id
+      );
+      if (isItemExisting) {
+        const updatedItems = state.selectedBasketItems.map((item) => {
+          if (item.id === newItem.id) {
+            return { ...item, quantity: item.quantity + newItem.quantity };
+          }
+          return item;
+        });
+        return {
+          ...state,
+          selectedBasketItems: updatedItems,
+        };
+      } else {
+        return {
+          ...state,
+          selectedBasketItems: [...state.selectedBasketItems, newItem],
+        };
+      }
+
     case "UPDATE_STATE_BASKET_ITEM":
       const updatedItemId = action.item.id;
       const updatedQuantity = action.item.quantity;
