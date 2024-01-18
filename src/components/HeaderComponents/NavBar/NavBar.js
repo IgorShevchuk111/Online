@@ -33,13 +33,27 @@ function NavBar() {
           <span className="material-symbols-outlined  person">person</span>
         </Link>
         <Link to="basket">
-          <span
-            className={`material-symbols-outlined basket ${
-              selectedBasketItems.length > 0 ? "notEmpty" : ""
-            }`}
-          >
-            shopping_bag
-          </span>
+          <div className="relative">
+            <span
+              className={`material-symbols-outlined basket ${
+                selectedBasketItems.length > 0 ? "notEmpty" : ""
+              }`}
+            >
+              shopping_bag
+            </span>
+            {selectedBasketItems.length > 0 && (
+              <div
+                className="absolute"
+                style={{
+                  color: "var(--primary-color)",
+                  top: "-8px",
+                  right: "4px",
+                }}
+              >
+                {selectedBasketItems.length}
+              </div>
+            )}
+          </div>
         </Link>
         <div
           className={`toggler-slider ${isDarkMode ? "toggled" : ""}`}
