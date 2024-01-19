@@ -30,6 +30,26 @@ const GalleryCarousel = ({ images }) => {
     slidesToScroll: 1,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    responsive: [
+      {
+        breakpoint: 1140,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 825,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 590,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
