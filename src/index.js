@@ -4,6 +4,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { legacy_createStore as createStore } from "redux";
 import rootReducer from "./reducers/rootReducer";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 const store = createStore(
   rootReducer,
@@ -16,3 +17,4 @@ root.render(
     <App />
   </Provider>
 );
+serviceWorkerRegistration.register();
