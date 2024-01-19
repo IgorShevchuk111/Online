@@ -16,11 +16,15 @@ function Main() {
     >
       <div className="main-page">
         {location.pathname === "/" && (
-          <div>
-            <h5>Most wanted</h5>
-            <GalleryCarousel images={images} />
-            <h5>Most popular</h5>
-            <GalleryCarousel images={images} />
+          <div style={{ padding: " 20px " }}>
+            <div style={{ margin: "0 0 50px 0" }}>
+              <h5 className="text-center">Most wanted</h5>
+              <GalleryCarousel images={images} />
+            </div>
+            <div>
+              <h5 className="text-center">Most popular</h5>
+              <GalleryCarousel images={images} />
+            </div>
           </div>
         )}
         <Outlet />
