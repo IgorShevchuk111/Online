@@ -26,20 +26,22 @@ const GalleryCarousel = ({ images }) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
   };
 
   return (
-    <Slider {...settings}>
-      {images.map((image, index) => (
-        <div key={index}>
-          <img className="slider__img" src={image} alt={`slide-${index}`} />
-        </div>
-      ))}
-    </Slider>
+    <div className="container-slider">
+      <Slider {...settings}>
+        {images.map((image, index) => (
+          <div key={index}>
+            <img className="slider__img" src={image} alt={`slide-${index}`} />
+          </div>
+        ))}
+      </Slider>
+    </div>
   );
 };
 

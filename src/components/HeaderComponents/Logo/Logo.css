@@ -1,6 +1,7 @@
 .logo {
     margin: 0!important;
     color: var(--accent-color);
+    text-decoration: none;
 }
 .logo:hover {
     text-decoration: none;
