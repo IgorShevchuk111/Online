@@ -33,18 +33,6 @@
   color: var(--light-color) !important;
   }
 
-/* Classes Modular Approach */
-
-/* Text Alignment */
-.text-left {
-  text-align: left;
-}
-.text-center {
-  text-align: center;
-}
-.text-right {
-  text-align: right;
-}
 
 /* Typography */
 .bold {
@@ -55,46 +43,6 @@
 }
 .large-text {
   font-size: 1.2rem;
-}
-
-/* Margins and Padding */
-.margin-top-20 {
-  margin-top: 20px;
-}
-.margin-top-10 {
-  margin-top: 10px;
-}
-.margin-left-12 {
-  margin-left: 12px;
-}
-.margin-bottom-20 {
-  margin-bottom: 20px;
-}
-.padding-15 {
-  padding: 15px;
-}
-
-/* Display */
-.hide {
-  display: none;
-}
-
-/* Borders and Radius */
-.border-radius {
-  border-radius: 5px;
-}
-
-/* Flexbox */
-.flex {
-  display: flex;
-}
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.justify-between {
-  justify-content: space-between;
 }
 
 /* Hover Effects */
@@ -120,15 +68,11 @@
   appearance: none;
 }
 
-/* Positioning */
-.absolute {
-  position: absolute;
-}
-.relative {
-  position: relative;
-}
 
 /* Pointer Events */
 .pointer-events-none {
   pointer-events: none;
+}
+.cursor-pointer{
+  cursor: pointer;
 }

@@ -57,8 +57,11 @@ function Menu() {
   }, [menuVisible, handleDocumentClick]);
 
   return (
-    <div className="menu-container body-2" ref={containerRef}>
-      <div className=" material-icons" onClick={toggleMenu}>
+    <div
+      className="menu-container d-flex align-items-center position-relative py-2 px-4 body-2"
+      ref={containerRef}
+    >
+      <div className=" material-icons cursor-pointer" onClick={toggleMenu}>
         {menuVisible ? "close" : "menu"}
       </div>
       {menuVisible && (

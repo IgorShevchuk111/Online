@@ -1,0 +1,9 @@
+.person{
+    font-size: 34px !important;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.person:hover {
+    text-decoration: none;
+    color: var(--accent-color);
+}
