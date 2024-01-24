@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Help() {
-  return (
-    <div>Help</div>
-  )
+  return <div className=" px-3">Help</div>;
 }
 
-export default Help
+export default Help;

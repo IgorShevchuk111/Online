@@ -1,15 +1,4 @@
-.menu-container {
-    display: flex;
-    padding: 10px 32px;
-    position: relative;
-    border-bottom: 1px solid var(--line-color);
-}
-.menu-container div {
-    flex: 0.07 1 0;
-    cursor: pointer;
-}
-  
-  .menu-items {
+.menu-items {
     position: absolute;
     top: 103%;
     left: 0;

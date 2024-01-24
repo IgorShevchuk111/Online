@@ -1,70 +1,4 @@
-.nav {
-    display: flex;
-    align-items: center;
-    background: #FFFFFF;
-    padding: 22px 32px;
-    line-height: 1.1;
-    
-}
 
-.flex-1 {
-    display: flex;
-    flex: 0.3 1 0%;
-    justify-content: center;
-}
-.flex-2 {
-    display: flex;
-    flex: 0.3 1 0%;
-    justify-content: center;
-}
-.flex-2 div {
-    margin: 0 1rem;
-}
-
-.flex-3 {
-    display: flex;
-    flex: 1 1 0%;
-    justify-content: center;
-}
-.flex-4 {
-    display: flex;
-    flex: 0.3 1 0%;
-    justify-content: center;
-    align-items: center;
-}
-.flex-4 span {
-    margin: 0 12px;
-    color: var(--primary-color);
-}
-.person{
-    font-size: 34px !important;
-    color: var(--primary-color);
-}
-.person:hover {
-    text-decoration: none;
-    color: var(--accent-color);
-}
-.basket{
-    font-size: 32px !important;
-    color: var(--primary-color);
-    position: relative;
-}
-.basket:hover {
-    text-decoration: none;
-    color: var(--accent-color);
-}
-.basket.notEmpty::after {
-    content: "";
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: #cab3fa; 
-    border-radius: 50%;
-    margin: 12px -29px;
-    position: absolute;
-    top: -14%;
-    right: 101%;
-  }
 
 input {
     width: 100%;
@@ -99,4 +33,17 @@ input {
   .toggled .circle {
     transform: translateX(11.5px);
     background-color: var(--accent-color);
+  }
+  
+  @media (min-width: 300px) {
+  .logo { order: 2; text-align: center;}
+  .search { order: 4; }
+  .person-basket-toggler { order: 3; };
+  .menu {order: 1}
+}
+@media (min-width: 1200px) {
+    .logo { order: 1;}
+    .about-help { order: 2;}
+    .search { order: 3; }
+    .person-basket-toggler { order: 4; };
   }
