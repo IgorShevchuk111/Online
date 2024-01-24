@@ -51,8 +51,13 @@ function NavBar() {
             <Help />
           </div>
         )}
-        <div className="col-12 col-sm-12 col-xl-6  search">
-          <Search />
+        <div className="col-12 col-sm-12 col-xl-6 search">
+          <Search
+            screenSize={screenSize}
+            mobileSearch={"mobileSearch"}
+            mobileInputSvg={"mobileInputSvg"}
+            inputSvg={"inputSvg"}
+          />
         </div>
 
         <div className="col-5 col-sm-3 col-xl-2  d-flex justify-content-evenly align-items-center body-2   person-basket-toggler">
