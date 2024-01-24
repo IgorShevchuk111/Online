@@ -3,17 +3,12 @@ import "./main.css";
 import GalleryCarousel from "../galleryCarousel/GalleryCarousel";
 import { Outlet, useLocation } from "react-router-dom";
 import { data } from "../../data";
-import { useSelector } from "react-redux";
 
 function Main() {
-  const isMenuVisible = useSelector((state) => state.menuVisible);
   const location = useLocation();
   const images = data.smartPhones.models.flatMap((item) => item.img);
   return (
-    <div
-      className="main transition"
-      style={isMenuVisible ? { background: "rgba(17, 17, 17, 0.5)" } : {}}
-    >
+    <div className="main transition">
       <div className="main-page">
         {location.pathname === "/" && (
           <div style={{ padding: " 20px " }}>

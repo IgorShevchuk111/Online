@@ -40,6 +40,8 @@ input {
   .search { order: 4; }
   .person-basket-toggler { order: 3; };
   .menu {order: 1}
+  .menu .menu-items {
+ top: 92px;}
 }
 @media (min-width: 1200px) {
     .logo { order: 1;}

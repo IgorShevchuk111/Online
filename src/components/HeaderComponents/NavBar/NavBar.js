@@ -39,7 +39,7 @@ function NavBar() {
       <div className="row align-items-center">
         {screenSize < 1200 && (
           <div className="col-2  col-sm-2 menu d-flex justify-content-center">
-            <Menu />
+            <Menu mobileMenu={"mobileMenu"} screenSize={screenSize} />
           </div>
         )}
         <div className="col-5 col-sm-7 col-xl-2 logo">
