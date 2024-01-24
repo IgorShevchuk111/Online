@@ -32,7 +32,7 @@ function ShoppingItemsSummary() {
             <div key={index} className=" margin-top-20">
               <div className="flex">
                 <div className="relative">
-                  <img src={item.img} alt="foto" />
+                  <img className="shopping-img" src={item.img} alt="foto" />
                   {item.quantity > 1 && (
                     <div className="absolute quantity-summary-num">
                       {item.quantity}
@@ -65,7 +65,7 @@ function ShoppingItemsSummary() {
           </button>
           <div className="small-text flex flex-center">
             <img
-              className="padlock"
+              className="padlock "
               src="https://d1eh9yux7w8iql.cloudfront.net/front/public/statics/pastrami/985eb7dec3309df6df7ba38b18f96be580fdd87b/img/Lock.svg"
               alt="padlock"
             />
