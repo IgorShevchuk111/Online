@@ -1,12 +1,23 @@
 .menu-items {
     position: absolute;
-    top: 103%;
+    top: 110px;
     left: 0;
-    background-color: white;
-    width: 15%;
+    width: 100%;
     height: 100vh;
     overflow: hidden;
+    display: flex;
+    z-index: 1;
+    background: rgba(17, 17, 17, 0.7);
   }
+  .menu-items-container{
+    background: var(--light-color);
+    width: 15%
+  }
+  .mobileMenu{
+    width: 100%;
+    background: var(--light-color);
+  }
+              
   .menu-items .link {
     border-bottom: 1px solid var(--background-color);
     height: 3rem;

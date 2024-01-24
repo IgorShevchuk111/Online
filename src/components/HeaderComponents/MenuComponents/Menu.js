@@ -4,7 +4,7 @@ import { data } from "../../../data";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-function Menu() {
+function Menu({ screenSize, mobileMenu }) {
   const isDarkMode = useSelector((state) => state.isDarkMode);
   const [menuVisible, setMenuVisible] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState(null);
@@ -58,25 +58,32 @@ function Menu() {
 
   return (
     <div
-      className="menu-container d-flex align-items-center position-relative py-2 px-4 body-2"
+      className="menu-container d-flex align-items-center  py-2 px-4 body-2"
       ref={containerRef}
     >
       <div className=" material-icons cursor-pointer" onClick={toggleMenu}>
         {menuVisible ? "close" : "menu"}
       </div>
       {menuVisible && (
-        <div className={`menu-items ${isDarkMode ? "dark" : ""}`}>
-          {Object.keys(data).map((key, i) => (
-            <Link
-              to={`allItems/${key}`}
-              className={`link ${isDarkMode ? "dark" : ""}`}
-              style={isDarkMode ? { border: "none" } : {}}
-              key={i}
-              onClick={() => toggleSelectedMenuItem(key)}
-            >
-              {key.charAt(0).toUpperCase() + key.slice(1)}
-            </Link>
-          ))}
+        <div>
+          <div
+            className={`menu-items  ${isDarkMode ? "dark" : ""}`}
+            style={{ width: screenSize }}
+          >
+            <div className={`menu-items-container ${mobileMenu}`}>
+              {Object.keys(data).map((key, i) => (
+                <Link
+                  to={`allItems/${key}`}
+                  className={`link ${isDarkMode ? "dark" : ""}`}
+                  style={isDarkMode ? { border: "none" } : {}}
+                  key={i}
+                  onClick={() => toggleSelectedMenuItem(key)}
+                >
+                  {key.charAt(0).toUpperCase() + key.slice(1)}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </div>
