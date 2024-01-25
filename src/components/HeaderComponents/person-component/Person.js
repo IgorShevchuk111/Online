@@ -4,7 +4,7 @@ import "./Person.css";
 
 function Person() {
   return (
-    <div className="material-symbols-outlined d ">
+    <div className="material-symbols-outlined mx-4 ">
       <Link className="login person" to="login">
         person
       </Link>

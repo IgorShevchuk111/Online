@@ -1,6 +1,8 @@
 .item-container-summary{
     padding: 24px;
     background-color: var(--summary-background-color);
+    margin: 10px;
+    border-radius: 12px;
 }
 
 .item-container-summary h5{

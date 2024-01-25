@@ -37,15 +37,16 @@ input {
   
   @media (min-width: 300px) {
   .logo { order: 2; text-align: center;}
-  .search { order: 4; }
-  .person-basket-toggler { order: 3; };
+  .search { order: 4; margin: 8px 0 0 0;}
+  .person-basket-toggler { order: 3; }
   .menu {order: 1}
   .menu .menu-items {
- top: 92px;}
+    top: 94px;
+    left: -12px;}
 }
 @media (min-width: 1200px) {
-    .logo { order: 1;}
+    .logo { order: 1; text-align: start;}
     .about-help { order: 2;}
-    .search { order: 3; }
-    .person-basket-toggler { order: 4; };
+    .search { order: 3; margin: 0;}
+    .person-basket-toggler { order: 4; }
   }

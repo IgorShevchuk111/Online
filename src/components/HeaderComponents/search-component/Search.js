@@ -1,17 +1,16 @@
 import React from "react";
-import "./Search.css";
 
-function Search({ mobileSearch, mobileInputSvg, inputSvg, screenSize }) {
+function Search() {
+  const inputSvg = {
+    top: "9px",
+    right: "26px",
+  };
   return (
-    <div>
-      <input
-        className={`position-relative ${screenSize < 1200 ? mobileSearch : ""}`}
-        placeholder="What are you looking for?"
-      ></input>
+    <div className="position-relative">
+      <input placeholder="What are you looking for?"></input>
       <svg
-        className={`position-absolute  ${
-          screenSize < 1200 ? mobileInputSvg : inputSvg
-        }`}
+        style={inputSvg}
+        className={`position-absolute`}
         aria-hidden="true"
         fill="currentColor"
         height="16"
