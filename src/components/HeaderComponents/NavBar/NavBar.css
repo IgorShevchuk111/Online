@@ -41,7 +41,7 @@ input {
   .person-basket-toggler { order: 3; }
   .menu {order: 1}
   .menu .menu-items {
-    top: 94px;
+    top: 83px;
     left: -12px;}
 }
 @media (min-width: 1200px) {

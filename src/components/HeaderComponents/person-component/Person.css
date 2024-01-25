@@ -1,5 +1,5 @@
 .person{
-    font-size: 34px !important;
+    font-size: 34px;
     color: var(--primary-color);
     text-decoration: none;
 }
@@ -7,3 +7,14 @@
     text-decoration: none;
     color: var(--accent-color);
 }
+@media (min-width: 300px) {
+    .person{
+        font-size: 21px;}
+        .login{
+            margin: 0 8px 0 8px  !important
+        }
+}
+@media (min-width: 1200px) {
+    .person{
+        font-size: 34px;}
+  }

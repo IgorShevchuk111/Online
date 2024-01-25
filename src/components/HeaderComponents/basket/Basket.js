@@ -16,7 +16,7 @@ function Basket() {
       {!isMatchingRoute && (
         <div>
           <Link to="basket">
-            <div className="position-relative">
+            <div className="position-relative d-flex align-items-center justify-content-center">
               <span
                 className={`material-symbols-outlined basket ${
                   selectedBasketItems.length > 0 ? "notEmpty" : ""
@@ -26,12 +26,12 @@ function Basket() {
               </span>
               {selectedBasketItems.length > 0 && (
                 <div
-                  className="position-absolute"
-                  style={{
-                    color: "var(--primary-color)",
-                    top: "-10px",
-                    right: "-10px",
-                  }}
+                  className="position-absolute number"
+                  // style={{
+                  //   color: "var(--primary-color)",
+                  //   top: "-10px",
+                  //   right: "-10px",
+                  // }}
                 >
                   {selectedBasketItems.length}
                 </div>
@@ -64,3 +64,6 @@ function Basket() {
 }
 
 export default Basket;
+// top: -2px;
+//     right: 0px;
+//     font-size: 6px;

@@ -27,8 +27,8 @@ function NavBar() {
         className={`container-fluid py-3 px-4`}
         style={{ background: "var(--light-color)" }}
       >
-        <div className="row align-items-center">
-          <div className="col-6 col-sm-6 col-xl-2 logo">
+        <div className="row  d-flex align-items-center">
+          <div className="col-7 col-sm-6 col-xl-2 logo">
             <Logo />
           </div>
           {screenSize > 1200 && (
@@ -46,7 +46,7 @@ function NavBar() {
             <Basket />
           </div>
           {screenSize < 1200 && (
-            <div className="col-3 col-sm-3 col-xl-12 menu d-flex justify-content-start">
+            <div className="col-2 col-sm-3 col-xl-12 menu d-flex justify-content-start">
               <Menu screenSize={screenSize} />
             </div>
           )}
