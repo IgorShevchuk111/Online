@@ -6,7 +6,8 @@ import { data } from "../../data";
 
 function Main() {
   const location = useLocation();
-  const images = data.smartPhones.models.flatMap((item) => item.img);
+  const smartPhones = data.smartPhones.models.flatMap((item) => item.img);
+  const laptops = data.laptops.models.flatMap((item) => item.img);
 
   const imageUrls = [
     "https://images.ctfassets.net/mmeshd7gafk1/7KNLXyQymHYYkmyLiDbbwN/b4a2d7a9ddb37e38b45d11fd9a070f0a/TRADEIN_HP_GENERICBANNERS_DESKTOP_1_UK.jpg",
@@ -42,11 +43,11 @@ function Main() {
           <div style={{ padding: " 20px " }}>
             <div style={{ margin: "0 0 50px 0" }}>
               <h5 className="text-center">Most wanted</h5>
-              <GalleryCarousel images={images} />
+              <GalleryCarousel images={smartPhones} />
             </div>
             <div>
               <h5 className="text-center">Most popular</h5>
-              <GalleryCarousel images={images} />
+              <GalleryCarousel images={laptops} />
             </div>
           </div>
         )}
