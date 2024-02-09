@@ -2,6 +2,8 @@
     margin: 0!important;
     color: var(--accent-color);
     text-decoration: none;
+    font-family: 'McLaren', sans-serif;
+    font-weight: bold;
 }
 .logo:hover {
     text-decoration: none;

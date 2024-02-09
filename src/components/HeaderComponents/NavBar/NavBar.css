@@ -34,6 +34,10 @@ input {
     transform: translateX(11.5px);
     background-color: var(--accent-color);
   }
+  .about-help{
+    font-size: 14px;
+    font-weight: 500;
+  }
   
   @media (min-width: 300px) {
   .logo { order: 2; text-align: center;}

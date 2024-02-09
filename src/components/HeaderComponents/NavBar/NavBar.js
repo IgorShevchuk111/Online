@@ -32,13 +32,13 @@ function NavBar() {
             <Logo />
           </div>
           {screenSize > 1200 && (
-            <div className="col-xl-2 d-flex  small-text  about-help">
+            <div className="col-xl-2 d-flex about-help">
               <AboutUs />
               <Help />
             </div>
           )}
           <div className="col-12 col-sm-12 col-xl-6 search">
-            <Search />
+            <Search placeholder={"What are you looking for? "} />
           </div>
 
           <div className="col-3 col-sm-3 col-xl-2  d-flex justify-content-end  body-2   person-basket-toggler">

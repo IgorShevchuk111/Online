@@ -10,7 +10,6 @@ function ItemCard({ model }) {
         padding: "20px 24px",
       }}
     >
-      <div>Most wanted</div>
       <img
         style={{ width: "200px" }}
         className="slider__img"

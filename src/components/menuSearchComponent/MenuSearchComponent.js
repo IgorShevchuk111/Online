@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./MenuSearchComponent.css";
+import Search from "../HeaderComponents/search-component/Search";
 
 function MenuSearchComponent(props) {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -15,11 +16,11 @@ function MenuSearchComponent(props) {
   return (
     <div>
       <div className="relative">
-        <label htmlFor="Search">{props.title}</label>
-        <input id="Search" placeholder={`Search for ${props.title}`}></input>
-        <span className="material-symbols-outlined  absolute band-search">
-          search
-        </span>
+        <h6 htmlFor="Search">{props.title}</h6>
+        <Search
+          placeholderSearchFor={"Search for"}
+          placeholderTitle={props.title}
+        />
       </div>
       <div className="filterContainer">
         <ul className="list">

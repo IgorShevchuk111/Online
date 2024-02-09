@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Item from "../item-component/Item";
+import ItemCard from "../../../../components/item-card/ItemCard";
 import { data } from "../../../../data";
 import { useSelector } from "react-redux";
 import "./MenuSeeAllItems.css";
@@ -22,7 +22,7 @@ function MenuSeeAllItems() {
     <div className="items-container">
       <div className="container-search">
         <div>
-          <p>Price</p>
+          <h6>Price</h6>
           <RangeSlider />
         </div>
         <MenuSearchComponent
@@ -41,7 +41,7 @@ function MenuSeeAllItems() {
       <div className="items-wraper">
         {selectedMenu.map((model, i) => (
           <div key={i} className="flex-item">
-            <Item items={model} />
+            <ItemCard model={model} />
           </div>
         ))}
       </div>

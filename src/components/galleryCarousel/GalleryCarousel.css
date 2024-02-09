@@ -4,10 +4,6 @@
   color: var(--primary-color);
 }
 
-small{
-  font-family: sans-serif;
-    font-size: 14px;
-}
 .custom-prev {
   right: -16px;
     top: 40%;

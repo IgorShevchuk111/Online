@@ -1,13 +1,19 @@
 import React from "react";
 
-function Search() {
+function Search({ placeholder, placeholderSearchFor, placeholderTitle }) {
   const inputSvg = {
     top: "9px",
     right: "26px",
   };
   return (
     <div className="position-relative">
-      <input placeholder="What are you looking for?"></input>
+      <input
+        placeholder={
+          placeholderSearchFor
+            ? `${placeholderSearchFor} ${placeholderTitle}`
+            : placeholder
+        }
+      ></input>
       <svg
         style={inputSvg}
         className={`position-absolute`}
