@@ -26,7 +26,7 @@ function App() {
               </>
             }
           >
-            <Route path="allItems/:id" element={<MenuSeeAllItems />} />
+            <Route path="/:id" element={<MenuSeeAllItems />} />
             <Route path="login" element={<Login />} />
           </Route>
           <Route path="basket" element={<Bascket />}></Route>

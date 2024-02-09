@@ -3,6 +3,7 @@ import "./main.css";
 import GalleryCarousel from "../galleryCarousel/GalleryCarousel";
 import { Outlet, useLocation } from "react-router-dom";
 import { data } from "../../data";
+import Breadcrumb from "../breadcrumbNav/Breadcrumb";
 
 function Main() {
   const location = useLocation();
@@ -50,6 +51,7 @@ function Main() {
             </div>
           </div>
         )}
+        <Breadcrumb />
         <Outlet />
       </div>
     </div>

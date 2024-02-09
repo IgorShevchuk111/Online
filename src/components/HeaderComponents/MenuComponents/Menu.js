@@ -76,7 +76,7 @@ function Menu({ screenSize }) {
             >
               {Object.keys(data).map((key, i) => (
                 <Link
-                  to={`allItems/${key}`}
+                  to={`/${key}`}
                   className={`link ${isDarkMode ? "dark" : ""}`}
                   style={isDarkMode ? { border: "none" } : {}}
                   key={i}
