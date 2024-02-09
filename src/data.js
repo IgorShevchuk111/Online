@@ -103,7 +103,7 @@ const data = {
       {
         id: "l2",
         brand: "Lenovo",
-        model: "ThinkPad X1 Carbon",
+        model: "ThinkPad X1",
         price: 254,
         color: ["Black"],
         storage: "1TB",
