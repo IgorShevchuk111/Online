@@ -9,8 +9,9 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import ItemCard from "../item-card/ItemCard";
 
-const GalleryCarousel = ({ images }) => {
+const GalleryCarousel = ({ smartPhones, laptops }) => {
   const PrevArrow = ({ onClick }) => (
     <div className="custom-arrow custom-prev" onClick={onClick}>
       <FontAwesomeIcon icon={faChevronLeft} />
@@ -26,7 +27,7 @@ const GalleryCarousel = ({ images }) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
@@ -46,7 +47,7 @@ const GalleryCarousel = ({ images }) => {
       {
         breakpoint: 590,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
@@ -55,11 +56,18 @@ const GalleryCarousel = ({ images }) => {
   return (
     <div className="container-slider">
       <Slider {...settings}>
-        {images.map((image, index) => (
-          <div key={index}>
-            <img className="slider__img" src={image} alt={`slide-${index}`} />
-          </div>
-        ))}
+        {smartPhones &&
+          smartPhones.map((smartPhoneModel, index) => (
+            <div key={index}>
+              <ItemCard model={smartPhoneModel} />
+            </div>
+          ))}
+        {laptops &&
+          laptops.map((laptopModel, index) => (
+            <div key={index}>
+              <ItemCard model={laptopModel} />
+            </div>
+          ))}
       </Slider>
     </div>
   );

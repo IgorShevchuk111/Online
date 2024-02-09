@@ -4,7 +4,7 @@ import { data } from "../../../data";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-function Menu({ screenSize, mobileMenu }) {
+function Menu({ screenSize }) {
   const isDarkMode = useSelector((state) => state.isDarkMode);
   const [menuVisible, setMenuVisible] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState(null);
@@ -58,7 +58,7 @@ function Menu({ screenSize, mobileMenu }) {
 
   return (
     <div
-      className="menu-container d-flex align-items-center  py-2 px-4 body-2"
+      className="menu-container  d-flex align-items-center body-2"
       ref={containerRef}
     >
       <div className=" material-icons cursor-pointer" onClick={toggleMenu}>
@@ -70,7 +70,10 @@ function Menu({ screenSize, mobileMenu }) {
             className={`menu-items  ${isDarkMode ? "dark" : ""}`}
             style={{ width: screenSize }}
           >
-            <div className={`menu-items-container ${mobileMenu}`}>
+            <div
+              className={`menu-items-container `}
+              style={{ width: screenSize }}
+            >
               {Object.keys(data).map((key, i) => (
                 <Link
                   to={`allItems/${key}`}

@@ -1,15 +1,16 @@
 import React from "react";
 
 function Search() {
+  const inputSvg = {
+    top: "9px",
+    right: "26px",
+  };
   return (
-    <div>
-      <input
-        className="position-relative"
-        placeholder="What are you looking for?"
-      ></input>
+    <div className="position-relative">
+      <input placeholder="What are you looking for?"></input>
       <svg
-        className="position-absolute top-9 right-26"
-        style={{ top: "9px", right: "26px" }}
+        style={inputSvg}
+        className={`position-absolute`}
         aria-hidden="true"
         fill="currentColor"
         height="16"
