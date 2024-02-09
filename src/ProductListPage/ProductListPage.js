@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import "./ProductListPage.css";
 import RangeSlider from "../components/multiRangeSliderComponent/RangeSlider";
 import MenuSearchComponent from "../components/menuSearchComponent/MenuSearchComponent";
+import SortByDropdown from "../components/SortByDropdown/SortByDropdown";
 
 function ProductListPage() {
   const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
@@ -26,7 +27,7 @@ function ProductListPage() {
       >
         <ul
           className="d-flex justify-content-between px-3"
-          style={{ listStyle: "none" }}
+          style={{ listStyle: "none", fontSize: "0.9rem" }}
         >
           <li>
             <svg
@@ -98,6 +99,18 @@ function ProductListPage() {
             <span>1-year minimum warranty</span>
           </li>
         </ul>
+      </div>
+      <div className="my-5 d-flex">
+        <div>
+          <h3 className="font-weit-bold">Used Smartphones</h3>
+          <div style={{ fontSize: "0.9rem" }}>
+            Buy Used phones for cheap when you shop at Online-Shop. Explore our
+            range of used android phones and iPhones and grab yourself the
+            latest and cheapest smartphone only at Online-Shop. Help prevent
+            e-waste and buy used phones instead.
+          </div>
+        </div>
+        <SortByDropdown />
       </div>
       <div className="items-container">
         <div className="container-search">
