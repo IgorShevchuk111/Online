@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "./main.css";
-import GalleryCarousel from "../galleryCarousel/GalleryCarousel";
+import "./MainPage.css";
+import GalleryCarousel from "../components/galleryCarousel/GalleryCarousel";
 import { Outlet, useLocation } from "react-router-dom";
-import { data } from "../../data";
-import Breadcrumb from "../breadcrumbNav/Breadcrumb";
+import { data } from "../data";
+import Breadcrumb from "../components/breadcrumbNav/Breadcrumb";
 
-function Main() {
+function MainPage() {
   const location = useLocation();
   const smartPhones = data.smartPhones.models;
   const laptops = data.laptops.models;
@@ -58,4 +58,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default MainPage;

@@ -1,12 +1,12 @@
 import React from "react";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
-import Main from "./components/MainComponents/Main";
+import MainPage from "./MainPage/MainPage";
 import Header from "./components/HeaderComponents/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Bascket from "./components/HeaderComponents/basket/Basket";
-import MenuSeeAllItems from "./components/HeaderComponents/MenuComponents/menuSeeAllItems/MenuSeeAllItems";
+import ProductListPage from "./ProductListPage/ProductListPage";
 import Login from "./components/HeaderComponents/login-component/Login";
 import ErrorPage from "./components/ErrorPage";
 
@@ -21,12 +21,12 @@ function App() {
             element={
               <>
                 <Header />
-                <Main />
+                <MainPage />
                 <Footer />
               </>
             }
           >
-            <Route path="/:id" element={<MenuSeeAllItems />} />
+            <Route path="/:id" element={<ProductListPage />} />
             <Route path="login" element={<Login />} />
           </Route>
           <Route path="basket" element={<Bascket />}></Route>
