@@ -26,7 +26,10 @@ function ProductListPage() {
       >
         <ul
           className="d-flex justify-content-between px-3"
-          style={{ listStyle: "none", fontSize: "0.9rem" }}
+          style={{
+            listStyle: "none",
+            fontSize: "0.9rem",
+          }}
         >
           <li>
             <svg
@@ -99,7 +102,7 @@ function ProductListPage() {
           </li>
         </ul>
       </div>
-      <div className="my-5 d-flex">
+      <div className="my-5 d-flex align-items-center">
         <div>
           <h3 className="font-weit-bold">Used Smartphones</h3>
           <div style={{ fontSize: "0.9rem" }}>
