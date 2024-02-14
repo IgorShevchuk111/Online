@@ -9,6 +9,7 @@ import Bascket from "./components/Basket";
 import ProductListPage from "./pages/ProductListPage";
 import Login from "./pages/LoginPage";
 import ErrorPage from "./components/ErrorPage";
+import OpenedItemPage from "./pages/OpenedItemPage";
 
 function App() {
   const isDarkMode = useSelector((state) => state.isDarkMode);
@@ -26,7 +27,8 @@ function App() {
               </>
             }
           >
-            <Route path="/:id" element={<ProductListPage />} />
+            <Route path="/:productList" element={<ProductListPage />} />
+            <Route path="/:productList/:id" element={<OpenedItemPage />} />
             <Route path="login" element={<Login />} />
           </Route>
           <Route path="basket" element={<Bascket />}></Route>

@@ -19,7 +19,6 @@ function Menu({ screenSize }) {
     setSelectedMenuItem(item);
     toggleMenu();
   };
-
   useEffect(() => {
     if (selectedMenuItem !== null) {
       dispatch({
