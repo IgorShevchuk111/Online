@@ -3,7 +3,7 @@ import React from "react";
 function ButtonAddToBasket() {
   return (
     <>
-      <button className="addToBasket">Add to basket</button>
+      <button className="addToBasket hover">Add to basket</button>
     </>
   );
 }

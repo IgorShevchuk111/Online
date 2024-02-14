@@ -3,7 +3,7 @@ import React from "react";
 function AddToFavourites() {
   return (
     <>
-      <div className="addToFavourites">
+      <div className="addToFavourites hover">
         <svg
           aria-hidden="true"
           fill="currentColor"
