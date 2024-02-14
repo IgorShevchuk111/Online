@@ -223,11 +223,11 @@ select{
 
 .slick-dots li {
   max-width: 20px !important;
-  margin: 0 25px;
+  margin: 0 25px !important;
   
 }
 .slick-dots {
-top: 370px;
+top: 350px;
 max-height: 35px;
 }
 
