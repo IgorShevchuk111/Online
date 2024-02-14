@@ -647,20 +647,6 @@ text-decoration: none;
   outline: none;
 }
 
-.quantity-items{
-  padding: 3px 24px;
-  border: 1px solid #F4F4F4;
-  background: #F4F4F4;
-  border-radius: 5px;
-}
-.svg-quantity{
-  top: 5%;
-  left: 26%;
-}
-.outline-none {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
 .container-basket{
   margin: 32px auto;
   max-width: 820px;
@@ -682,6 +668,20 @@ opacity: 1;
   color: var(--light-color);
   padding: 12px 56px;
  }
+ .quantity-items{
+  padding: 3px 25px 3px 10px;
+  border: 1px solid #F4F4F4;
+  background: #F4F4F4;
+  border-radius: 5px;
+}
+.svg-quantity{
+  top: 7%;
+    right: 0%;
+}
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
  /* delivery.css */
  .delivery-container{
 color: #2c7287;

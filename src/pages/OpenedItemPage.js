@@ -35,7 +35,7 @@ function OpenedItemPage() {
                 </div>
                 <div className="d-flex align-items-center mt-4 justify-content-between">
                   <Stars size={14} />
-                  <ButtonAddToBasket />
+                  <ButtonAddToBasket openedItem={openedItem} />
                   <AddToFavourites />
                 </div>
                 <hr />
