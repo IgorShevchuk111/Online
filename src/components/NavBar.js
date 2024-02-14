@@ -21,7 +21,7 @@ function NavBar() {
   }, []);
 
   return (
-    <div>
+    <div style={{ borderBottom: "1px solid var(--line-color)" }}>
       <div
         className={`container-fluid py-3 px-4`}
         style={{ background: "var(--light-color)" }}

@@ -19,7 +19,13 @@ function Breadcrumb() {
       );
     });
 
-  return <div className="breadcrumbs">{crumbs}</div>;
+  return (
+    <>
+      <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
+        <div className="breadcrumbs">{crumbs}</div>
+      </div>
+    </>
+  );
 }
 
 export default Breadcrumb;

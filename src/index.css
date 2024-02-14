@@ -107,16 +107,8 @@
   width: 100%;
   height: auto;
 }
-/* MainPage.css */
-.main {
-  min-height: 100vh; 
-  border-top: 1px solid var(--line-color);
-}
-.main-page {
-  max-width: 1150px;
-  margin: 0 auto;
-  padding: 0px 0 50px 0;
-}
+/* HomePage.css */
+
 /* SortByDropdown.css */
 .button-sort-by {
   border-radius: 5px;
@@ -308,7 +300,7 @@ font-size: 22px;
 }
 /* Breadcrumb.css */
 .breadcrumbs  {
-  margin: 20px;
+  padding: 20px  0;
 }
 .breadcrumbs > * {
   display: inline-block;

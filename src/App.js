@@ -1,8 +1,7 @@
 import React from "react";
-import Footer from "./components/Footer";
+
 import "./index.css";
-import MainPage from "./pages/MainPage";
-import Header from "./components/Header";
+import HomePage from "./pages/HomePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Bascket from "./components/Basket";
@@ -11,22 +10,16 @@ import Login from "./pages/LoginPage";
 import ErrorPage from "./components/ErrorPage";
 import OpenedItemPage from "./pages/OpenedItemPage";
 
+import MainLayout from "./pages/MainLayout";
+
 function App() {
   const isDarkMode = useSelector((state) => state.isDarkMode);
   return (
     <BrowserRouter>
       <div className={`App ${isDarkMode ? "dark" : ""}`}>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Header />
-                <MainPage />
-                <Footer />
-              </>
-            }
-          >
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<HomePage />} />
             <Route path="/:productList" element={<ProductListPage />} />
             <Route path="/:productList/:id" element={<OpenedItemPage />} />
             <Route path="login" element={<Login />} />
