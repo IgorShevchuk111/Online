@@ -4,6 +4,7 @@ import ButtonAddToBasket from "../components/ButtonAddToBasket";
 import AddToFavourites from "../components/AddToFavourites";
 import Stars from "../components/Stars";
 import Breadcrumb from "../components/Breadcrumb";
+import Delivery from "../components/Delivery";
 
 function OpenedItemPage() {
   const openedItem = useSelector((state) => state.openedItem);
@@ -32,6 +33,8 @@ function OpenedItemPage() {
                   <ButtonAddToBasket />
                   <AddToFavourites />
                 </div>
+                <hr />
+                <Delivery />
               </div>
             </div>
           </div>
