@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Breadcrumb from "./Breadcrumb";
 
 function BasketItems() {
   const isDarkMode = useSelector((state) => state.isDarkMode);
@@ -20,6 +21,7 @@ function BasketItems() {
 
   return (
     <div className={isDarkMode ? "dark" : ""}>
+      <Breadcrumb />
       {selectedBasketItems && (
         <div className="container-basket">
           <h5> Your Basket</h5>
