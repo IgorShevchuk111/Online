@@ -59,6 +59,11 @@ const rootReducer = (state = initState, action) => {
         ...state,
         selectedBasketItems: updatedBasketItems,
       };
+    case "ADD_STATE_OPEN_ITEM":
+      return {
+        ...state,
+        openedItem: action.value,
+      };
 
     default:
       return state;
