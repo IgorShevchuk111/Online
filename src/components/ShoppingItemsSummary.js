@@ -28,22 +28,22 @@ function ShoppingItemsSummary() {
           }
         >
           {selectedBasketItems.map((item, index) => (
-            <div key={index} className=" margin-top-20">
-              <div className="flex">
-                <div className="relative">
+            <div key={index} className=" mb-3">
+              <div className="d-flex">
+                <div className="position-relative">
                   <img className="shopping-img" src={item.img} alt="foto" />
                   {item.quantity > 1 && (
-                    <div className="absolute quantity-summary-num">
+                    <div className="position-absolute quantity-summary-num">
                       {item.quantity}
                     </div>
                   )}
                 </div>
                 <div className="width-100">
-                  <div className="justify-between flex">
+                  <div className="justify-content-between d-flex">
                     <div>{item.model}</div>
                     <div>{item.price} £</div>
                   </div>
-                  <div className="justify-between flex">
+                  <div className="justify-content-between d-flex">
                     <small className="margin-top-10">Shipping</small>
                     <small className="margin-top-10">Free</small>
                   </div>
@@ -52,7 +52,7 @@ function ShoppingItemsSummary() {
             </div>
           ))}
           <hr />
-          <div className="flex justify-between">
+          <div className="d-flex justify-content-between">
             <small>Total</small>
             <small>{totalPrice} £</small>
           </div>

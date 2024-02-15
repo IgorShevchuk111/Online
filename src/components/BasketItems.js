@@ -28,21 +28,21 @@ function BasketItems() {
           {selectedBasketItems.map((item, index) => (
             <div
               key={index}
-              className="basket-card flex  justify-between"
+              className="basket-card d-flex  justify-content-between align-items-start"
               style={
                 isDarkMode
                   ? { border: "1px solid white", background: "black" }
                   : {}
               }
             >
-              <div className="flex">
+              <div className="d-flex">
                 <img src={item.img} alt="foto" />
                 <div>
                   <div>{item.model}</div>
                   <div>{item.price} £</div>
                 </div>
               </div>
-              <div className="relative">
+              <div className="relative d-flex">
                 <select
                   className="quantity-items appearance-none outline-none"
                   id="quantity"
