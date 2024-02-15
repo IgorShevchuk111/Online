@@ -12,7 +12,7 @@ function ItemCard({ model, items }) {
   return (
     <Link
       className="itemCard"
-      to={`${items}/${model.model.replace(/\s+/g, "-")}`}
+      to={`${items ? `${items}/` : ""}${model.model.replace(/\s+/g, "-")}`}
     >
       <div
         onClick={() => openItemPage(model)}
