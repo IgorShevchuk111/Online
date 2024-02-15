@@ -35,11 +35,11 @@ function HomePage() {
       <div className="main-page">
         <div style={{ padding: " 20px " }}>
           <div style={{ margin: "0 0 50px 0" }}>
-            <h5 className="text-center">Most wanted</h5>
+            <h5 className="text-center">Most wanted smartphones</h5>
             <GalleryCarousel smartPhones={smartPhones} />
           </div>
           <div>
-            <h5 className="text-center">Most popular</h5>
+            <h5 className="text-center">Most popular laptops</h5>
             <GalleryCarousel laptops={laptops} />
           </div>
         </div>

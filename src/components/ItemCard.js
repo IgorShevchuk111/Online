@@ -1,10 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Stars from "./Stars";
 
-function ItemCard({ model }) {
-  const location = useLocation();
+function ItemCard({ model, items }) {
   const dispatch = useDispatch();
 
   const openItemPage = (model) => {
@@ -13,7 +12,7 @@ function ItemCard({ model }) {
   return (
     <Link
       className="itemCard"
-      to={`${location.pathname}/${model.model.replace(/\s+/g, "-")}`}
+      to={`${items}/${model.model.replace(/\s+/g, "-")}`}
     >
       <div
         onClick={() => openItemPage(model)}
