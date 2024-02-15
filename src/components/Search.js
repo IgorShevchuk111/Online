@@ -8,6 +8,8 @@ function Search({ placeholder, placeholderSearchFor, placeholderTitle }) {
   return (
     <div className="position-relative">
       <input
+        className="search-input"
+        type="text"
         placeholder={
           placeholderSearchFor
             ? `${placeholderSearchFor} ${placeholderTitle}`

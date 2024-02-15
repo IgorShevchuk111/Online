@@ -22,9 +22,8 @@ function HomePage() {
       <div>
         <div className="text-center py-3" style={{ background: "#ABF7ED" }}>
           <span className="small-text">
-            Trade tech you don't want for cash you do.{" "}
+            Trade tech you don't want for cash you do.
           </span>
-          <span className="text-decoration-underline">Get started</span>
         </div>
         <img
           width="100%"
