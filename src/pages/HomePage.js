@@ -22,9 +22,8 @@ function HomePage() {
       <div>
         <div className="text-center py-3" style={{ background: "#ABF7ED" }}>
           <span className="small-text">
-            Trade tech you don't want for cash you do.{" "}
+            Trade tech you don't want for cash you do.
           </span>
-          <span className="text-decoration-underline">Get started</span>
         </div>
         <img
           width="100%"
@@ -35,11 +34,11 @@ function HomePage() {
       <div className="main-page">
         <div style={{ padding: " 20px " }}>
           <div style={{ margin: "0 0 50px 0" }}>
-            <h5 className="text-center">Most wanted</h5>
+            <h5 className="text-center">Most wanted smartphones</h5>
             <GalleryCarousel smartPhones={smartPhones} />
           </div>
           <div>
-            <h5 className="text-center">Most popular</h5>
+            <h5 className="text-center">Most popular laptops</h5>
             <GalleryCarousel laptops={laptops} />
           </div>
         </div>

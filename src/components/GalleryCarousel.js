@@ -58,13 +58,13 @@ const GalleryCarousel = ({ smartPhones, laptops }) => {
         {smartPhones &&
           smartPhones.map((smartPhoneModel, index) => (
             <div key={index}>
-              <ItemCard model={smartPhoneModel} />
+              <ItemCard model={smartPhoneModel} items={"smartPhones"} />
             </div>
           ))}
         {laptops &&
           laptops.map((laptopModel, index) => (
             <div key={index}>
-              <ItemCard model={laptopModel} />
+              <ItemCard model={laptopModel} items={"laptops"} />
             </div>
           ))}
       </Slider>

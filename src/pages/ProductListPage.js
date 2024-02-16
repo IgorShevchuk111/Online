@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from "react";
 import ItemCard from "../components/ItemCard";
 import { data } from "../data";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import RangeSlider from "../components/RangeSlider";
 import MenuSearchComponent from "../components/MenuSearchComponent";
 import SortByDropdown from "../components/SortByDropdown";
 import Breadcrumb from "../components/Breadcrumb";
+import { useLocation } from "react-router";
 
 function ProductListPage() {
+  const location = useLocation();
+  const dispatch = useDispatch();
   const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
   const [selectedMenu, setSelectedMenu] = useState([]);
+
+  useEffect(() => {
+    const pathWithoutSlash = location.pathname.split("/").pop();
+    if (pathWithoutSlash && pathWithoutSlash !== "") {
+      dispatch({
+        type: "ADD_STATE_SELECTED_MENU",
+        value: pathWithoutSlash,
+      });
+    }
+  }, [dispatch, location.pathname]);
 
   useEffect(() => {
     const newSelectedMenu = Object.keys(data)

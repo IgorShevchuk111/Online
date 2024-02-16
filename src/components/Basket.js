@@ -51,9 +51,9 @@ function Basket() {
             </div>
           ) : (
             <div className="min-height-100vh">
-              <h5 className="text-center margin-top-20">
+              <h1 className="text-center mt-5">
                 There's nothing in your Basket
-              </h5>
+              </h1>
             </div>
           )}
         </div>
