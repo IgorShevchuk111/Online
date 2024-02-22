@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from "react";
-import ItemCard from "../components/ItemCard";
-import { data } from "../data";
+import "./ProductPage.css";
+import { data } from "../../data";
 import { useSelector, useDispatch } from "react-redux";
-import RangeSlider from "../components/RangeSlider";
-import MenuSearchComponent from "../components/MenuSearchComponent";
-import SortByDropdown from "../components/SortByDropdown";
-import Breadcrumb from "../components/Breadcrumb";
+import SortByDropdown from "../../components/SortByDropdown";
+import Breadcrumb from "../../components/Breadcrumb";
 import { useLocation } from "react-router";
+import Sidebar from "./Sidebar/Sidebar";
+import Products from "./Products/Products";
 
-function ProductListPage() {
+function ProductPage() {
   const location = useLocation();
   const dispatch = useDispatch();
   const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
   const [selectedMenu, setSelectedMenu] = useState([]);
+
+  const uniqueBrands = [
+    ...new Set(selectedMenu.map((item) => item.brand)),
+  ].filter((brand) => brand.trim());
+  const uniqueModel = [
+    ...new Set(selectedMenu.map((item) => item.model)),
+  ].filter((model) => model.trim());
+  const uniqueColor = [
+    ...new Set(selectedMenu.flatMap((item) => item.color)),
+  ].filter((color) => color.trim());
 
   useEffect(() => {
     const pathWithoutSlash = location.pathname.split("/").pop();
@@ -31,12 +41,12 @@ function ProductListPage() {
       .flat();
     setSelectedMenu(newSelectedMenu);
   }, [selectedMenuItem]);
-
+  console.log(uniqueBrands);
   return (
     <>
       <Breadcrumb />
       <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
-        <div
+        <section
           className="container rounded py-3 mb-5"
           style={{ background: "var(--bg-primary)" }}
         >
@@ -117,8 +127,8 @@ function ProductListPage() {
               <span>1-year minimum warranty</span>
             </li>
           </ul>
-        </div>
-        <div className="my-5 d-flex align-items-center">
+        </section>
+        <section className="my-5 d-flex align-items-center">
           <div>
             <h3 className="font-weit-bold">Used Smartphones</h3>
             <div style={{ fontSize: "0.9rem" }}>
@@ -129,37 +139,18 @@ function ProductListPage() {
             </div>
           </div>
           <SortByDropdown />
-        </div>
-        <div className="items-container">
-          <div className="container-search">
-            <div>
-              <h6>Price</h6>
-              <RangeSlider />
-            </div>
-            <MenuSearchComponent
-              brands={[...new Set(selectedMenu.map((brand) => brand.brand))]}
-              title={"Brand"}
-            />
-            <MenuSearchComponent
-              models={[...new Set(selectedMenu.map((model) => model.model))]}
-              title={"Model"}
-            />
-            <MenuSearchComponent
-              colors={[...new Set(selectedMenu.flatMap((item) => item.color))]}
-              title={"Color"}
-            />
-          </div>
-          <div className="items-wraper">
-            {selectedMenu.map((model, i) => (
-              <div key={i} className="flex-item">
-                <ItemCard model={model} />
-              </div>
-            ))}
-          </div>
+        </section>
+        <div className="sidebar-products-container">
+          <Sidebar
+            uniqueBrands={uniqueBrands}
+            uniqueModel={uniqueModel}
+            uniqueColor={uniqueColor}
+          />
+          <Products selectedMenu={selectedMenu} />
         </div>
       </div>
     </>
   );
 }
 
-export default ProductListPage;
+export default ProductPage;

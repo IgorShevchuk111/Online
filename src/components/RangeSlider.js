@@ -23,7 +23,7 @@ function RangeSlider() {
         }}
         ruler={false}
       />
-      <div className="flex justify-between">
+      <div className="d-flex justify-content-between">
         <p>min: {minValue}</p>
         <p>max: {maxValue}</p>
       </div>
