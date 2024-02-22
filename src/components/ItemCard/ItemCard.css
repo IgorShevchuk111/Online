@@ -1,0 +1,17 @@
+.itemCardContainer{
+    width: 100%;
+    background: white;
+    border-radius: 15px;
+    padding: 20px 24px
+}
+.itemCardContainer:hover {
+    box-shadow: 0 0 10px 5px #e0e0e0;
+  }
+  .itemCardImg img {
+    width: 100%;
+    transition: box-shadow 0.3s ease-in-out; 
+  }
+  .itemCardImg {
+    text-align: center;
+    margin-bottom: 10px;
+  }

@@ -140,14 +140,14 @@ function ProductPage() {
           </div>
           <SortByDropdown />
         </section>
-        <div className="sidebar-products-container">
+        <section className="sidebar-products-container">
           <Sidebar
             uniqueBrands={uniqueBrands}
             uniqueModel={uniqueModel}
             uniqueColor={uniqueColor}
           />
           <Products selectedMenu={selectedMenu} />
-        </div>
+        </section>
       </div>
     </>
   );

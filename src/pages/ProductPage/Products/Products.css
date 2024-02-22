@@ -1,17 +1,6 @@
 .products-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    height: max-content;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-auto-rows: minmax(0, max-content);
+    gap: 20px;
   } 
-  .flex-item{
-    display: flex;
-    justify-content: center;
-    flex: 0 0 calc(33.33% - 10px); 
-    margin: 20px 5px;
-    box-sizing: border-box; 
-  }
-  .flex-item img {
-    width: 100%;
-    height: auto;
-  }
