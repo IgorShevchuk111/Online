@@ -4,14 +4,14 @@ import Brand from "./Brand/Brand";
 import Model from "./Model/Model";
 import Color from "./Color/Color";
 
-function Sidebar({ uniqueBrands, uniqueModel, uniqueColor }) {
+function Sidebar() {
   return (
     <>
       <div>
         <Price />
-        <Brand uniqueBrands={uniqueBrands} />
-        <Model uniqueModel={uniqueModel} />
-        <Color uniqueColor={uniqueColor} />
+        <Brand />
+        <Model />
+        <Color />
       </div>
     </>
   );

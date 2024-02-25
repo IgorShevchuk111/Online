@@ -1,8 +1,16 @@
 import React from "react";
 import "./Model.css";
 import { CiSearch } from "react-icons/ci";
+import { useSelector } from "react-redux";
 
-function Model({ uniqueModel }) {
+function Model() {
+  const selectedMenuCategory = useSelector(
+    (state) => state.selectedMenuCategory
+  );
+
+  const uniqueModel = [
+    ...new Set(selectedMenuCategory?.map((item) => item.model)),
+  ].filter((model) => model.trim());
   return (
     <>
       <div className="model-container">

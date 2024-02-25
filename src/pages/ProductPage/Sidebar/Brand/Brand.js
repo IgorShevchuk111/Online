@@ -1,8 +1,23 @@
 import React from "react";
 import "./Brand.css";
 import { CiSearch } from "react-icons/ci";
+import { useDispatch, useSelector } from "react-redux";
+import { addBrand } from "../../actions/actions";
+import { data } from ".././../../../data";
 
-function Brand({ uniqueBrands }) {
+function Brand() {
+  const dispatch = useDispatch();
+  const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
+
+  const handleBrandClick = (brand) => {
+    if (brand) {
+      dispatch(addBrand(brand));
+    }
+  };
+  const uniqueBrands = [
+    ...new Set(data[selectedMenuItem]?.models.map((item) => item.brand)),
+  ].filter((brand) => brand.trim());
+
   return (
     <>
       <div className="brand-container">
@@ -20,7 +35,11 @@ function Brand({ uniqueBrands }) {
           {uniqueBrands.map((brand, index) => (
             <div key={index}>
               <label className="brand-input">
-                <input type="checkbox"></input>
+                <input
+                  type="checkbox"
+                  value={brand}
+                  onChange={(e) => handleBrandClick(e.target.value)}
+                ></input>
                 <span className="checkmark"></span>
                 {brand}
               </label>

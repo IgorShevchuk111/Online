@@ -1,47 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./ProductPage.css";
-import { data } from "../../data";
-import { useSelector, useDispatch } from "react-redux";
 import SortByDropdown from "../../components/SortByDropdown";
 import Breadcrumb from "../../components/Breadcrumb";
-import { useLocation } from "react-router";
 import Sidebar from "./Sidebar/Sidebar";
 import Products from "./Products/Products";
 
 function ProductPage() {
-  const location = useLocation();
-  const dispatch = useDispatch();
-  const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
-  const [selectedMenu, setSelectedMenu] = useState([]);
-
-  const uniqueBrands = [
-    ...new Set(selectedMenu.map((item) => item.brand)),
-  ].filter((brand) => brand.trim());
-  const uniqueModel = [
-    ...new Set(selectedMenu.map((item) => item.model)),
-  ].filter((model) => model.trim());
-  const uniqueColor = [
-    ...new Set(selectedMenu.flatMap((item) => item.color)),
-  ].filter((color) => color.trim());
-
-  useEffect(() => {
-    const pathWithoutSlash = location.pathname.split("/").pop();
-    if (pathWithoutSlash && pathWithoutSlash !== "") {
-      dispatch({
-        type: "ADD_STATE_SELECTED_MENU",
-        value: pathWithoutSlash,
-      });
-    }
-  }, [dispatch, location.pathname]);
-
-  useEffect(() => {
-    const newSelectedMenu = Object.keys(data)
-      .filter((key) => key === selectedMenuItem)
-      .map((key) => data[key].models)
-      .flat();
-    setSelectedMenu(newSelectedMenu);
-  }, [selectedMenuItem]);
-  console.log(uniqueBrands);
   return (
     <>
       <Breadcrumb />
@@ -141,12 +105,8 @@ function ProductPage() {
           <SortByDropdown />
         </section>
         <section className="sidebar-products-container">
-          <Sidebar
-            uniqueBrands={uniqueBrands}
-            uniqueModel={uniqueModel}
-            uniqueColor={uniqueColor}
-          />
-          <Products selectedMenu={selectedMenu} />
+          <Sidebar />
+          <Products />
         </section>
       </div>
     </>

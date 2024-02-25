@@ -1,8 +1,15 @@
 import React from "react";
 import "./Color.css";
 import { CiSearch } from "react-icons/ci";
+import { useSelector } from "react-redux";
 
-function Color({ uniqueColor }) {
+function Color() {
+  const selectedMenuCategory = useSelector(
+    (state) => state.selectedMenuCategory
+  );
+  const uniqueColor = [
+    ...new Set(selectedMenuCategory?.flatMap((item) => item.color)),
+  ].filter((color) => color.trim());
   return (
     <>
       <div className="color-container">

@@ -16,7 +16,12 @@ function Menu({ screenSize }) {
   }, [dispatch, menuVisible]);
 
   const toggleSelectedMenuItem = (item) => {
+    dispatch({
+      type: "ADD_STATE_SELECTED_MENU",
+      value: item,
+    });
     setSelectedMenuItem(item);
+
     toggleMenu();
   };
   useEffect(() => {
