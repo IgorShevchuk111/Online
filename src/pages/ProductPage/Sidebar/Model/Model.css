@@ -1,0 +1,53 @@
+.model-container{
+    position: relative;
+    margin-top: 8px;
+}
+.model-container::after{
+    background-image: linear-gradient(180deg,hsla(0,0%,98%,0),#f9f9f9);
+    bottom: -1px;
+    content: "";
+    height: 25px;
+    left: 0;
+    position: absolute;
+    right: 20px;
+    }
+.model-search-input input {
+    outline: 1px solid var(--primary-color);
+}
+.model-search-input {
+    position: relative;
+}
+.model-search-input svg {
+    position: absolute;
+    top: 9px;
+    right: 14px;
+    font-size: 18px;
+}
+.model-input {
+    position: relative;
+  padding-left: 40px;
+}
+.model-input input {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+  }
+  .model-input input:checked ~ .checkmark{
+    background: red;
+  }
+  .checkmark{
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+  }
+  .list-models{
+    overflow-y: auto;
+    max-height: 230px;
+    padding: 0;
+    }
+    .list-models div:last-child {
+    margin-bottom: 15px;
+    }

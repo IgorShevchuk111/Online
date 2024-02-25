@@ -1,42 +1,16 @@
-import React, { useEffect, useState } from "react";
-import ItemCard from "../components/ItemCard";
-import { data } from "../data";
-import { useSelector, useDispatch } from "react-redux";
-import RangeSlider from "../components/RangeSlider";
-import MenuSearchComponent from "../components/MenuSearchComponent";
-import SortByDropdown from "../components/SortByDropdown";
-import Breadcrumb from "../components/Breadcrumb";
-import { useLocation } from "react-router";
+import React from "react";
+import "./ProductPage.css";
+import SortByDropdown from "../../components/SortByDropdown";
+import Breadcrumb from "../../components/Breadcrumb";
+import Sidebar from "./Sidebar/Sidebar";
+import Products from "./Products/Products";
 
-function ProductListPage() {
-  const location = useLocation();
-  const dispatch = useDispatch();
-  const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
-  const [selectedMenu, setSelectedMenu] = useState([]);
-
-  useEffect(() => {
-    const pathWithoutSlash = location.pathname.split("/").pop();
-    if (pathWithoutSlash && pathWithoutSlash !== "") {
-      dispatch({
-        type: "ADD_STATE_SELECTED_MENU",
-        value: pathWithoutSlash,
-      });
-    }
-  }, [dispatch, location.pathname]);
-
-  useEffect(() => {
-    const newSelectedMenu = Object.keys(data)
-      .filter((key) => key === selectedMenuItem)
-      .map((key) => data[key].models)
-      .flat();
-    setSelectedMenu(newSelectedMenu);
-  }, [selectedMenuItem]);
-
+function ProductPage() {
   return (
     <>
       <Breadcrumb />
       <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
-        <div
+        <section
           className="container rounded py-3 mb-5"
           style={{ background: "var(--bg-primary)" }}
         >
@@ -117,8 +91,8 @@ function ProductListPage() {
               <span>1-year minimum warranty</span>
             </li>
           </ul>
-        </div>
-        <div className="my-5 d-flex align-items-center">
+        </section>
+        <section className="my-5 d-flex align-items-center">
           <div>
             <h3 className="font-weit-bold">Used Smartphones</h3>
             <div style={{ fontSize: "0.9rem" }}>
@@ -129,37 +103,14 @@ function ProductListPage() {
             </div>
           </div>
           <SortByDropdown />
-        </div>
-        <div className="items-container">
-          <div className="container-search">
-            <div>
-              <h6>Price</h6>
-              <RangeSlider />
-            </div>
-            <MenuSearchComponent
-              brands={[...new Set(selectedMenu.map((brand) => brand.brand))]}
-              title={"Brand"}
-            />
-            <MenuSearchComponent
-              models={[...new Set(selectedMenu.map((model) => model.model))]}
-              title={"Model"}
-            />
-            <MenuSearchComponent
-              colors={[...new Set(selectedMenu.flatMap((item) => item.color))]}
-              title={"Color"}
-            />
-          </div>
-          <div className="items-wraper">
-            {selectedMenu.map((model, i) => (
-              <div key={i} className="flex-item">
-                <ItemCard model={model} />
-              </div>
-            ))}
-          </div>
-        </div>
+        </section>
+        <section className="sidebar-products-container">
+          <Sidebar />
+          <Products />
+        </section>
       </div>
     </>
   );
 }
 
-export default ProductListPage;
+export default ProductPage;

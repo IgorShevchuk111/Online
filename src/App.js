@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Bascket from "./components/Basket";
-import ProductListPage from "./pages/ProductListPage";
+import ProductPage from "./pages/ProductPage/ProductPage";
 import Login from "./pages/LoginPage";
 import ErrorPage from "./components/ErrorPage";
 import OpenedItemPage from "./pages/OpenedItemPage";
@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route path="/:productList" element={<ProductListPage />} />
+            <Route path="/:productList" element={<ProductPage />} />
             <Route path="/:productList/:id" element={<OpenedItemPage />} />
             <Route path="login" element={<Login />} />
           </Route>

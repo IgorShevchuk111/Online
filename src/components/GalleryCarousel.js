@@ -8,7 +8,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import ItemCard from "./ItemCard";
+import ItemCard from "./ItemCard/ItemCard";
 
 const GalleryCarousel = ({ smartPhones, laptops }) => {
   const PrevArrow = ({ onClick }) => (

@@ -1,9 +1,22 @@
 const initState = {
   selectedBasketItems: [],
+  brands: [],
+  selectedMenuCategory: [],
+  selectedMenuItem: "",
 };
 
 const rootReducer = (state = initState, action) => {
   switch (action.type) {
+    case "FILTRED_DATA":
+      return {
+        ...state,
+        selectedMenuCategory: action.payload,
+      };
+    case "ADD_BRAND":
+      return {
+        ...state,
+        brands: action.payload,
+      };
     case "ADD_STATE_MENU_VISIBLE":
       return {
         ...state,
