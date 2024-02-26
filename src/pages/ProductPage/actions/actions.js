@@ -4,10 +4,14 @@ export const addBrand = (brand) => {
   return (dispatch, getState) => {
     const state = getState();
     const brandExists = state.brands.includes(brand);
-    const updatedBrands = brandExists
-      ? state.brands.filter((existingBrand) => existingBrand !== brand)
-      : [...state.brands, brand];
-
+    let updatedBrands;
+    if (brand === "") {
+      updatedBrands = [];
+    } else {
+      updatedBrands = brandExists
+        ? state.brands.filter((existingBrand) => existingBrand !== brand)
+        : [...state.brands, brand];
+    }
     dispatch({
       type: "ADD_BRAND",
       payload: updatedBrands,

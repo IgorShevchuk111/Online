@@ -10,9 +10,19 @@ function Brand() {
   const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
 
   const handleBrandClick = (brand) => {
-    if (brand) {
-      dispatch(addBrand(brand));
+    const checkboxes = document.querySelectorAll(
+      '.brand-input input[type="checkbox"]'
+    );
+    if (brand === "") {
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+    } else {
+      if (checkboxes[0].checked && brand !== "") {
+        checkboxes[0].checked = false;
+      }
     }
+    dispatch(addBrand(brand));
   };
   const uniqueBrands = [
     ...new Set(data[selectedMenuItem]?.models.map((item) => item.brand)),
@@ -28,7 +38,12 @@ function Brand() {
         </div>
         <div className="list-brands">
           <label className="brand-input mt-3">
-            <input type="checkbox"></input>
+            <input
+              type="checkbox"
+              value=""
+              checked={true}
+              onChange={(e) => handleBrandClick(e.target.value)}
+            ></input>
             <span className="checkmark"></span>
             All
           </label>
