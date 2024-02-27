@@ -5,13 +5,7 @@ import { useSelector } from "react-redux";
 import { FiCheck } from "react-icons/fi";
 
 function Model() {
-  const selectedMenuCategory = useSelector(
-    (state) => state.selectedMenuCategory
-  );
-
-  const uniqueModel = [
-    ...new Set(selectedMenuCategory?.map((item) => item.model)),
-  ].filter((model) => model.trim());
+  const modelsArray = useSelector((state) => state.productModels);
   return (
     <>
       <div className="model-container">
@@ -27,14 +21,13 @@ function Model() {
             <FiCheck className="model-checked" />
             All
           </label>
-          {uniqueModel.map((model, index) => (
+          {modelsArray?.map(({ name }, index) => (
             <div key={index}>
               <label className="model-input">
                 <input type="checkbox"></input>
                 <span className="model-checkmark"></span>
                 <FiCheck className="model-checked" />
-
-                {model}
+                {name}
               </label>
             </div>
           ))}

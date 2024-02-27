@@ -3,10 +3,16 @@ const initState = {
   brands: [],
   selectedMenuCategory: [],
   selectedMenuItem: "",
+  productModels: [],
 };
 
 const rootReducer = (state = initState, action) => {
   switch (action.type) {
+    case "UPDATE_PRODUCT_MODELS":
+      return {
+        ...state,
+        productModels: action.payload,
+      };
     case "FILTRED_DATA":
       return {
         ...state,

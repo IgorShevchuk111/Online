@@ -17,6 +17,7 @@ function Brand() {
     if (brand === "") {
       checkboxes.forEach((checkbox) => {
         checkbox.checked = false;
+        checkboxes[0].checked = true;
       });
     } else {
       if (checkboxes[0].checked && brand !== "") {
@@ -42,7 +43,7 @@ function Brand() {
             <input
               type="checkbox"
               value=""
-              checked={true}
+              // checked={true}
               onChange={(e) => handleBrandClick(e.target.value)}
             ></input>
             <span className="brand-checkmark"></span>

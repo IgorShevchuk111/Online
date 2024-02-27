@@ -37,3 +37,13 @@ export const filteredData = (brands) => {
     });
   };
 };
+
+export const addProductModels = () => {
+  return (dispatch, getState) => {
+    const { selectedMenuCategory } = getState();
+    const models = selectedMenuCategory?.map(({ model }, index) => {
+      return { name: model, checked: false, key: index };
+    });
+    dispatch({ type: "UPDATE_PRODUCT_MODELS", payload: models });
+  };
+};
