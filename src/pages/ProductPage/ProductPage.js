@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ProductPage.css";
 import SortByDropdown from "../../components/SortByDropdown";
 import Breadcrumb from "../../components/Breadcrumb";
 import Sidebar from "./Sidebar/Sidebar";
 import Products from "./Products/Products";
+import { addProductModels } from "./actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { filteredData } from "./actions/actions";
+import { useLocation } from "react-router";
 
 function ProductPage() {
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  const selectedMenuCategory = useSelector(
+    (state) => state.selectedMenuCategory
+  );
+  const brands = useSelector((state) => state.brands);
+  const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
+
+  useEffect(() => {
+    dispatch(addProductModels());
+  }, [selectedMenuCategory, dispatch]);
+
+  useEffect(() => {
+    dispatch(filteredData(brands));
+  }, [brands, selectedMenuItem, dispatch]);
+
+  useEffect(() => {
+    const pathWithoutSlash = location.pathname.split("/").pop();
+    if (pathWithoutSlash && pathWithoutSlash !== "") {
+      dispatch({
+        type: "ADD_STATE_SELECTED_MENU",
+        value: pathWithoutSlash,
+      });
+    }
+  }, [dispatch, location.pathname]);
+
   return (
     <>
       <Breadcrumb />

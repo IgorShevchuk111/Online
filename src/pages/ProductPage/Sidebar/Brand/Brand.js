@@ -4,15 +4,27 @@ import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { addBrand } from "../../actions/actions";
 import { data } from ".././../../../data";
+import { FiCheck } from "react-icons/fi";
 
 function Brand() {
   const dispatch = useDispatch();
   const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
 
   const handleBrandClick = (brand) => {
-    if (brand) {
-      dispatch(addBrand(brand));
+    const checkboxes = document.querySelectorAll(
+      '.brand-input input[type="checkbox"]'
+    );
+    if (brand === "") {
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = false;
+        checkboxes[0].checked = true;
+      });
+    } else {
+      if (checkboxes[0].checked && brand !== "") {
+        checkboxes[0].checked = false;
+      }
     }
+    dispatch(addBrand(brand));
   };
   const uniqueBrands = [
     ...new Set(data[selectedMenuItem]?.models.map((item) => item.brand)),
@@ -28,8 +40,14 @@ function Brand() {
         </div>
         <div className="list-brands">
           <label className="brand-input mt-3">
-            <input type="checkbox"></input>
-            <span className="checkmark"></span>
+            <input
+              type="checkbox"
+              value=""
+              // checked={true}
+              onChange={(e) => handleBrandClick(e.target.value)}
+            ></input>
+            <span className="brand-checkmark"></span>
+            <FiCheck className="brand-checked" />
             All
           </label>
           {uniqueBrands.map((brand, index) => (
@@ -40,7 +58,8 @@ function Brand() {
                   value={brand}
                   onChange={(e) => handleBrandClick(e.target.value)}
                 ></input>
-                <span className="checkmark"></span>
+                <span className="brand-checkmark"></span>
+                <FiCheck className="brand-checked" />
                 {brand}
               </label>
             </div>
