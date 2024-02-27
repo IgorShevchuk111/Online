@@ -2,6 +2,7 @@ import React from "react";
 import "./Color.css";
 import { CiSearch } from "react-icons/ci";
 import { useSelector } from "react-redux";
+import { FiCheck } from "react-icons/fi";
 
 function Color() {
   const selectedMenuCategory = useSelector(
@@ -21,14 +22,15 @@ function Color() {
         <div className="list-colors">
           <label className="color-input mt-3">
             <input type="checkbox"></input>
-            <span className="checkmark"></span>
-            All
+            <span className="color-checkmark"></span>
+            <FiCheck className="color-checked" /> All
           </label>
           {uniqueColor.map((color, index) => (
             <div key={index}>
               <label className="color-input">
                 <input type="checkbox"></input>
-                <span className="checkmark"></span>
+                <span className="color-checkmark"></span>
+                <FiCheck className="color-checked" />
                 {color}
               </label>
             </div>

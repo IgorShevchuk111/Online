@@ -32,14 +32,23 @@
     cursor: pointer;
     position: absolute;
   }
-  .color-input input:checked ~ .checkmark{
-    background: red;
+  
+  .color-checked{
+    display: none;
   }
-  .checkmark{
+  .color-input input:checked ~ .color-checked{
+    display: inline;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    font-size: 19px;
+    color: var(--primary-color);
+  }
+  .color-checkmark{
     width: 25px;
     height: 25px;
     border: 1px solid #ccc;
-    border-radius: 50%;
+    border-radius: 30%;
     position: absolute;
     left: 0;
   }

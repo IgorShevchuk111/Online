@@ -32,14 +32,22 @@
     cursor: pointer;
     position: absolute;
   }
-  .model-input input:checked ~ .checkmark{
-    background: red;
+  .model-checked{
+    display: none;
   }
-  .checkmark{
+  .model-input input:checked ~ .model-checked{
+    display: inline;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    font-size: 19px;
+    color: var(--primary-color);
+  }
+  .model-checkmark{
     width: 25px;
     height: 25px;
     border: 1px solid #ccc;
-    border-radius: 50%;
+    border-radius: 30%;
     position: absolute;
     left: 0;
   }

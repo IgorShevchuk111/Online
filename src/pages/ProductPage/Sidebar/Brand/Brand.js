@@ -4,6 +4,7 @@ import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { addBrand } from "../../actions/actions";
 import { data } from ".././../../../data";
+import { FiCheck } from "react-icons/fi";
 
 function Brand() {
   const dispatch = useDispatch();
@@ -44,7 +45,8 @@ function Brand() {
               checked={true}
               onChange={(e) => handleBrandClick(e.target.value)}
             ></input>
-            <span className="checkmark"></span>
+            <span className="brand-checkmark"></span>
+            <FiCheck className="brand-checked" />
             All
           </label>
           {uniqueBrands.map((brand, index) => (
@@ -55,7 +57,8 @@ function Brand() {
                   value={brand}
                   onChange={(e) => handleBrandClick(e.target.value)}
                 ></input>
-                <span className="checkmark"></span>
+                <span className="brand-checkmark"></span>
+                <FiCheck className="brand-checked" />
                 {brand}
               </label>
             </div>

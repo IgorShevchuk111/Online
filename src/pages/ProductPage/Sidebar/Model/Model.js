@@ -2,6 +2,7 @@ import React from "react";
 import "./Model.css";
 import { CiSearch } from "react-icons/ci";
 import { useSelector } from "react-redux";
+import { FiCheck } from "react-icons/fi";
 
 function Model() {
   const selectedMenuCategory = useSelector(
@@ -22,14 +23,17 @@ function Model() {
         <div className="list-models">
           <label className="model-input mt-3">
             <input type="checkbox"></input>
-            <span className="checkmark"></span>
+            <span className="model-checkmark"></span>
+            <FiCheck className="model-checked" />
             All
           </label>
           {uniqueModel.map((model, index) => (
             <div key={index}>
               <label className="model-input">
                 <input type="checkbox"></input>
-                <span className="checkmark"></span>
+                <span className="model-checkmark"></span>
+                <FiCheck className="model-checked" />
+
                 {model}
               </label>
             </div>
