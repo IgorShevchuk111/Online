@@ -1,27 +1,21 @@
 const initState = {
   selectedBasketItems: [],
-  brands: [],
-  selectedMenuCategory: [],
+  filteredItems: [],
   selectedMenuItem: "",
-  productModels: [],
+  uniqueBrandsArray: [],
 };
 
 const rootReducer = (state = initState, action) => {
   switch (action.type) {
-    case "UPDATE_PRODUCT_MODELS":
+    case "UNIQUE_BRANDS_ARRAY":
       return {
         ...state,
-        productModels: action.payload,
+        uniqueBrandsArray: action.payload,
       };
     case "FILTRED_DATA":
       return {
         ...state,
-        selectedMenuCategory: action.payload,
-      };
-    case "ADD_BRAND":
-      return {
-        ...state,
-        brands: action.payload,
+        filteredItems: action.payload,
       };
     case "ADD_STATE_MENU_VISIBLE":
       return {

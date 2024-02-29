@@ -1,49 +1,44 @@
 import { data } from "../../../data";
 
-export const addBrand = (brand) => {
+export const createUniqueBrandsArray = (brand, updatedBrands) => {
   return (dispatch, getState) => {
-    const state = getState();
-    const brandExists = state.brands.includes(brand);
-    let updatedBrands;
-    if (brand === "") {
-      updatedBrands = [];
-    } else {
-      updatedBrands = brandExists
-        ? state.brands.filter((existingBrand) => existingBrand !== brand)
-        : [...state.brands, brand];
-    }
-    dispatch({
-      type: "ADD_BRAND",
-      payload: updatedBrands,
+    const { selectedMenuItem, uniqueBrandsArray } = getState();
+    const uniqueBrandss = {};
+    let uniqueBrands;
+    data[selectedMenuItem]?.models.forEach((element) => {
+      uniqueBrandss[element.brand] = { brand: element.brand, checked: false };
     });
+    uniqueBrands = Object.values(uniqueBrandss);
+    if (brand) {
+      uniqueBrands = uniqueBrandsArray.map((item) =>
+        item.brand === brand ? { ...item, checked: !item.checked } : item
+      );
+    } else if (updatedBrands) {
+      uniqueBrands = uniqueBrandsArray.map((item, index) => {
+        return {
+          ...item,
+          checked: updatedBrands[index].checked,
+        };
+      });
+    }
+    dispatch({ type: "UNIQUE_BRANDS_ARRAY", payload: uniqueBrands });
   };
 };
 
-export const filteredData = (brands) => {
+export const filteredData = () => {
   return (dispatch, getState) => {
     const { selectedMenuItem } = getState();
+    const { uniqueBrandsArray } = getState();
+    let filteredResult = data[selectedMenuItem]?.models;
 
-    let filteredResult;
-    if (brands.length > 0) {
-      filteredResult = data[selectedMenuItem]?.models.filter((item) =>
-        brands.includes(item.brand)
-      );
-    } else {
-      filteredResult = data[selectedMenuItem]?.models;
-    }
+    const checkedBrands = uniqueBrandsArray?.filter((item) => item.checked);
+    filteredResult = data[selectedMenuItem]?.models.filter((item) =>
+      checkedBrands.some((checkedBrand) => checkedBrand.brand === item.brand)
+    );
+
     dispatch({
       type: "FILTRED_DATA",
       payload: filteredResult,
     });
-  };
-};
-
-export const addProductModels = () => {
-  return (dispatch, getState) => {
-    const { selectedMenuCategory } = getState();
-    const models = selectedMenuCategory?.map(({ model }, index) => {
-      return { name: model, checked: false, key: index };
-    });
-    dispatch({ type: "UPDATE_PRODUCT_MODELS", payload: models });
   };
 };
