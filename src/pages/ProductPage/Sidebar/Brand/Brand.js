@@ -35,8 +35,6 @@ function Brand() {
             <input
               type="checkbox"
               value=""
-              // checked={true}
-              // onChange={(e) => handleBrandClick(e)}
               onChange={handleSelectAll}
               ref={selectAllRef}
             ></input>
@@ -51,7 +49,7 @@ function Brand() {
                   type="checkbox"
                   value={brand}
                   checked={uniqueBrandsArray[index].checked}
-                  onChange={(e) => handleBrandClick(brand)}
+                  onChange={() => handleBrandClick(brand)}
                 ></input>
                 <span className="brand-checkmark"></span>
                 <FiCheck className="brand-checked" />

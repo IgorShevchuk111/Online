@@ -8,24 +8,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { filteredData } from "./actions/actions";
 import { createUniqueBrandsArray } from "./actions/actions";
 import { useLocation } from "react-router";
-import { data } from "../../data";
-import { fetchData } from "./actions/actions";
 
 function ProductPage() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const brands = useSelector((state) => state.brands);
   const uniqueBrandsArray = useSelector((state) => state.uniqueBrandsArray);
-  const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
-  const selectedModels = useSelector((state) => state.selectedModels);
+  const data = useSelector((state) => state.data);
 
   useEffect(() => {
     dispatch(createUniqueBrandsArray());
-  }, [selectedMenuItem, dispatch]);
+  }, [data, dispatch]);
 
   useEffect(() => {
-    dispatch(filteredData(data));
-  }, [uniqueBrandsArray, dispatch, selectedMenuItem, brands, selectedModels]);
+    dispatch(filteredData());
+  }, [uniqueBrandsArray, dispatch]);
 
   useEffect(() => {
     const pathWithoutSlash = location.pathname.split("/").pop();
@@ -36,10 +32,6 @@ function ProductPage() {
       });
     }
   }, [location.pathname, dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
 
   return (
     <>

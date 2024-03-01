@@ -6,10 +6,16 @@ const initState = {
   smartPhones: [],
   laptops: [],
   data: [],
+  menuVisible: false,
 };
 
 const rootReducer = (state = initState, action) => {
   switch (action.type) {
+    case "DATA":
+      return {
+        ...state,
+        data: action.payload,
+      };
     case "SMARTPHONES_DATA":
       return {
         ...state,
@@ -20,11 +26,7 @@ const rootReducer = (state = initState, action) => {
         ...state,
         laptops: action.payload,
       };
-    case "DATA":
-      return {
-        ...state,
-        data: action.payload,
-      };
+
     case "UNIQUE_BRANDS_ARRAY":
       return {
         ...state,

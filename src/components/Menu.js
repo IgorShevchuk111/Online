@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { data } from "../data";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 function Menu({ screenSize }) {
   const isDarkMode = useSelector((state) => state.isDarkMode);
   const [menuVisible, setMenuVisible] = useState(false);
-  const [selectedMenuItem, setSelectedMenuItem] = useState(null);
-  // const brands = useSelector((state) => state.brands);
-
+  const data = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
   const toggleMenu = useCallback(() => {
@@ -22,18 +19,9 @@ function Menu({ screenSize }) {
       type: "ADD_STATE_SELECTED_MENU",
       value: item,
     });
-    setSelectedMenuItem(item);
 
     toggleMenu();
   };
-  useEffect(() => {
-    if (selectedMenuItem !== null) {
-      dispatch({
-        type: "ADD_STATE_SELECTED_MENU",
-        value: selectedMenuItem,
-      });
-    }
-  }, [selectedMenuItem, dispatch]);
   // Click outside x to close menu
   const containerRef = useRef();
   const handleBlur = useCallback(() => {
@@ -79,7 +67,7 @@ function Menu({ screenSize }) {
               className={`menu-items-container `}
               style={{ width: screenSize }}
             >
-              {Object.keys(data).map((key, i) => (
+              {Object.keys(data)?.map((key, i) => (
                 <Link
                   to={`/${key}`}
                   className={`link ${isDarkMode ? "dark" : ""}`}

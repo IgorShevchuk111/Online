@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import GalleryCarousel from "../components/GalleryCarousel";
-import { data } from "../data";
+import { useSelector } from "react-redux";
 
 function HomePage() {
-  const smartPhones = data.smartPhones.models;
-  const laptops = data.laptops.models;
+  const smartPhones = useSelector((state) => state.smartPhones);
+  const laptops = useSelector((state) => state.laptops);
   const imageUrls = [
     "https://images.ctfassets.net/mmeshd7gafk1/7KNLXyQymHYYkmyLiDbbwN/b4a2d7a9ddb37e38b45d11fd9a070f0a/TRADEIN_HP_GENERICBANNERS_DESKTOP_1_UK.jpg",
     "https://images.ctfassets.net/mmeshd7gafk1/1mklc1XS5bIPxK0yRUSWlC/38ddeaf73378f38400bfda50f76d3760/HP_Desktop.jpg",

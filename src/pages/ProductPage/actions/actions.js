@@ -1,15 +1,20 @@
-import { data } from "../../../data";
 import axios from "axios";
 
 export const createUniqueBrandsArray = (brand, updatedBrands) => {
   return (dispatch, getState) => {
-    const { selectedMenuItem, uniqueBrandsArray } = getState();
-    const uniqueBrandss = {};
+    const { selectedMenuItem, uniqueBrandsArray, data } = getState();
     let uniqueBrands;
-    data[selectedMenuItem]?.models.forEach((element) => {
-      uniqueBrandss[element.brand] = { brand: element.brand, checked: false };
-    });
-    uniqueBrands = Object.values(uniqueBrandss);
+    const products = data[selectedMenuItem]
+      ? Object.values(data[selectedMenuItem])
+      : [];
+    const uniqueProductsObject = products.reduce((acc, product) => {
+      acc[product.brand] = product;
+      return acc;
+    }, {});
+    const uniqueProducts = Object.values(uniqueProductsObject);
+    const newData = uniqueProducts.map((item) => ({ ...item, checked: false }));
+    uniqueBrands = newData;
+
     if (brand) {
       uniqueBrands = uniqueBrandsArray.map((item) =>
         item.brand === brand ? { ...item, checked: !item.checked } : item
@@ -28,12 +33,21 @@ export const createUniqueBrandsArray = (brand, updatedBrands) => {
 
 export const filteredData = () => {
   return (dispatch, getState) => {
-    const { selectedMenuItem } = getState();
-    const { uniqueBrandsArray } = getState();
-    let filteredResult = data[selectedMenuItem]?.models;
+    const { selectedMenuItem, uniqueBrandsArray } = getState();
+    const data = getState()?.data;
+    const products = [];
+    if (data[selectedMenuItem]) {
+      Object.keys(data[selectedMenuItem]).forEach((key) => {
+        const obj = data[selectedMenuItem][key];
+        products.push(obj);
+      });
+    }
+
+    let filteredResult = products;
 
     const checkedBrands = uniqueBrandsArray?.filter((item) => item.checked);
-    filteredResult = data[selectedMenuItem]?.models.filter((item) =>
+
+    filteredResult = products.filter((item) =>
       checkedBrands.some((checkedBrand) => checkedBrand.brand === item.brand)
     );
 
@@ -54,8 +68,8 @@ export const fetchData = () => {
       const smartPhones = [];
       const laptops = [];
       Object.keys(data.smartPhones).forEach((key) => {
-        const model = data.smartPhones[key];
-        smartPhones.push(model);
+        const obj = data.smartPhones[key];
+        smartPhones.push(obj);
       });
       Object.keys(data.laptops).forEach((key) => {
         const model = data.laptops[key];
