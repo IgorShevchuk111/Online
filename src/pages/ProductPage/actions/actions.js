@@ -69,6 +69,10 @@ export const fetchData = () => {
         type: "LAPTOPS_DATA",
         payload: laptops,
       });
+      dispatch({
+        type: "DATA",
+        payload: data,
+      });
     } catch (error) {
       console.error("Error fetching data:", error);
       throw error;

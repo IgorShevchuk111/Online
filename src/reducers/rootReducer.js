@@ -5,6 +5,7 @@ const initState = {
   uniqueBrandsArray: [],
   smartPhones: [],
   laptops: [],
+  data: [],
 };
 
 const rootReducer = (state = initState, action) => {
@@ -18,6 +19,11 @@ const rootReducer = (state = initState, action) => {
       return {
         ...state,
         laptops: action.payload,
+      };
+    case "DATA":
+      return {
+        ...state,
+        data: action.payload,
       };
     case "UNIQUE_BRANDS_ARRAY":
       return {

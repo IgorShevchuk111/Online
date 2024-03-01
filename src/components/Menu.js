@@ -7,6 +7,8 @@ function Menu({ screenSize }) {
   const isDarkMode = useSelector((state) => state.isDarkMode);
   const [menuVisible, setMenuVisible] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState(null);
+  // const brands = useSelector((state) => state.brands);
+
   const dispatch = useDispatch();
 
   const toggleMenu = useCallback(() => {
