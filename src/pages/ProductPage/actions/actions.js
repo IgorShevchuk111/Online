@@ -1,4 +1,5 @@
 import { data } from "../../../data";
+import axios from "axios";
 
 export const createUniqueBrandsArray = (brand, updatedBrands) => {
   return (dispatch, getState) => {
@@ -40,5 +41,37 @@ export const filteredData = () => {
       type: "FILTRED_DATA",
       payload: filteredResult,
     });
+  };
+};
+
+export const fetchData = () => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await axios.get(
+        "https://online-for-us-default-rtdb.firebaseio.com/.json"
+      );
+      const data = response.data;
+      const smartPhones = [];
+      const laptops = [];
+      Object.keys(data.smartPhones).forEach((key) => {
+        const model = data.smartPhones[key];
+        smartPhones.push(model);
+      });
+      Object.keys(data.laptops).forEach((key) => {
+        const model = data.laptops[key];
+        laptops.push(model);
+      });
+      dispatch({
+        type: "SMARTPHONES_DATA",
+        payload: smartPhones,
+      });
+      dispatch({
+        type: "LAPTOPS_DATA",
+        payload: laptops,
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
   };
 };

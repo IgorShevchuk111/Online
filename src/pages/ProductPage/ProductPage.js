@@ -7,9 +7,9 @@ import Products from "./Products/Products";
 import { useDispatch, useSelector } from "react-redux";
 import { filteredData } from "./actions/actions";
 import { createUniqueBrandsArray } from "./actions/actions";
-
 import { useLocation } from "react-router";
 import { data } from "../../data";
+import { fetchData } from "./actions/actions";
 
 function ProductPage() {
   const dispatch = useDispatch();
@@ -36,6 +36,10 @@ function ProductPage() {
       });
     }
   }, [location.pathname, dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
 
   return (
     <>
