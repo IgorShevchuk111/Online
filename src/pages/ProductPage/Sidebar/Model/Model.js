@@ -1,8 +1,8 @@
 import React from "react";
 import "./Model.css";
 import { CiSearch } from "react-icons/ci";
-import { useSelector } from "react-redux";
 import { FiCheck } from "react-icons/fi";
+import { useSelector } from "react-redux";
 
 function Model() {
   const modelsArray = useSelector((state) => state.productModels);

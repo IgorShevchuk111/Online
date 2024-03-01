@@ -5,11 +5,9 @@ import { useSelector } from "react-redux";
 import { FiCheck } from "react-icons/fi";
 
 function Color() {
-  const selectedMenuCategory = useSelector(
-    (state) => state.selectedMenuCategory
-  );
+  const filteredItems = useSelector((state) => state.filteredItems);
   const uniqueColor = [
-    ...new Set(selectedMenuCategory?.flatMap((item) => item.color)),
+    ...new Set(filteredItems?.flatMap((item) => item.color)),
   ].filter((color) => color.trim());
   return (
     <>

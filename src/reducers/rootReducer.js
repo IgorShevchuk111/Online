@@ -1,27 +1,41 @@
 const initState = {
   selectedBasketItems: [],
-  brands: [],
-  selectedMenuCategory: [],
+  filteredItems: [],
   selectedMenuItem: "",
-  productModels: [],
+  uniqueBrandsArray: [],
+  smartPhones: [],
+  laptops: [],
+  data: [],
+  menuVisible: false,
 };
 
 const rootReducer = (state = initState, action) => {
   switch (action.type) {
-    case "UPDATE_PRODUCT_MODELS":
+    case "DATA":
       return {
         ...state,
-        productModels: action.payload,
+        data: action.payload,
+      };
+    case "SMARTPHONES_DATA":
+      return {
+        ...state,
+        smartPhones: action.payload,
+      };
+    case "LAPTOPS_DATA":
+      return {
+        ...state,
+        laptops: action.payload,
+      };
+
+    case "UNIQUE_BRANDS_ARRAY":
+      return {
+        ...state,
+        uniqueBrandsArray: action.payload,
       };
     case "FILTRED_DATA":
       return {
         ...state,
-        selectedMenuCategory: action.payload,
-      };
-    case "ADD_BRAND":
-      return {
-        ...state,
-        brands: action.payload,
+        filteredItems: action.payload,
       };
     case "ADD_STATE_MENU_VISIBLE":
       return {

@@ -1,35 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Brand.css";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
-import { addBrand } from "../../actions/actions";
-import { data } from ".././../../../data";
+import { createUniqueBrandsArray } from "../../actions/actions";
 import { FiCheck } from "react-icons/fi";
 
 function Brand() {
+  const selectAllRef = useRef();
   const dispatch = useDispatch();
-  const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
+  const uniqueBrandsArray = useSelector((state) => state.uniqueBrandsArray);
 
   const handleBrandClick = (brand) => {
-    const checkboxes = document.querySelectorAll(
-      '.brand-input input[type="checkbox"]'
-    );
-    if (brand === "") {
-      checkboxes.forEach((checkbox) => {
-        checkbox.checked = false;
-        checkboxes[0].checked = true;
-      });
-    } else {
-      if (checkboxes[0].checked && brand !== "") {
-        checkboxes[0].checked = false;
-      }
-    }
-    dispatch(addBrand(brand));
+    selectAllRef.current.checked = false;
+    dispatch(createUniqueBrandsArray(brand));
   };
-  const uniqueBrands = [
-    ...new Set(data[selectedMenuItem]?.models.map((item) => item.brand)),
-  ].filter((brand) => brand.trim());
 
+  const handleSelectAll = () => {
+    const updatedBrands = uniqueBrandsArray.map((item) => ({
+      ...item,
+      checked: selectAllRef.current.checked,
+    }));
+    dispatch(createUniqueBrandsArray(null, updatedBrands));
+  };
   return (
     <>
       <div className="brand-container">
@@ -43,20 +35,21 @@ function Brand() {
             <input
               type="checkbox"
               value=""
-              // checked={true}
-              onChange={(e) => handleBrandClick(e.target.value)}
+              onChange={handleSelectAll}
+              ref={selectAllRef}
             ></input>
             <span className="brand-checkmark"></span>
             <FiCheck className="brand-checked" />
             All
           </label>
-          {uniqueBrands.map((brand, index) => (
+          {uniqueBrandsArray?.map(({ brand }, index) => (
             <div key={index}>
               <label className="brand-input">
                 <input
                   type="checkbox"
                   value={brand}
-                  onChange={(e) => handleBrandClick(e.target.value)}
+                  checked={uniqueBrandsArray[index].checked}
+                  onChange={() => handleBrandClick(brand)}
                 ></input>
                 <span className="brand-checkmark"></span>
                 <FiCheck className="brand-checked" />
