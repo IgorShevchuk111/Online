@@ -14,10 +14,11 @@ function ProductPage() {
   const location = useLocation();
   const uniqueBrandsArray = useSelector((state) => state.uniqueBrandsArray);
   const data = useSelector((state) => state.data);
+  const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
 
   useEffect(() => {
     dispatch(createUniqueBrandsArray());
-  }, [data, dispatch]);
+  }, [data, selectedMenuItem, dispatch]);
 
   useEffect(() => {
     dispatch(filteredData());
