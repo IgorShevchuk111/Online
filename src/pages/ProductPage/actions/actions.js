@@ -35,13 +35,10 @@ export const filteredData = () => {
   return (dispatch, getState) => {
     const { selectedMenuItem, uniqueBrandsArray } = getState();
     const data = getState()?.data;
-    const products = [];
-    if (data[selectedMenuItem]) {
-      Object.keys(data[selectedMenuItem]).forEach((key) => {
-        const obj = data[selectedMenuItem][key];
-        products.push(obj);
-      });
-    }
+
+    const products = data[selectedMenuItem]
+      ? Object.values(data[selectedMenuItem])
+      : [];
 
     let filteredResult = products;
 
@@ -60,28 +57,20 @@ export const filteredData = () => {
 
 export const fetchData = () => {
   return async (dispatch, getState) => {
+    const { selectedMenuItem } = getState();
     try {
       const response = await axios.get(
         "https://online-for-us-default-rtdb.firebaseio.com/.json"
       );
       const data = response.data;
-      const smartPhones = [];
-      const laptops = [];
-      Object.keys(data.smartPhones).forEach((key) => {
-        const obj = data.smartPhones[key];
-        smartPhones.push(obj);
-      });
-      Object.keys(data.laptops).forEach((key) => {
-        const model = data.laptops[key];
-        laptops.push(model);
-      });
+
+      const selectedProduct = data[selectedMenuItem]
+        ? Object.values(data[selectedMenuItem])
+        : [];
+
       dispatch({
-        type: "SMARTPHONES_DATA",
-        payload: smartPhones,
-      });
-      dispatch({
-        type: "LAPTOPS_DATA",
-        payload: laptops,
+        type: "SELECTED_PRODUCT",
+        payload: selectedProduct,
       });
       dispatch({
         type: "DATA",
