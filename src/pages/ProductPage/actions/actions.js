@@ -31,26 +31,66 @@ export const createUniqueBrandsArray = (brand, updatedBrands) => {
   };
 };
 
-export const filteredData = () => {
+export const createControlledModels = (selectedModel, selectedAllModels) => {
   return (dispatch, getState) => {
-    const { selectedMenuItem, uniqueBrandsArray } = getState();
-    const data = getState()?.data;
-    const products = [];
-    if (data[selectedMenuItem]) {
-      Object.keys(data[selectedMenuItem]).forEach((key) => {
-        const obj = data[selectedMenuItem][key];
-        products.push(obj);
+    const { selectedMenuItem, data, modelArray, uniqueBrandsArray } =
+      getState();
+    let model;
+    // Add property checked to Object
+    model = data[selectedMenuItem]
+      ? Object.values(data[selectedMenuItem]).map((item) => ({
+          ...item,
+          checked: false,
+        }))
+      : [];
+    //  Selected Model
+    const selectedBradn = uniqueBrandsArray?.filter((item) => item.checked);
+    if (selectedBradn && selectedBradn.length > 0) {
+      model = model.filter((item) =>
+        selectedBradn.some((selBrand) => selBrand.brand === item.brand)
+      );
+    }
+    // Change checked to !checked
+    if (selectedModel) {
+      model = modelArray.map((item) =>
+        item.model === selectedModel
+          ? { ...item, checked: !item.checked }
+          : item
+      );
+    } else if (selectedAllModels) {
+      model = modelArray.map((item, index) => {
+        return {
+          ...item,
+          checked: selectedAllModels[index].checked,
+        };
       });
     }
 
+    dispatch({ type: "MODELS", payload: model });
+  };
+};
+
+export const filteredData = () => {
+  return (dispatch, getState) => {
+    const { selectedMenuItem, uniqueBrandsArray, modelArray, data } =
+      getState();
+
+    const products = data[selectedMenuItem]
+      ? Object.values(data[selectedMenuItem])
+      : [];
+
     let filteredResult = products;
-
+    // Filter Brand
     const checkedBrands = uniqueBrandsArray?.filter((item) => item.checked);
-
     filteredResult = products.filter((item) =>
       checkedBrands.some((checkedBrand) => checkedBrand.brand === item.brand)
     );
-
+    // Filter Model
+    const selectedModel = modelArray?.filter((item) => item.checked);
+    if (selectedModel && selectedModel.length > 0) {
+      const nn = modelArray.filter((item) => item.checked);
+      filteredResult = nn;
+    }
     dispatch({
       type: "FILTRED_DATA",
       payload: filteredResult,
@@ -65,24 +105,6 @@ export const fetchData = () => {
         "https://online-for-us-default-rtdb.firebaseio.com/.json"
       );
       const data = response.data;
-      const smartPhones = [];
-      const laptops = [];
-      Object.keys(data.smartPhones).forEach((key) => {
-        const obj = data.smartPhones[key];
-        smartPhones.push(obj);
-      });
-      Object.keys(data.laptops).forEach((key) => {
-        const model = data.laptops[key];
-        laptops.push(model);
-      });
-      dispatch({
-        type: "SMARTPHONES_DATA",
-        payload: smartPhones,
-      });
-      dispatch({
-        type: "LAPTOPS_DATA",
-        payload: laptops,
-      });
       dispatch({
         type: "DATA",
         payload: data,

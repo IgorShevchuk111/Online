@@ -3,8 +3,8 @@ import GalleryCarousel from "../components/GalleryCarousel";
 import { useSelector } from "react-redux";
 
 function HomePage() {
-  const smartPhones = useSelector((state) => state.smartPhones);
-  const laptops = useSelector((state) => state.laptops);
+  const data = useSelector((state) => state.data);
+
   const imageUrls = [
     "https://images.ctfassets.net/mmeshd7gafk1/7KNLXyQymHYYkmyLiDbbwN/b4a2d7a9ddb37e38b45d11fd9a070f0a/TRADEIN_HP_GENERICBANNERS_DESKTOP_1_UK.jpg",
     "https://images.ctfassets.net/mmeshd7gafk1/1mklc1XS5bIPxK0yRUSWlC/38ddeaf73378f38400bfda50f76d3760/HP_Desktop.jpg",
@@ -35,11 +35,17 @@ function HomePage() {
         <div style={{ padding: " 20px " }}>
           <div style={{ margin: "0 0 50px 0" }}>
             <h5 className="text-center">Most wanted smartphones</h5>
-            <GalleryCarousel smartPhones={smartPhones} />
+            <GalleryCarousel
+              smartPhones={
+                data.smartPhones ? Object.values(data.smartPhones) : []
+              }
+            />
           </div>
           <div>
             <h5 className="text-center">Most popular laptops</h5>
-            <GalleryCarousel laptops={laptops} />
+            <GalleryCarousel
+              laptops={data.laptops ? Object.values(data.laptops) : []}
+            />
           </div>
         </div>
       </div>

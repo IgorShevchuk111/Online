@@ -2,11 +2,11 @@ import React from "react";
 import "./Products.css";
 import ItemCard from "../../../components/ItemCard/ItemCard";
 import { useSelector } from "react-redux";
-import { data } from "../../../data";
 
 function Products() {
   const filteredItems = useSelector((state) => state.filteredItems);
   const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
+  const data = useSelector((state) => state.data);
   return (
     <>
       <div className="products-container">
@@ -16,7 +16,7 @@ function Products() {
                 <ItemCard model={model} />
               </div>
             ))
-          : data[selectedMenuItem]?.models.map((model, i) => (
+          : Object.values(data[selectedMenuItem] || {}).map((model, i) => (
               <div key={i}>
                 <ItemCard model={model} />
               </div>
