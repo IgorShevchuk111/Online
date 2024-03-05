@@ -4,7 +4,6 @@ const initState = {
   selectedMenuItem: "",
   uniqueBrandsArray: [],
   data: [],
-  selectedProduct: [],
   menuVisible: false,
 };
 
@@ -14,11 +13,6 @@ const rootReducer = (state = initState, action) => {
       return {
         ...state,
         data: action.payload,
-      };
-    case "SELECTED_PRODUCT":
-      return {
-        ...state,
-        selectedProduct: action.payload,
       };
 
     case "UNIQUE_BRANDS_ARRAY":

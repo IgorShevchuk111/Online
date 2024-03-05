@@ -57,21 +57,11 @@ export const filteredData = () => {
 
 export const fetchData = () => {
   return async (dispatch, getState) => {
-    const { selectedMenuItem } = getState();
     try {
       const response = await axios.get(
         "https://online-for-us-default-rtdb.firebaseio.com/.json"
       );
       const data = response.data;
-
-      const selectedProduct = data[selectedMenuItem]
-        ? Object.values(data[selectedMenuItem])
-        : [];
-
-      dispatch({
-        type: "SELECTED_PRODUCT",
-        payload: selectedProduct,
-      });
       dispatch({
         type: "DATA",
         payload: data,
