@@ -3,6 +3,7 @@ const initState = {
   filteredItems: [],
   selectedMenuItem: "",
   uniqueBrandsArray: [],
+  modelArray: [],
   data: [],
   menuVisible: false,
 };
@@ -19,6 +20,11 @@ const rootReducer = (state = initState, action) => {
       return {
         ...state,
         uniqueBrandsArray: action.payload,
+      };
+    case "MODELS":
+      return {
+        ...state,
+        modelArray: action.payload,
       };
     case "FILTRED_DATA":
       return {

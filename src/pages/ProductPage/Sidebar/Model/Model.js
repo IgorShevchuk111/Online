@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Model.css";
 import { CiSearch } from "react-icons/ci";
+import { useDispatch, useSelector } from "react-redux";
 import { FiCheck } from "react-icons/fi";
-import { useSelector } from "react-redux";
+import { createControlledModels } from "../../actions/actions";
 
 function Model() {
-  const data = useSelector((state) => state.data);
-  const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
+  const selectAllRef = useRef();
+  const dispatch = useDispatch();
+  const modelArray = useSelector((state) => state.modelArray);
+
+  const handleBrandClick = (model) => {
+    selectAllRef.current.checked = false;
+    dispatch(createControlledModels(model));
+  };
+
+  const handleSelectAll = () => {
+    const updatedBrands = modelArray.map((item) => ({
+      ...item,
+      checked: selectAllRef.current.checked,
+    }));
+    dispatch(createControlledModels(null, updatedBrands));
+  };
   return (
     <>
       <div className="model-container">
@@ -17,23 +32,30 @@ function Model() {
         </div>
         <div className="list-models">
           <label className="model-input mt-3">
-            <input type="checkbox"></input>
+            <input
+              type="checkbox"
+              onChange={handleSelectAll}
+              ref={selectAllRef}
+            ></input>
             <span className="model-checkmark"></span>
             <FiCheck className="model-checked" />
             All
           </label>
-          {Object.values(data[selectedMenuItem] || {}).map(
-            ({ model }, index) => (
-              <div key={index}>
-                <label className="model-input">
-                  <input type="checkbox"></input>
-                  <span className="model-checkmark"></span>
-                  <FiCheck className="model-checked" />
-                  {model}
-                </label>
-              </div>
-            )
-          )}
+          {modelArray.map(({ model }, index) => (
+            <div key={index}>
+              <label className="model-input">
+                <input
+                  type="checkbox"
+                  value={model}
+                  checked={modelArray[index].checked}
+                  onChange={() => handleBrandClick(model)}
+                ></input>
+                <span className="model-checkmark"></span>
+                <FiCheck className="model-checked" />
+                {model}
+              </label>
+            </div>
+          ))}
         </div>
       </div>
     </>

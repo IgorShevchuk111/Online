@@ -31,23 +31,66 @@ export const createUniqueBrandsArray = (brand, updatedBrands) => {
   };
 };
 
+export const createControlledModels = (selectedModel, selectedAllModels) => {
+  return (dispatch, getState) => {
+    const { selectedMenuItem, data, modelArray, uniqueBrandsArray } =
+      getState();
+    let model;
+    // Add property checked to Object
+    model = data[selectedMenuItem]
+      ? Object.values(data[selectedMenuItem]).map((item) => ({
+          ...item,
+          checked: false,
+        }))
+      : [];
+    //  Selected Model
+    const selectedBradn = uniqueBrandsArray?.filter((item) => item.checked);
+    if (selectedBradn && selectedBradn.length > 0) {
+      model = model.filter((item) =>
+        selectedBradn.some((selBrand) => selBrand.brand === item.brand)
+      );
+    }
+    // Change checked to !checked
+    if (selectedModel) {
+      model = modelArray.map((item) =>
+        item.model === selectedModel
+          ? { ...item, checked: !item.checked }
+          : item
+      );
+    } else if (selectedAllModels) {
+      model = modelArray.map((item, index) => {
+        return {
+          ...item,
+          checked: selectedAllModels[index].checked,
+        };
+      });
+    }
+
+    dispatch({ type: "MODELS", payload: model });
+  };
+};
+
 export const filteredData = () => {
   return (dispatch, getState) => {
-    const { selectedMenuItem, uniqueBrandsArray } = getState();
-    const data = getState()?.data;
+    const { selectedMenuItem, uniqueBrandsArray, modelArray, data } =
+      getState();
 
     const products = data[selectedMenuItem]
       ? Object.values(data[selectedMenuItem])
       : [];
 
     let filteredResult = products;
-
+    // Filter Brand
     const checkedBrands = uniqueBrandsArray?.filter((item) => item.checked);
-
     filteredResult = products.filter((item) =>
       checkedBrands.some((checkedBrand) => checkedBrand.brand === item.brand)
     );
-
+    // Filter Model
+    const selectedModel = modelArray?.filter((item) => item.checked);
+    if (selectedModel && selectedModel.length > 0) {
+      const nn = modelArray.filter((item) => item.checked);
+      filteredResult = nn;
+    }
     dispatch({
       type: "FILTRED_DATA",
       payload: filteredResult,
