@@ -10,7 +10,7 @@ function Brand() {
   const dispatch = useDispatch();
   const uniqueBrandsArray = useSelector((state) => state.uniqueBrandsArray);
 
-  const handleBrandClick = (brand) => {
+  const handleBrandClick = (brand, id) => {
     selectAllRef.current.checked = false;
     dispatch(createUniqueBrandsArray(brand));
   };
@@ -42,14 +42,14 @@ function Brand() {
             <FiCheck className="brand-checked" />
             All
           </label>
-          {uniqueBrandsArray?.map(({ brand }, index) => (
+          {uniqueBrandsArray?.map(({ brand, id }, index) => (
             <div key={index}>
               <label className="brand-input">
                 <input
                   type="checkbox"
                   value={brand}
                   checked={uniqueBrandsArray[index].checked}
-                  onChange={() => handleBrandClick(brand)}
+                  onChange={() => handleBrandClick(brand, id)}
                 ></input>
                 <span className="brand-checkmark"></span>
                 <FiCheck className="brand-checked" />

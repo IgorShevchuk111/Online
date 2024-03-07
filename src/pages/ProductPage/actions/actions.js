@@ -70,6 +70,44 @@ export const createControlledModels = (selectedModel, selectedAllModels) => {
   };
 };
 
+export const createControlledColors = (selectedColor, selectedAllColors) => {
+  return (dispatch, getState) => {
+    const { selectedMenuItem, data, colorArray } = getState();
+    let colors = [];
+    // Add property checked to Object
+
+    if (data[selectedMenuItem]) {
+      colors = [
+        ...new Set(
+          Object.values(data[selectedMenuItem]).flatMap((item) => item.color)
+        ),
+      ]
+        .filter((item) => {
+          const trimmedItem =
+            item && typeof item === "object" ? item.item : item;
+          return (
+            trimmedItem && typeof trimmedItem === "string" && trimmedItem.trim()
+          );
+        })
+        .map((color) => ({
+          color,
+          checked: false,
+        }));
+    }
+    // Change checked to !checked
+    if (selectedColor) {
+      colors = colorArray.map((item) =>
+        item.color === selectedColor
+          ? { ...item, checked: !item.checked }
+          : item
+      );
+    } else if (selectedAllColors) {
+      colors = selectedAllColors;
+    }
+    dispatch({ type: "COLOR_ARRAY", payload: colors });
+  };
+};
+
 export const filteredData = () => {
   return (dispatch, getState) => {
     const { selectedMenuItem, uniqueBrandsArray, modelArray, data } =

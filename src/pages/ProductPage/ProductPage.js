@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { filteredData } from "./actions/actions";
 import { createUniqueBrandsArray } from "./actions/actions";
 import { createControlledModels } from "./actions/actions";
+import { createControlledColors } from "./actions/actions";
 import { useLocation } from "react-router";
 
 function ProductPage() {
@@ -20,6 +21,7 @@ function ProductPage() {
 
   useEffect(() => {
     dispatch(createUniqueBrandsArray());
+    dispatch(createControlledColors());
   }, [data, selectedMenuItem, dispatch]);
   useEffect(() => {
     dispatch(createControlledModels());
