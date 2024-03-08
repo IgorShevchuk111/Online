@@ -3,28 +3,23 @@ import "./Color.css";
 import { useDispatch, useSelector } from "react-redux";
 import { CiSearch } from "react-icons/ci";
 import { FiCheck } from "react-icons/fi";
-import { createControlledColors } from "../../actions/actions";
+import { handleSelect } from "../../actions/actions";
 
 function Color() {
-  // const filteredItems = useSelector((state) => state.filteredItems);
-  const colorArray = useSelector((state) => state.colorArray);
-  // const uniqueColor = [
-  //   ...new Set(filteredItems?.flatMap((item) => item.color)),
-  // ].filter((color) => color.trim());
+  const selectedProducts = useSelector((state) => state.selectedProducts);
+  const filteredItems = useSelector((state) => state.filteredItems);
   const selectAllRef = useRef();
   const dispatch = useDispatch();
 
-  const handleColorClick = (color, id) => {
-    selectAllRef.current.checked = false;
-    dispatch(createControlledColors(color));
-  };
+  const selectedModels = selectedProducts.filter((product) =>
+    filteredItems.some((item) => item.model === product.model)
+  );
+  const filteredColors = [
+    ...new Set(selectedModels.flatMap((product) => product.color)),
+  ];
 
-  const handleSelectAll = () => {
-    const updatedColors = colorArray.map((item) => ({
-      ...item,
-      checked: selectAllRef.current.checked,
-    }));
-    dispatch(createControlledColors(null, updatedColors));
+  const handleColorClick = (color) => {
+    dispatch(handleSelect(color));
   };
 
   return (
@@ -37,23 +32,20 @@ function Color() {
         </div>
         <div className="list-colors">
           <label className="color-input mt-3">
-            <input
-              type="checkbox"
-              value=""
-              onChange={handleSelectAll}
-              ref={selectAllRef}
-            ></input>
+            <input type="checkbox" value="" ref={selectAllRef}></input>
             <span className="color-checkmark"></span>
             <FiCheck className="color-checked" /> All
           </label>
-          {colorArray.map(({ color, id }, index) => (
+          {filteredColors?.map((color, index) => (
             <div key={index}>
               <label className="color-input">
                 <input
                   type="checkbox"
                   value={color}
-                  checked={colorArray[index].checked}
-                  onChange={() => handleColorClick(color, id)}
+                  checked={
+                    filteredColors.find((item) => item === color).checked
+                  }
+                  onChange={() => handleColorClick({ color, selectAllRef })}
                 ></input>
                 <span className="color-checkmark"></span>
                 <FiCheck className="color-checked" />
