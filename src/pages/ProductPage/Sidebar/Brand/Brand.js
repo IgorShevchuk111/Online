@@ -2,25 +2,27 @@ import React, { useRef } from "react";
 import "./Brand.css";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
-import { createUniqueBrandsArray } from "../../actions/actions";
+import { handleSelect } from "../../actions/actions";
+import { handleSelectAll } from "../../actions/actions";
 import { FiCheck } from "react-icons/fi";
 
 function Brand() {
   const selectAllRef = useRef();
   const dispatch = useDispatch();
-  const uniqueBrandsArray = useSelector((state) => state.uniqueBrandsArray);
+  const selectedProducts = useSelector((state) => state.selectedProducts);
+  const filteredItems = useSelector((state) => state.filteredItems);
 
-  const handleBrandClick = (brand) => {
-    selectAllRef.current.checked = false;
-    dispatch(createUniqueBrandsArray(brand));
+  const uniqueProductsObject = selectedProducts.reduce((acc, product) => {
+    acc[product.brand] = product;
+    return acc;
+  }, {});
+  const uniqueBrandsArray = Object.values(uniqueProductsObject);
+
+  const handleClickAll = (selectAllRef) => {
+    dispatch(handleSelectAll(selectAllRef));
   };
-
-  const handleSelectAll = () => {
-    const updatedBrands = uniqueBrandsArray.map((item) => ({
-      ...item,
-      checked: selectAllRef.current.checked,
-    }));
-    dispatch(createUniqueBrandsArray(null, updatedBrands));
+  const handleClick = (item) => {
+    dispatch(handleSelect(item));
   };
   return (
     <>
@@ -35,21 +37,24 @@ function Brand() {
             <input
               type="checkbox"
               value=""
-              onChange={handleSelectAll}
+              onChange={() => handleClickAll(selectAllRef)}
               ref={selectAllRef}
             ></input>
             <span className="brand-checkmark"></span>
             <FiCheck className="brand-checked" />
             All
           </label>
-          {uniqueBrandsArray?.map(({ brand }, index) => (
+          {uniqueBrandsArray?.map(({ brand, id }, index) => (
             <div key={index}>
               <label className="brand-input">
                 <input
                   type="checkbox"
                   value={brand}
-                  checked={uniqueBrandsArray[index].checked}
-                  onChange={() => handleBrandClick(brand)}
+                  checked={
+                    filteredItems.find((item) => item.brand === brand)
+                      ?.checked || false
+                  }
+                  onChange={() => handleClick({ brand, id, selectAllRef })}
                 ></input>
                 <span className="brand-checkmark"></span>
                 <FiCheck className="brand-checked" />

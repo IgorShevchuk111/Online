@@ -6,8 +6,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import Products from "./Products/Products";
 import { useDispatch, useSelector } from "react-redux";
 import { filteredData } from "./actions/actions";
-import { createUniqueBrandsArray } from "./actions/actions";
-import { createControlledModels } from "./actions/actions";
+import { addSelectedProducts } from "./actions/actions";
 import { useLocation } from "react-router";
 
 function ProductPage() {
@@ -17,17 +16,15 @@ function ProductPage() {
   const data = useSelector((state) => state.data);
   const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
   const modelArray = useSelector((state) => state.modelArray);
+  const selectedProducts = useSelector((state) => state.selectedProducts);
 
   useEffect(() => {
-    dispatch(createUniqueBrandsArray());
+    dispatch(addSelectedProducts());
   }, [data, selectedMenuItem, dispatch]);
-  useEffect(() => {
-    dispatch(createControlledModels());
-  }, [uniqueBrandsArray, dispatch]);
 
   useEffect(() => {
     dispatch(filteredData());
-  }, [uniqueBrandsArray, modelArray, dispatch]);
+  }, [uniqueBrandsArray, selectedProducts, modelArray, dispatch]);
 
   useEffect(() => {
     const pathWithoutSlash = location.pathname.split("/").pop();

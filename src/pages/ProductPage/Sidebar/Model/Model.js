@@ -3,24 +3,20 @@ import "./Model.css";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { FiCheck } from "react-icons/fi";
-import { createControlledModels } from "../../actions/actions";
+import { handleSelect } from "../../actions/actions";
 
 function Model() {
   const selectAllRef = useRef();
   const dispatch = useDispatch();
-  const modelArray = useSelector((state) => state.modelArray);
+  const filteredItems = useSelector((state) => state.filteredItems);
+  const selectedProducts = useSelector((state) => state.selectedProducts);
+
+  const filteredModels = selectedProducts.filter((product) =>
+    filteredItems.some((item) => item.brand === product.brand)
+  );
 
   const handleBrandClick = (model) => {
-    selectAllRef.current.checked = false;
-    dispatch(createControlledModels(model));
-  };
-
-  const handleSelectAll = () => {
-    const updatedBrands = modelArray.map((item) => ({
-      ...item,
-      checked: selectAllRef.current.checked,
-    }));
-    dispatch(createControlledModels(null, updatedBrands));
+    dispatch(handleSelect(model));
   };
   return (
     <>
@@ -32,23 +28,21 @@ function Model() {
         </div>
         <div className="list-models">
           <label className="model-input mt-3">
-            <input
-              type="checkbox"
-              onChange={handleSelectAll}
-              ref={selectAllRef}
-            ></input>
+            <input type="checkbox" ref={selectAllRef}></input>
             <span className="model-checkmark"></span>
             <FiCheck className="model-checked" />
             All
           </label>
-          {modelArray.map(({ model }, index) => (
+          {filteredModels?.map(({ model, id }, index) => (
             <div key={index}>
               <label className="model-input">
                 <input
                   type="checkbox"
                   value={model}
-                  checked={modelArray[index].checked}
-                  onChange={() => handleBrandClick(model)}
+                  checked={
+                    filteredModels.find((item) => item.model === model).checked
+                  }
+                  onChange={() => handleBrandClick({ model, id, selectAllRef })}
                 ></input>
                 <span className="model-checkmark"></span>
                 <FiCheck className="model-checked" />

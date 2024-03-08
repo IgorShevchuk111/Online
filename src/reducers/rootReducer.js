@@ -2,10 +2,9 @@ const initState = {
   selectedBasketItems: [],
   filteredItems: [],
   selectedMenuItem: "",
-  uniqueBrandsArray: [],
-  modelArray: [],
   data: [],
   menuVisible: false,
+  selectedProducts: [],
 };
 
 const rootReducer = (state = initState, action) => {
@@ -15,16 +14,10 @@ const rootReducer = (state = initState, action) => {
         ...state,
         data: action.payload,
       };
-
-    case "UNIQUE_BRANDS_ARRAY":
+    case "SELECTED_PRODUCTS":
       return {
         ...state,
-        uniqueBrandsArray: action.payload,
-      };
-    case "MODELS":
-      return {
-        ...state,
-        modelArray: action.payload,
+        selectedProducts: action.payload,
       };
     case "FILTRED_DATA":
       return {
