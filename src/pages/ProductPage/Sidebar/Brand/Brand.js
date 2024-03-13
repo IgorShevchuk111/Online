@@ -2,27 +2,43 @@ import React, { useRef } from "react";
 import "./Brand.css";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
-import { handleSelect } from "../../actions/actions";
-import { handleSelectAll } from "../../actions/actions";
 import { FiCheck } from "react-icons/fi";
+import { updateSelectedFilters } from "../../actions/actions";
 
 function Brand() {
   const selectAllRef = useRef();
   const dispatch = useDispatch();
-  const selectedProducts = useSelector((state) => state.selectedProducts);
-  const filteredItems = useSelector((state) => state.filteredItems);
+  const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
+  const data = useSelector((state) => state.data);
+  const selectedFilters = useSelector((state) => state.selectedFilters);
 
-  const uniqueProductsObject = selectedProducts.reduce((acc, product) => {
-    acc[product.brand] = product;
-    return acc;
-  }, {});
-  const uniqueBrandsArray = Object.values(uniqueProductsObject);
+  const brands =
+    selectedFilters.models.length === 0 && selectedFilters.colors.length === 0
+      ? [
+          ...new Set(
+            Object.values(data[selectedMenuItem] || {}).map(
+              (item) => item.brand
+            )
+          ),
+        ]
+      : [
+          ...new Set(
+            Object.values(data[selectedMenuItem])
+              .filter(
+                (item) =>
+                  selectedFilters.models.some(
+                    (model) => model === item.model
+                  ) ||
+                  selectedFilters.colors.some((color) =>
+                    item.color.includes(color)
+                  )
+              )
+              .map((item) => item.brand)
+          ),
+        ];
 
-  const handleClickAll = (selectAllRef) => {
-    dispatch(handleSelectAll(selectAllRef));
-  };
-  const handleClick = (item) => {
-    dispatch(handleSelect(item));
+  const handleFilterClick = (filterValue, filterType) => {
+    dispatch(updateSelectedFilters(filterValue, filterType));
   };
   return (
     <>
@@ -34,27 +50,19 @@ function Brand() {
         </div>
         <div className="list-brands">
           <label className="brand-input mt-3">
-            <input
-              type="checkbox"
-              value=""
-              onChange={() => handleClickAll(selectAllRef)}
-              ref={selectAllRef}
-            ></input>
+            <input type="checkbox" value="" ref={selectAllRef}></input>
             <span className="brand-checkmark"></span>
             <FiCheck className="brand-checked" />
             All
           </label>
-          {uniqueBrandsArray?.map(({ brand, id }, index) => (
+          {brands.map((brand, index) => (
             <div key={index}>
               <label className="brand-input">
                 <input
                   type="checkbox"
                   value={brand}
-                  checked={
-                    filteredItems.find((item) => item.brand === brand)
-                      ?.checked || false
-                  }
-                  onChange={() => handleClick({ brand, id, selectAllRef })}
+                  // checked={filteredItems.find((item) => item.brand === brand)}
+                  onChange={() => handleFilterClick(brand, "brands")}
                 ></input>
                 <span className="brand-checkmark"></span>
                 <FiCheck className="brand-checked" />

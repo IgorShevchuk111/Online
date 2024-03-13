@@ -18,94 +18,41 @@ export const fetchData = () => {
   };
 };
 
-export const addSelectedProducts = () => {
+export const updateSelectedFilters = (filterValue, filterType) => {
   return (dispatch, getState) => {
-    const { data, selectedMenuItem } = getState();
-    let products;
-    products = data[selectedMenuItem]
-      ? Object.values(data[selectedMenuItem]).map((item) => ({
-          ...item,
-          checked: false,
-        }))
-      : [];
+    const selectedFilters = getState().selectedFilters[filterType];
+    const updatedFilters = selectedFilters.includes(filterValue)
+      ? selectedFilters.filter(
+          (selectedFilter) => selectedFilter !== filterValue
+        )
+      : [...selectedFilters, filterValue];
     dispatch({
-      type: "SELECTED_PRODUCTS",
-      payload: products,
+      type: "UPDATE_SELECTED_FILTERS",
+      payload: { filterType, updatedFilters },
     });
   };
 };
 
-export const handleSelect = (obj) => {
+export const filter = () => {
   return (dispatch, getState) => {
-    const { selectedProducts } = getState();
-    obj.selectAllRef.current.checked = false;
-    let filteredProducts;
-    if (obj.brand) {
-      filteredProducts = selectedProducts.map((item) => {
-        if (item.brand === obj.brand) {
-          return {
-            ...item,
-            checked: !item.checked,
-          };
-        }
-        return item;
-      });
-    }
-    if (obj.model) {
-      filteredProducts = selectedProducts.map((item) => {
-        if (item.model === obj.model) {
-          return {
-            ...item,
-            checked: !item.checked,
-          };
-        }
-        return item;
-      });
-    }
-    if (obj.color) {
-      filteredProducts = selectedProducts.map((item) => {
-        if (item.color.includes(obj.color)) {
-          return {
-            ...item,
-            checked: !item.checked,
-          };
-        }
-        return item;
-      });
-    }
+    const { data, selectedMenuItem, selectedFilters } = getState();
+    const filteredProducts = Object.values(data[selectedMenuItem] || {}).filter(
+      (product) => {
+        const brandMatch =
+          selectedFilters.brands.length === 0 ||
+          selectedFilters.brands.includes(product.brand);
+        const modelMatch =
+          selectedFilters.models.length === 0 ||
+          selectedFilters.models.includes(product.model);
+        const colorMatch =
+          selectedFilters.colors.length === 0 ||
+          product.color.some((color) => selectedFilters.colors.includes(color));
+        return brandMatch && modelMatch && colorMatch;
+      }
+    );
     dispatch({
-      type: "SELECTED_PRODUCTS",
+      type: "UPDATE_FILTERED_ITEMS",
       payload: filteredProducts,
-    });
-  };
-};
-
-export const handleSelectAll = (ref) => {
-  return (dispatch, getState) => {
-    const { selectedProducts } = getState();
-    let updatedProducts = selectedProducts.map((item) => ({
-      ...item,
-      checked: ref.current.checked,
-    }));
-    console.log(updatedProducts, "ref");
-    dispatch({
-      type: "SELECTED_PRODUCTS",
-      payload: updatedProducts,
-    });
-  };
-};
-
-export const filteredData = () => {
-  return (dispatch, getState) => {
-    const { selectedProducts } = getState();
-    let filteredResult = selectedProducts;
-    const checkedItems = selectedProducts.filter((item) => item.checked);
-    if (checkedItems.length > 0) {
-      filteredResult = checkedItems;
-    }
-    dispatch({
-      type: "FILTRED_DATA",
-      payload: filteredResult,
     });
   };
 };
