@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { filter } from "../pages/ProductPage/actions/actions";
 
 function Menu({ screenSize }) {
   const isDarkMode = useSelector((state) => state.isDarkMode);
@@ -19,7 +20,7 @@ function Menu({ screenSize }) {
       type: "ADD_STATE_SELECTED_MENU",
       value: item,
     });
-
+    dispatch(filter());
     toggleMenu();
   };
   // Click outside x to close menu
