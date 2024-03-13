@@ -61,6 +61,7 @@ function Color() {
                 <input
                   type="checkbox"
                   value={color}
+                  checked={selectedFilters.colors.includes(color)}
                   onChange={() => handleFilterClick(color, "colors")}
                 ></input>
                 <span className="color-checkmark"></span>

@@ -61,7 +61,7 @@ function Brand() {
                 <input
                   type="checkbox"
                   value={brand}
-                  // checked={filteredItems.find((item) => item.brand === brand)}
+                  checked={selectedFilters.brands.includes(brand)}
                   onChange={() => handleFilterClick(brand, "brands")}
                 ></input>
                 <span className="brand-checkmark"></span>
