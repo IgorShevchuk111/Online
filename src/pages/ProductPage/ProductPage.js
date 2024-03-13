@@ -5,26 +5,18 @@ import Breadcrumb from "../../components/Breadcrumb";
 import Sidebar from "./Sidebar/Sidebar";
 import Products from "./Products/Products";
 import { useDispatch, useSelector } from "react-redux";
-import { filteredData } from "./actions/actions";
-import { addSelectedProducts } from "./actions/actions";
+import { filter } from "./actions/actions";
 import { useLocation } from "react-router";
 
 function ProductPage() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const uniqueBrandsArray = useSelector((state) => state.uniqueBrandsArray);
+  const selectedFilters = useSelector((state) => state.selectedFilters);
   const data = useSelector((state) => state.data);
-  const selectedMenuItem = useSelector((state) => state.selectedMenuItem);
-  const modelArray = useSelector((state) => state.modelArray);
-  const selectedProducts = useSelector((state) => state.selectedProducts);
 
   useEffect(() => {
-    dispatch(addSelectedProducts());
-  }, [data, selectedMenuItem, dispatch]);
-
-  useEffect(() => {
-    dispatch(filteredData());
-  }, [uniqueBrandsArray, selectedProducts, modelArray, dispatch]);
+    dispatch(filter());
+  }, [data, selectedFilters, dispatch]);
 
   useEffect(() => {
     const pathWithoutSlash = location.pathname.split("/").pop();
@@ -35,7 +27,6 @@ function ProductPage() {
       });
     }
   }, [location.pathname, dispatch]);
-
   return (
     <>
       <Breadcrumb />

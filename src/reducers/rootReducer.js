@@ -4,25 +4,32 @@ const initState = {
   selectedMenuItem: "",
   data: [],
   menuVisible: false,
-  selectedProducts: [],
+  selectedFilters: {
+    brands: [],
+    models: [],
+    colors: [],
+  },
 };
 
 const rootReducer = (state = initState, action) => {
   switch (action.type) {
+    case "UPDATE_FILTERED_ITEMS":
+      return {
+        ...state,
+        filteredItems: action.payload,
+      };
+    case "UPDATE_SELECTED_FILTERS":
+      return {
+        ...state,
+        selectedFilters: {
+          ...state.selectedFilters,
+          [action.payload.filterType]: action.payload.updatedFilters,
+        },
+      };
     case "DATA":
       return {
         ...state,
         data: action.payload,
-      };
-    case "SELECTED_PRODUCTS":
-      return {
-        ...state,
-        selectedProducts: action.payload,
-      };
-    case "FILTRED_DATA":
-      return {
-        ...state,
-        filteredItems: action.payload,
       };
     case "ADD_STATE_MENU_VISIBLE":
       return {
