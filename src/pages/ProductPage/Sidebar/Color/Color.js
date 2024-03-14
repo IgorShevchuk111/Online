@@ -21,9 +21,9 @@ function Color() {
     selectedFilters.brands.length === 0 && selectedFilters.models.length === 0
       ? [
           ...new Set(
-            Object.values(data[selectedMenuItem] || {}).flatMap(
-              (product) => product.color
-            )
+            Object.values(data[selectedMenuItem] || {})
+              .flatMap((product) => product.color)
+              .filter((color) => color !== null)
           ),
         ]
       : [
@@ -39,6 +39,7 @@ function Color() {
                   )
               )
               .flatMap((item) => item.color)
+              .filter((color) => color !== null)
           ),
         ];
   return (
@@ -60,7 +61,7 @@ function Color() {
               <label className="color-input">
                 <input
                   type="checkbox"
-                  value={color}
+                  value={color || ""}
                   checked={selectedFilters.colors.includes(color)}
                   onChange={() => handleFilterClick(color, "colors")}
                 ></input>
