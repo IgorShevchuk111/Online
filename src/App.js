@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Bascket from "./components/Basket";
 import ProductPage from "./pages/ProductPage/ProductPage";
-import Login from "./pages/LoginPage";
+import Login from "./pages/login/LoginPage";
 import ErrorPage from "./components/ErrorPage";
 import OpenedItemPage from "./pages/OpenedItemPage";
 import MainLayout from "./pages/MainLayout";

@@ -271,19 +271,6 @@ input {
   border: 1px solid #999999;
   padding: 0 2rem;
 }
-/* LoginPage.css */
-.login-container {
-  display: flex;
-  justify-content: center;
-  margin: 50px 0;
-  height: 100vh;
-}
-form {
-  max-width: 400px;
-}
-.submit-button{
-  margin: 16px 0;
-}
 /* Logo.css */
 .logo {
   margin: 0!important;
